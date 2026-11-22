@@ -17,9 +17,9 @@ Shared files: `styles.css`, `app.js`, `favicon.svg`, `og.png` (link preview imag
 
 Connect this repository to a Cloudflare Pages project with **no build command** and **build output directory `/`**. Every merge to `main` then deploys automatically, and each pull request gets its own preview link.
 
-## Moving to a new domain
+## Domain
 
-All page addresses (canonical links, sitemap, share links, Google data) currently use `https://seabreeze-management.pages.dev`. When a new domain is live, replace that text in every file with the new address (for example `https://www.seabreeze.co.ke`) and submit `sitemap.xml` in Google Search Console.
+All page addresses (canonical links, sitemap, share links, Google data) use `https://seabreezedata.co.ke`. If the domain ever changes, replace that text in every file and resubmit `sitemap.xml` in Google Search Console.
 
 ## Things to keep current
 
