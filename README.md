@@ -1,7 +1,28 @@
 # Seabreeze Data Ventures website
 
-Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised Airtel Kenya Enterprise Solution Partner.
+Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised Airtel Kenya Enterprise Solution Partner. It is a plain static site with no build step, hosted on Cloudflare Pages.
 
-This first commit is a backup of the site that was live at https://seabreeze-management.pages.dev/ on 22 November 2026. It was recovered from a saved copy because the original files were lost. A browser-extension snippet that the save added to the form was removed.
+## Pages
 
-All changes go through pull requests for review before they are deployed.
+| Path | Purpose |
+| --- | --- |
+| `/` | Home: renew on Paybill 4129691, offers, packages, services, coverage, enquiry form (opens WhatsApp), FAQ |
+| `/renew-airtel-5g/` | "How to pay Airtel 5G with M-Pesa" page for search traffic |
+| `/airtel-5g/<town>/` | One page per town where Seabreeze has agents |
+| `404.html` | Not-found page |
+
+Shared files: `styles.css`, `app.js`, `favicon.svg`, `og.png` (link preview image), `sitemap.xml`, `robots.txt`, `_headers` (Cloudflare security and caching headers).
+
+## Deploying on Cloudflare Pages
+
+Connect this repository to a Cloudflare Pages project with **no build command** and **build output directory `/`**. Every merge to `main` then deploys automatically, and each pull request gets its own preview link.
+
+## Moving to a new domain
+
+All page addresses (canonical links, sitemap, share links, Google data) currently use `https://seabreeze-management.pages.dev`. When a new domain is live, replace that text in every file with the new address (for example `https://www.seabreeze.co.ke`) and submit `sitemap.xml` in Google Search Console.
+
+## Things to keep current
+
+- Offer text (Black November runs 24 November to 31 December 2026): home page and town pages.
+- Package prices: home page, town pages and the Google data in each page's head.
+- Contact numbers: WhatsApp Business 0720 499 691, office 0782 998 842.

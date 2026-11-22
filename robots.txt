@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://seabreeze-management.pages.dev/sitemap.xml
