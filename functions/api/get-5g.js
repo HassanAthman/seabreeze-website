@@ -11,8 +11,8 @@
 
 const MAX_PER_CLIENT_PER_DAY = 5;
 // Staff phone(s) that get the "new website lead" SMS. Override with the Pages
-// variable LEAD_ALERT_PHONES (comma separated), e.g. "254720499691,254782998842".
-const DEFAULT_ALERT_PHONES = "254720499691";
+// variable LEAD_ALERT_PHONES (comma separated). 0720 499 691 is WhatsApp Business only, not for SMS.
+const DEFAULT_ALERT_PHONES = "254734782203,254782998842";
 const HEARD_FROM = ["Facebook", "TikTok", "Instagram", "WhatsApp", "Google", "A friend", "An agent or installer", "SMS", "Other"];
 
 function reply(status, body) {
