@@ -180,7 +180,7 @@ def page_strings(src):
     return [k for k in keys if re.search(r"[A-Za-z]", re.sub(r"<[^>]+>", "", k))]
 
 # keys that must never be translated (names, numbers, brands)
-KEEP = re.compile(r"^([A-Z]{2}|Content-Type|Lipa Mdogo Mdogo|Lipa na M-Pesa|Seabreeze( 5G| Data Ventures Ltd)?|Seabreeze <b class=\"g5\">5G</b>|Airtel 5G Smart Connect|Airtel 5G|M-PESA|M-Pesa|TikTok|WhatsApp|FAQ|CCTV|Paybill 4129691|4129691|WhatsApp 0720 499 691|KES [\d,]+|<b>KES [\d,]+</b>|\d+ Mbps|English|Kiswahili|Italiano|Black November|e\.g\. 0\d.*|0\d{9})$")
+KEEP = re.compile(r"^([A-Z]{2}|Content-Type|Lipa Mdogo Mdogo|Lipa na M-Pesa|Seabreeze( 5G| Data Ventures Ltd)?|Seabreeze <b class=\"g5\">5G</b>|Airtel 5G Smart Connect|Airtel 5G|M-PESA|M-Pesa|TikTok|WhatsApp|FAQ|CCTV|Paybill 4129691|4129691|WhatsApp 0734 782 203|KES [\d,]+|<b>KES [\d,]+</b>|\d+ Mbps|English|Kiswahili|Italiano|Black November|e\.g\. 0\d.*|0\d{9})$")
 from coverage import PINS
 NAMES = {a["name"] for a in AREAS.values()} | {t for a in AREAS.values() for t in a.get("towns", [])} | {p[0] for p in PINS} | {a["county"] for a in AREAS.values() if a.get("county")} | {"Kenya"}
 

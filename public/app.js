@@ -22,9 +22,9 @@
   var pageLang = (document.documentElement.lang||'en').slice(0,2);
   if(!steps[pageLang]) pageLang = 'en';
   var say = {
-    en: {need:'Please add your name, a phone number we can call and your town.', open:'Opening WhatsApp. If it does not open, message 0720 499 691 directly.'},
-    sw: {need:'Tafadhali weka jina lako, namba ya simu tunayoweza kupiga na mji wako.', open:'Tunafungua WhatsApp. Isipofunguka, tuma ujumbe kwa 0720 499 691 moja kwa moja.'},
-    it: {need:'Inserisci il tuo nome, un numero di telefono a cui chiamarti e la tua città.', open:'Stiamo aprendo WhatsApp. Se non si apre, scrivi direttamente al 0720 499 691.'}
+    en: {need:'Please add your name, a phone number we can call and your town.', open:'Opening WhatsApp. If it does not open, message 0734 782 203 directly.'},
+    sw: {need:'Tafadhali weka jina lako, namba ya simu tunayoweza kupiga na mji wako.', open:'Tunafungua WhatsApp. Isipofunguka, tuma ujumbe kwa 0734 782 203 moja kwa moja.'},
+    it: {need:'Inserisci il tuo nome, un numero di telefono a cui chiamarti e la tua città.', open:'Stiamo aprendo WhatsApp. Se non si apre, scrivi direttamente allo 0734 782 203.'}
   }[pageLang];
   var list = document.getElementById('steps');
   if(list){
@@ -93,7 +93,7 @@
     }
     var msg = 'Hi Seabreeze, I have an enquiry.\nName: '+g('f-name')+'\nPhone: '+g('f-phone')+'\nTown: '+g('f-town')+(g('f-landmark')?'\nLandmark: '+g('f-landmark'):'')+'\nNeed: '+g('f-need')+'\nHeard about you via: '+g('f-src');
     m.hidden=false; m.textContent = say.open;
-    window.location.href = 'https://wa.me/254720499691?text=' + encodeURIComponent(msg);
+    window.location.href = 'https://wa.me/254734782203?text=' + encodeURIComponent(msg);
   });
 })();
 

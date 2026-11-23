@@ -73,7 +73,7 @@ def county_page(slug, tpl):
     ]
     h1_place = (f"<em>{esc(place.split(' and ')[0])}</em> and {esc(place.split(' and ')[1])} County"
                 if "title_place" in a else f"<em>{esc(name)}</em> County")
-    wa = f"https://wa.me/254720499691?text=Hi%20Seabreeze,%20I%20want%20Airtel%205G%20at%20home%20in%20{name.replace(' ', '%20')}%20County."
+    wa = f"https://wa.me/254734782203?text=Hi%20Seabreeze,%20I%20want%20Airtel%205G%20at%20home%20in%20{name.replace(' ', '%20')}%20County."
     url = f"{SITE}/airtel-5g/{slug}/"
 
     head_end = tpl.index("<main id=\"top\">")
