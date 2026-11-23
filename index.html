@@ -48,13 +48,9 @@
       </div>
       <p class="note">We will never ask for your M-Pesa PIN.</p>
     </div>
-    <div>
-      <div class="phone" aria-label="Example of renewing on a basic phone">
-        <div class="speaker"></div>
-        <div class="screen" id="screen" aria-live="polite"></div>
-        <div class="phone-steps" id="phoneSteps"></div>
-        <div class="keys" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>*</span><span>0</span><span>#</span></div>
-      </div>
+    <div class="scene">
+      <canvas id="scene3d" aria-hidden="true"></canvas>
+      <p class="scene-cap">One outdoor 5G unit. Fast WiFi for the whole home.</p>
     </div>
   </div>
 </section>
@@ -70,6 +66,28 @@
   </div>
 </div>
 
+
+<section id="how" class="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2 style="margin-top:8px">Connected in three steps</h2>
+    <ol class="howsteps">
+      <li class="reveal">
+        <svg viewBox="0 0 200 130" aria-hidden="true"><rect x="0" y="0" width="200" height="130" rx="14" fill="var(--surface)"/><rect x="68" y="14" width="64" height="104" rx="12" fill="var(--sea)"/><rect x="76" y="26" width="48" height="66" rx="5" fill="var(--bg)"/><rect x="82" y="34" width="36" height="7" rx="3" fill="var(--sun)"/><rect x="82" y="47" width="28" height="5" rx="2.5" fill="var(--line)"/><rect x="82" y="57" width="32" height="5" rx="2.5" fill="var(--line)"/><rect x="82" y="67" width="22" height="5" rx="2.5" fill="var(--line)"/><circle cx="100" cy="104" r="6" fill="var(--bg)"/><path d="M146 40c14 0 22 8 22 20s-8 20-22 20h-6l-10 10V60c0-12 4-20 16-20z" fill="var(--sun)"/><circle cx="142" cy="60" r="3" fill="var(--sun-ink)"/><circle cx="152" cy="60" r="3" fill="var(--sun-ink)"/><circle cx="162" cy="60" r="3" fill="var(--sun-ink)"/></svg>
+        <h3>Send your location</h3><p>WhatsApp us your town and nearest landmark. We confirm coverage first.</p>
+      </li>
+      <li class="reveal">
+        <svg viewBox="0 0 200 130" aria-hidden="true"><rect x="0" y="0" width="200" height="130" rx="14" fill="var(--surface)"/><path d="M30 120V70l50-38 50 38v50z" fill="var(--sea)"/><rect x="66" y="84" width="28" height="36" rx="3" fill="var(--bg)"/><rect x="40" y="80" width="18" height="16" rx="2" fill="var(--sun-soft)"/><rect x="102" y="80" width="18" height="16" rx="2" fill="var(--sun-soft)"/><rect x="138" y="40" width="5" height="80" fill="var(--muted)"/><rect x="128" y="20" width="26" height="40" rx="9" fill="var(--bg)" stroke="var(--sea)" stroke-width="3"/><rect x="134" y="30" width="14" height="4" rx="2" fill="var(--sun)"/><path d="M162 26a16 16 0 0 1 0 28M170 18a28 28 0 0 1 0 44" stroke="var(--sun)" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+        <h3>We install the 5G unit</h3><p>A Seabreeze agent mounts the outdoor unit and sets up WiFi indoors.</p>
+      </li>
+      <li class="reveal">
+        <svg viewBox="0 0 200 130" aria-hidden="true"><rect x="0" y="0" width="200" height="130" rx="14" fill="var(--surface)"/><rect x="40" y="14" width="56" height="104" rx="14" fill="#1d2326"/><rect x="48" y="28" width="40" height="40" rx="4" fill="var(--screen)"/><text x="68" y="44" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="var(--screen-ink)">PAYBILL</text><text x="68" y="58" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="var(--screen-ink)">4129691</text><g fill="#47555b"><rect x="48" y="76" width="11" height="7" rx="2"/><rect x="62" y="76" width="11" height="7" rx="2"/><rect x="76" y="76" width="11" height="7" rx="2"/><rect x="48" y="88" width="11" height="7" rx="2"/><rect x="62" y="88" width="11" height="7" rx="2"/><rect x="76" y="88" width="11" height="7" rx="2"/></g><circle cx="140" cy="64" r="30" fill="var(--sea)"/><path d="M126 64l10 10 20-20" stroke="var(--bg)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Renew from any phone</h3><p>Every month, pay on M-Pesa Paybill 4129691. We remind you before it runs out.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
 <section id="renew">
   <div class="wrap">
     <div class="eyebrow">Renew</div>
@@ -79,7 +97,13 @@
       <button type="button" id="lang-sw" aria-pressed="false">Kiswahili</button>
     </div>
     <div class="renew-grid">
-      <ol class="steps" id="steps"></ol>
+      <div class="renew-left"><ol class="steps" id="steps"></ol>
+        <div class="phone" aria-label="Example of renewing on a basic phone">
+        <div class="speaker"></div>
+        <div class="screen" id="screen" aria-live="polite"></div>
+        <div class="phone-steps" id="phoneSteps"></div>
+        <div class="keys" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>*</span><span>0</span><span>#</span></div>
+      </div></div>
       <div class="paycard">
         <div class="label">Business number (Paybill)</div>
         <div class="num" id="paybill">4129691</div>
@@ -165,12 +189,12 @@
     <div class="eyebrow">Services</div>
     <h2 style="margin-top:8px">Everything for a connected home or office</h2>
     <div class="svc">
-      <div><h3>Airtel 5G Smart Connect</h3><p>Unlimited home and office WiFi at 15 or 30 Mbps. Works in 5G and 4G areas.</p></div>
-      <div><h3>Renewals and support</h3><p>Renew on Paybill 4129691 and get help when a payment does not reflect.</p></div>
-      <div><h3>WiFi installation</h3><p>Router placement and set-up so the whole house gets a strong signal.</p></div>
-      <div><h3>Airtel SIM and Airtel Money</h3><p>New lines, SIM replacement and Airtel Money registration.</p></div>
-      <div><h3>WiFi accessories</h3><p>Extenders, cables and power backup for your router.</p></div>
-      <div><h3>CCTV installation and repair</h3><p>Cameras for homes, shops and offices, with phone viewing over your 5G.</p></div>
+      <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="16" y="8" width="16" height="30" rx="5" fill="var(--sea)"/><rect x="20" y="14" width="8" height="2.5" rx="1" fill="var(--bg)"/><rect x="22" y="38" width="4" height="6" fill="var(--muted)"/><path d="M8 14a14 14 0 0 1 0 18M40 14a14 14 0 0 0 0 18" stroke="var(--sun)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>Airtel 5G Smart Connect</h3><p>Unlimited home and office WiFi at 15 or 30 Mbps. Works in 5G and 4G areas.</p></div>
+      <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="13" y="5" width="22" height="38" rx="4" fill="var(--sea)"/><rect x="17" y="10" width="14" height="14" rx="2" fill="var(--screen)"/><path d="M20 17l3 3 6-6" stroke="var(--screen-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g fill="var(--bg)"><circle cx="19" cy="30" r="1.8"/><circle cx="24" cy="30" r="1.8"/><circle cx="29" cy="30" r="1.8"/><circle cx="19" cy="36" r="1.8"/><circle cx="24" cy="36" r="1.8"/><circle cx="29" cy="36" r="1.8"/></g></svg><h3>Renewals and support</h3><p>Renew on Paybill 4129691 and get help when a payment does not reflect.</p></div>
+      <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 24L24 9l18 15v17H6z" fill="var(--sea)"/><path d="M16 31a11 11 0 0 1 16 0M19.5 35a6 6 0 0 1 9 0" stroke="var(--sun)" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="24" cy="38.5" r="2" fill="var(--sun)"/></svg><h3>WiFi installation</h3><p>Router placement and set-up so the whole house gets a strong signal.</p></div>
+      <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 6h18l8 8v28H12z" fill="var(--sea)"/><rect x="17" y="20" width="16" height="14" rx="2" fill="var(--sun)"/><path d="M17 27h16M25 20v14" stroke="var(--sea)" stroke-width="1.6"/></svg><h3>Airtel SIM and Airtel Money</h3><p>New lines, SIM replacement and Airtel Money registration.</p></div>
+      <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="18" width="20" height="22" rx="4" fill="var(--sea)"/><rect x="28" y="25" width="4" height="8" rx="1.5" fill="var(--sea)"/><rect x="12" y="23" width="8" height="12" rx="2" fill="var(--sun)"/><path d="M34 12a8 8 0 0 1 8 8M34 6a14 14 0 0 1 14 14" stroke="var(--sun)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>WiFi accessories</h3><p>Extenders, cables and power backup for your router.</p></div>
+      <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 14l26-6 4 12-26 6z" fill="var(--sea)"/><circle cx="31" cy="15" r="3.5" fill="var(--sun)"/><path d="M14 25l4 10h-8M10 35v6" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>CCTV installation and repair</h3><p>Cameras for homes, shops and offices, with phone viewing over your 5G.</p></div>
     </div>
   </div>
 </section>
