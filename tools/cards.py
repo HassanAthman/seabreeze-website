@@ -114,6 +114,42 @@ def price_card():
 def agents_card(width=520):
     return art.agents_art().replace('class="agents-art"', f'class="agents-art" width="{width}"')
 
+# ------------------------------------------------------ new client steps
+ONBOARD = {
+    "en": dict(title="Get Airtel 5G in <em>5 steps</em>",
+               steps=[("Send us your details", "Name, phone, email and location, on our website or WhatsApp 0720 499 691."),
+                      ("Confirm the Airtel code", "Airtel sends you a one-time code (OTP) by SMS. Give it to your Seabreeze agent."),
+                      ("Pay with the Airtel link", "You get a one-time Airtel payment link by SMS. Pay Airtel directly through it."),
+                      ("Installer visits", "An Airtel installer calls you, checks your ID and sets up the router."),
+                      ("Renew every month", "Pay on M-Pesa Paybill 4129691, account = your 5G number.")],
+               note="We never ask for your M-Pesa PIN.", cta="WhatsApp 0720 499 691"),
+    "sw": dict(title="Pata Airtel 5G kwa <em>hatua 5</em>",
+               steps=[("Tutumie maelezo yako", "Jina, simu, barua pepe na eneo, kwenye tovuti yetu au WhatsApp 0720 499 691."),
+                      ("Thibitisha nambari ya Airtel", "Airtel inakutumia nambari ya siri ya mara moja (OTP) kwa SMS. Mpe wakala wako wa Seabreeze."),
+                      ("Lipa kupitia kiungo cha Airtel", "Unapokea kiungo cha malipo cha Airtel kwa SMS. Lipa Airtel moja kwa moja kupitia kiungo hicho."),
+                      ("Fundi anakutembelea", "Fundi wa Airtel anakupigia, anakagua kitambulisho chako na kuweka router."),
+                      ("Lipia kila mwezi", "Lipa kwa M-Pesa Paybill 4129691, akaunti = nambari yako ya 5G.")],
+               note="Hatutawahi kukuuliza PIN yako ya M-Pesa.", cta="WhatsApp 0720 499 691"),
+}
+
+def onboard(lang, w, h):
+    d = ONBOARD[lang]
+    big = h > 1500
+    fs_t, fs_b, gap = (46, 32, 30) if big else (40, 28, 26)
+    items = "".join(
+        f'<li style="display:grid;grid-template-columns:{78 if big else 58}px 1fr;gap:22px;align-items:start">'
+        f'<span style="width:{70 if big else 52}px;height:{70 if big else 52}px;border-radius:50%;background:var(--sun);color:var(--sun-ink);display:grid;place-items:center;font:800 {36 if big else 26}px var(--display)">{i+1}</span>'
+        f'<div><b style="display:block;font:800 {fs_t}px/1.1 var(--display);color:#fff">{t}</b>'
+        f'<span style="font-size:{fs_b}px;color:#c3dcdf;line-height:1.3">{b}</span></div></li>'
+        for i, (t, b) in enumerate(d["steps"]))
+    body = (f'<div class="glow" style="width:900px;height:900px;right:-360px;top:-320px"></div>{waves(w, 200)}'
+            f'<div style="position:absolute;inset:{100 if big else 60}px {80 if big else 64}px {130 if big else 70}px;display:flex;flex-direction:column;gap:{50 if big else 26}px">'
+            f'{logo(size=1.5 if big else 1.1)}<h1 style="font-size:{104 if big else 84}px">{d["title"]}</h1>'
+            f'<ol style="list-style:none;padding:0;margin:0;display:grid;gap:{gap+14 if big else gap}px;flex:1;align-content:center">{items}</ol>'
+            f'<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap"><span class="pill" style="font-size:{44 if big else 30}px">{d["cta"]}</span>'
+            f'<span class="foot" style="font-size:{30 if big else 22}px">{d["note"]}</span></div></div>')
+    return page(w, h, body)
+
 # ----------------------------------------------------------------- main
 def build(out):
     out = pathlib.Path(out); out.mkdir(parents=True, exist_ok=True)
@@ -149,6 +185,9 @@ def build(out):
         "From KES 500 at a time. We renew when it adds up.", art.mdogo_art().replace('class="mdogo-art"', 'class="mdogo-art" width="560"'), "Paybill 4129691")
     files["share/post-coverage_1080x1080"] = square("Seabreeze agents near <em>you</em>",
         "Whole counties across the Coast, Nairobi, the Rift Valley and western Kenya.", map_card(height=440), "Get connected")
+    for lang in ONBOARD:
+        files[f"share/status-get5g-steps-{lang}_1080x1920"] = onboard(lang, 1080, 1920)
+        files[f"share/post-get5g-steps-{lang}_1080x1350"] = onboard(lang, 1080, 1350)
     # Google Business Profile
     files["gbp/logo_720x720"] = page(720, 720, f'<div style="position:absolute;inset:0;display:grid;place-items:center;background:#0a3d47">'
                                      f'{art.mark(520, wave="#0a3d47", bg="#ffffff", sun="#f08a24")}</div>')

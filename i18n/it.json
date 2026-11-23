@@ -129,8 +129,6 @@
  "Connected in three steps": "Connesso in tre passaggi",
  "Send your location": "Mandaci la tua posizione",
  "WhatsApp us your town and nearest landmark. We confirm coverage first.": "Scrivici su WhatsApp la tua città e un punto di riferimento vicino. Prima verifichiamo la copertura.",
- "We install the 5G unit": "Installiamo l'unità 5G",
- "A Seabreeze agent mounts the outdoor unit and sets up WiFi indoors.": "Un agente Seabreeze monta l'unità esterna e configura il WiFi in casa.",
  "Renew from any phone": "Rinnovi da qualsiasi telefono",
  "Every month, pay on M-Pesa Paybill 4129691. We remind you before it runs out.": "Ogni mese paghi con M-Pesa Paybill 4129691. Ti avvisiamo prima della scadenza.",
  "Four steps on M-Pesa": "Quattro passaggi su M-Pesa",
@@ -346,5 +344,7 @@
   "Map of Kenya showing where Seabreeze agents work. Illustration, not to scale.": "Mappa del Kenya con le zone degli agenti Seabreeze. Illustrazione, non in scala.",
   "Map of the Kenyan coast showing where Seabreeze agents work. Illustration, not to scale.": "Mappa della costa del Kenya con le zone degli agenti Seabreeze. Illustrazione, non in scala.",
   "Map of Nairobi, the Rift Valley and western Kenya showing where Seabreeze agents work. Illustration, not to scale.": "Mappa di Nairobi, Rift Valley e Kenya occidentale con le zone degli agenti Seabreeze. Illustrazione, non in scala."
- }
+ },
+ "Airtel installs the 5G unit": "Airtel installa l'unità 5G",
+ "An Airtel installer checks your ID, mounts the outdoor unit and sets up WiFi indoors.": "Un installatore Airtel verifica il tuo documento, monta l'unità esterna e configura il WiFi in casa."
 }

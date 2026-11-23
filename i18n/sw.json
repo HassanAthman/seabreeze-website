@@ -129,8 +129,6 @@
  "Connected in three steps": "Unganishwa kwa hatua tatu",
  "Send your location": "Tuma eneo lako",
  "WhatsApp us your town and nearest landmark. We confirm coverage first.": "Tutumie mji wako na alama iliyo karibu kwa WhatsApp. Tunathibitisha mtandao kwanza.",
- "We install the 5G unit": "Tunaweka kifaa cha 5G",
- "A Seabreeze agent mounts the outdoor unit and sets up WiFi indoors.": "Wakala wa Seabreeze anaweka kifaa cha nje na kuweka WiFi ndani ya nyumba.",
  "Renew from any phone": "Lipia kwa simu yoyote",
  "Every month, pay on M-Pesa Paybill 4129691. We remind you before it runs out.": "Kila mwezi, lipa kwa M-Pesa Paybill 4129691. Tunakukumbusha kabla haijaisha.",
  "Four steps on M-Pesa": "Hatua nne kwa M-Pesa",
@@ -346,5 +344,7 @@
   "Map of Kenya showing where Seabreeze agents work. Illustration, not to scale.": "Ramani ya Kenya inayoonyesha maeneo ya mawakala wa Seabreeze. Mchoro, si kwa kipimo.",
   "Map of the Kenyan coast showing where Seabreeze agents work. Illustration, not to scale.": "Ramani ya pwani ya Kenya inayoonyesha maeneo ya mawakala wa Seabreeze. Mchoro, si kwa kipimo.",
   "Map of Nairobi, the Rift Valley and western Kenya showing where Seabreeze agents work. Illustration, not to scale.": "Ramani ya Nairobi, Bonde la Ufa na magharibi mwa Kenya inayoonyesha maeneo ya mawakala wa Seabreeze. Mchoro, si kwa kipimo."
- }
+ },
+ "Airtel installs the 5G unit": "Airtel inaweka kifaa cha 5G",
+ "An Airtel installer checks your ID, mounts the outdoor unit and sets up WiFi indoors.": "Fundi wa Airtel anakagua kitambulisho chako, anaweka kifaa cha nje na kuweka WiFi ndani ya nyumba."
 }
