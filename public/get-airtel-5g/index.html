@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Get Airtel 5G home internet: apply online | Seabreeze 5G</title>
 <meta name="description" content="Apply for Airtel 5G Smart Connect home WiFi online with Seabreeze, an authorised Airtel ESP. See each step: OTP, payment link, installer visit and ID check, and monthly renewal on Paybill 4129691.">
+<link rel="alternate" hreflang="en-KE" href="https://seabreezedata.co.ke/get-airtel-5g/">
+<link rel="alternate" hreflang="sw-KE" href="https://seabreezedata.co.ke/sw/get-airtel-5g/">
+<link rel="alternate" hreflang="it" href="https://seabreezedata.co.ke/it/get-airtel-5g/">
+<link rel="alternate" hreflang="x-default" href="https://seabreezedata.co.ke/get-airtel-5g/">
 <link rel="canonical" href="https://seabreezedata.co.ke/get-airtel-5g/">
 <meta name="theme-color" content="#0a3d47">
 <meta property="og:type" content="website">
@@ -29,7 +33,19 @@
     <nav class="links" aria-label="Main">
       <a href="/#renew">Renew</a><a href="/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a><a href="/get-airtel-5g/" aria-current="page">Get 5G</a><a href="/#services">Services</a><a href="/#coverage">Coverage</a><a href="/#agents">Become an agent</a><a href="/#faq">FAQ</a>
     </nav>
-    <nav class="lang" aria-label="Language"><a href="/get-airtel-5g/" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="/sw/get-airtel-5g/" hreflang="sw" lang="sw" title="Kiswahili">SW</a><a href="/it/get-airtel-5g/" hreflang="it" lang="it" title="Italiano">IT</a></nav>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <nav class="lang" aria-label="Language"><svg class="globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.5 12h19M12 2.5c2.8 2.6 4.2 5.8 4.2 9.5s-1.4 6.9-4.2 9.5c-2.8-2.6-4.2-5.8-4.2-9.5S9.2 5.1 12 2.5z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><a href="/get-airtel-5g/" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="/sw/get-airtel-5g/" hreflang="sw" lang="sw" title="Kiswahili">SW</a><a href="/it/get-airtel-5g/" hreflang="it" lang="it" title="Italiano">IT</a></nav>
     <a class="btn btn-sun btn-sm" href="/#renew">Renew now</a>
   </div>
 </header>
@@ -113,7 +129,7 @@
 </section>
 </main>
 <style>
-.g5-hero{padding-bottom:0}.g5-lede{max-width:40em;color:var(--muted);margin:12px 0 18px;font-size:1.05rem}
+.g5-hero{padding-block:56px}.g5-hero h1{text-shadow:0 1px 14px rgba(4,14,28,.55)}.g5-hero .eyebrow{color:var(--sun)}.g5-hero .btn-ghost{color:#eef7f7;border-color:#2f6670}.g5-lede{max-width:40em;color:#c3dcdf;margin:12px 0 18px;font-size:1.05rem}
 .g5-cta{display:flex;gap:12px;flex-wrap:wrap}.btn-ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
 .g5-steps{list-style:none;padding:0;margin:24px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:g}
 .g5-steps li{counter-increment:g;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
@@ -136,7 +152,7 @@ form.lead label.g5-check{display:flex;gap:10px;align-items:flex-start;font-weigh
   var f=document.getElementById('g5Form'), msg=document.getElementById('g5Msg');
   var PRICES={15:{30:1999,90:5399,180:9999},30:{30:2999,90:8099,180:14999}};
   function total(){var s=f.speed.value,d=f.plan_days.value,p=PRICES[s][d],fee=d==='30'?1000:0;
-    document.getElementById('g-total').textContent='To pay Airtel: KES '+(p+fee).toLocaleString('en-KE')+(fee?' (KES '+p.toLocaleString('en-KE')+' + KES 1,000 connection fee)':' (no connection fee)');}
+    document.getElementById('g-total').textContent='To pay Airtel: KES '+(p+fee).toLocaleString('en-KE')+'. '+(fee?'Includes the KES 1,000 connection fee.':'No connection fee.');}
   f.speed.onchange=total;f.plan_days.onchange=total;total();
   var noEmail=document.getElementById('g-noemail');
   noEmail.onchange=function(){f.email.disabled=noEmail.checked;if(noEmail.checked)f.email.value='';};
@@ -146,7 +162,7 @@ form.lead label.g5-check{display:flex;gap:10px;align-items:flex-start;font-weigh
     var v=function(n){return (f[n].value||'').trim();};
     if(!v('first_name')||!v('last_name')){say('Please enter your first and last name.');f.first_name.focus();return;}
     if(v('phone').replace(/\D/g,'').length<9){say('Please enter a phone number we can call, e.g. 0712 345 678.');f.phone.focus();return;}
-    if(!noEmail.checked&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('email'))){say('Please enter your email, or tick "I don\'t have an email".');f.email.focus();return;}
+    if(!noEmail.checked&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('email'))){say('Please enter your email, or tick the box if you have none.');f.email.focus();return;}
     if(!v('county')||!v('town')){say('Please enter your county and town or estate.');return;}
     var body={first_name:v('first_name'),last_name:v('last_name'),phone:v('phone'),email:v('email'),no_email:noEmail.checked,
       county:v('county'),town:v('town'),landmark:v('landmark'),speed:Number(f.speed.value),plan_days:Number(f.plan_days.value),
