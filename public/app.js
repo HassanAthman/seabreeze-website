@@ -11,8 +11,21 @@
       ["Nambari ya biashara: 4129691","Andika kama ilivyo. Hii ni paybill ya Seabreeze."],
       ["Nambari ya akaunti","Nambari ya laini yako ya Airtel 5G, mfano 0101234567."],
       ["Kiasi na PIN","Weka bei ya kifurushi chako, kisha PIN yako. Umemaliza."]
+    ],
+    it: [
+      ["Apri M-Pesa","Scegli Lipa na M-Pesa, poi Pay Bill."],
+      ["Numero aziendale: 4129691","Scrivilo esattamente così. È il paybill di Seabreeze."],
+      ["Numero di conto","Il numero della tua linea Airtel 5G, ad esempio 0101234567."],
+      ["Importo e PIN","Inserisci il prezzo del pacchetto, poi il tuo PIN. Fatto."]
     ]
   };
+  var pageLang = (document.documentElement.lang||'en').slice(0,2);
+  if(!steps[pageLang]) pageLang = 'en';
+  var say = {
+    en: {need:'Please add your name, a phone number we can call and your town.', open:'Opening WhatsApp. If it does not open, message 0720 499 691 directly.'},
+    sw: {need:'Tafadhali weka jina lako, namba ya simu tunayoweza kupiga na mji wako.', open:'Tunafungua WhatsApp. Isipofunguka, tuma ujumbe kwa 0720 499 691 moja kwa moja.'},
+    it: {need:'Inserisci il tuo nome, un numero di telefono a cui chiamarti e la tua città.', open:'Stiamo aprendo WhatsApp. Se non si apre, scrivi direttamente al 0720 499 691.'}
+  }[pageLang];
   var list = document.getElementById('steps');
   if(list){
   function renderSteps(lang){
@@ -24,12 +37,10 @@
       var sm = document.createElement('small'); sm.textContent = s[1];
       d.appendChild(b); d.appendChild(sm); li.appendChild(d); list.appendChild(li);
     });
-    document.getElementById('lang-en').setAttribute('aria-pressed', lang==='en');
-    document.getElementById('lang-sw').setAttribute('aria-pressed', lang==='sw');
+    Object.keys(steps).forEach(function(k){ var b=document.getElementById('lang-'+k); if(b) b.setAttribute('aria-pressed', lang===k); });
   }
-  document.getElementById('lang-en').onclick = function(){ renderSteps('en'); };
-  document.getElementById('lang-sw').onclick = function(){ renderSteps('sw'); };
-  renderSteps('en');
+  Object.keys(steps).forEach(function(k){ var b=document.getElementById('lang-'+k); if(b) b.onclick = function(){ renderSteps(k); }; });
+  renderSteps(pageLang);
   }
 
   // Basic phone walkthrough
@@ -78,10 +89,10 @@
     var g = function(id){ return (document.getElementById(id).value||'').trim(); };
     var m = document.getElementById('formMsg');
     if(g('f-phone').replace(/\D/g,'').length < 9 || !g('f-name') || !g('f-town')){
-      m.hidden=false; m.textContent = 'Please add your name, a phone number we can call and your town.'; return;
+      m.hidden=false; m.textContent = say.need; return;
     }
     var msg = 'Hi Seabreeze, I have an enquiry.\nName: '+g('f-name')+'\nPhone: '+g('f-phone')+'\nTown: '+g('f-town')+(g('f-landmark')?'\nLandmark: '+g('f-landmark'):'')+'\nNeed: '+g('f-need')+'\nHeard about you via: '+g('f-src');
-    m.hidden=false; m.textContent = 'Opening WhatsApp. If it does not open, message 0720 499 691 directly.';
+    m.hidden=false; m.textContent = say.open;
     window.location.href = 'https://wa.me/254720499691?text=' + encodeURIComponent(msg);
   });
 })();
@@ -99,8 +110,8 @@
   for(var i=0;i<n;i++){ var a=i/n*Math.PI*2+0.3, r=3.2+((i*37)%10)/6; homes.push({x:Math.cos(a)*r, z:Math.sin(a)*r, w:.55+((i*13)%5)/10, h:.5+((i*7)%4)/6, lit:0}); }
   function proj(x,y,z,yaw){
     var c=Math.cos(yaw), s=Math.sin(yaw), X=x*c-z*s, Z=x*s+z*c;
-    var tilt=.5, Y=y*Math.cos(tilt)-Z*Math.sin(tilt), D=Z*Math.cos(tilt)+y*Math.sin(tilt)+11;
-    var f=Math.min(W,H)*1.55/D; return {x:W/2+X*f, y:H*.6-Y*f, d:D, f:f};
+    var tilt=.3, Y=y*Math.cos(tilt)-Z*Math.sin(tilt), D=Z*Math.cos(tilt)+y*Math.sin(tilt)+11;
+    var f=Math.min(W,H)*.95/D; return {x:W/2+X*f, y:H*.74-Y*f, d:D, f:f};
   }
   function poly(pts,fill){ ctx.beginPath(); ctx.moveTo(pts[0].x,pts[0].y); for(var i=1;i<pts.length;i++) ctx.lineTo(pts[i].x,pts[i].y); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); }
   function box(b,yaw,glow){
@@ -118,9 +129,45 @@
     ctx.fillStyle='rgba(240,138,36,'+(.25+glow*.75)+')'; ctx.fill();
     if(glow>.05){ ctx.beginPath(); ctx.arc(wp.x,wp.y,wp.f*.35*glow,0,Math.PI*2); ctx.fillStyle='rgba(240,138,36,'+(.18*glow)+')'; ctx.fill(); }
   }
+  // sunrise over the ocean, with a small island for the homes
+  function backdrop(t, yaw){
+    var hy=H*.27, m=Math.min(W,H), sx=W*.7, sr=m*.085;
+    var sky=ctx.createLinearGradient(0,0,0,hy);
+    sky.addColorStop(0,'#1d2b4f'); sky.addColorStop(.45,'#6a4a78'); sky.addColorStop(.8,'#e4806a'); sky.addColorStop(1,'#ffc07a');
+    ctx.fillStyle=sky; ctx.fillRect(0,0,W,hy+1);
+    var glow=ctx.createRadialGradient(sx,hy,0,sx,hy,m*.55);
+    glow.addColorStop(0,'rgba(255,214,140,.75)'); glow.addColorStop(1,'rgba(255,214,140,0)');
+    ctx.fillStyle=glow; ctx.fillRect(0,0,W,hy);
+    var rise=reduce?0:Math.sin(t*.15)*sr*.12;
+    ctx.save(); ctx.beginPath(); ctx.rect(0,0,W,hy); ctx.clip();
+    ctx.beginPath(); ctx.arc(sx,hy+sr*.25-rise,sr,0,Math.PI*2); ctx.fillStyle='#ffd88a'; ctx.fill(); ctx.restore();
+    var sea=ctx.createLinearGradient(0,hy,0,H);
+    sea.addColorStop(0,'#d98a6e'); sea.addColorStop(.12,'#3c6f82'); sea.addColorStop(.55,'#0e4d5a'); sea.addColorStop(1,'#072b33');
+    ctx.fillStyle=sea; ctx.fillRect(0,hy,W,H-hy);
+    // sun path on the water
+    for(var k=0;k<26;k++){ var yy=hy+4+k*k*.55, wv=reduce?0:Math.sin(t*1.6+k*1.3);
+      if(yy>H) break; var ww=sr*(1.4-k*.03)*(1+.25*wv);
+      ctx.fillStyle='rgba(255,210,140,'+Math.max(0,.55-k*.025)+')'; ctx.fillRect(sx-ww/2+wv*3,yy,ww,1.6+k*.08); }
+    // soft wave lines
+    ctx.strokeStyle='rgba(255,255,255,.07)'; ctx.lineWidth=1;
+    for(var j=1;j<9;j++){ var wy=hy+j*j*4.2, off=reduce?0:(t*12*j)%40; ctx.beginPath();
+      for(var x=-40;x<W+40;x+=40){ ctx.moveTo(x+off,wy); ctx.lineTo(x+off+18,wy); } ctx.stroke(); }
+    // island
+    ctx.beginPath();
+    for(var q=0;q<=72;q++){ var qa=q/72*Math.PI*2, qp=proj(Math.cos(qa)*5.8,0,Math.sin(qa)*5.8,yaw); q?ctx.lineTo(qp.x,qp.y):ctx.moveTo(qp.x,qp.y); }
+    ctx.fillStyle='rgba(240,214,170,.9)'; ctx.fill();
+    ctx.beginPath();
+    for(var q2=0;q2<=72;q2++){ var qb=q2/72*Math.PI*2, qr=proj(Math.cos(qb)*5.4,0,Math.sin(qb)*5.4,yaw); q2?ctx.lineTo(qr.x,qr.y):ctx.moveTo(qr.x,qr.y); }
+    var land=ctx.createLinearGradient(0,hy,0,H); land.addColorStop(0,'#2f7a5c'); land.addColorStop(1,'#1d5a45');
+    ctx.fillStyle=land; ctx.fill();
+  }
   function frame(now){
     var t=(now-t0)/1000, yaw=reduce?0.6:t*.12+0.6;
     ctx.clearRect(0,0,W,H);
+    backdrop(t, yaw);
+    ctx.save(); ctx.beginPath();
+    for(var q=0;q<=72;q++){ var qa=q/72*Math.PI*2, qp=proj(Math.cos(qa)*5.4,0,Math.sin(qa)*5.4,yaw); q?ctx.lineTo(qp.x,qp.y):ctx.moveTo(qp.x,qp.y); }
+    ctx.clip();
     // ground grid
     ctx.lineWidth=1; ctx.strokeStyle='rgba(159,195,200,.13)';
     for(var g=-6; g<=6; g++){ var a=proj(g,0,-6,yaw), b=proj(g,0,6,yaw); ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
@@ -134,6 +181,7 @@
       ctx.strokeStyle='rgba(240,138,36,'+(0.75*(1-ph))+')'; ctx.lineWidth=2.2; ctx.stroke();
       homes.forEach(function(hm){ var d=Math.hypot(hm.x,hm.z); if(Math.abs(d-R)<.35) hm.lit=1; });
     }
+    ctx.restore();
     homes.forEach(function(hm){ hm.lit = reduce ? .8 : Math.max(0, hm.lit-0.012); });
     // draw homes far-to-near, unit inserted by depth
     var items=homes.map(function(h){ return {d:proj(h.x,0,h.z,yaw).d, h:h}; }); items.push({d:proj(0,0,0,yaw).d, unit:true});
