@@ -25,6 +25,8 @@ Shared files: `styles.css`, `app.js`, `favicon.svg`, `og.png` (link preview imag
 
 Every merge to `main` then deploys automatically. Add `seabreezedata.co.ke` and `www.seabreezedata.co.ke` under the Worker's Settings > Domains & Routes.
 
+If Cloudflare shows "This project is disconnected from your Git account", pushes to `main` will not deploy. Fix it under Settings > Builds > Git repository (Disconnect, then connect the repository again with your GitHub sign-in).
+
 ## Domain
 
 All page addresses (canonical links, sitemap, share links, Google data) use `https://seabreezedata.co.ke`. If the domain ever changes, replace that text in every file and resubmit `sitemap.xml` in Google Search Console.
