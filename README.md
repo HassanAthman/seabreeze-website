@@ -27,6 +27,10 @@ Every merge to `main` then deploys automatically. Add `seabreezedata.co.ke` and 
 
 If Cloudflare shows "This project is disconnected from your Git account", pushes to `main` will not deploy. Fix it under Settings > Builds > Git repository (Disconnect, then connect the repository again with your GitHub sign-in).
 
+## Old Pages project
+
+`seabreeze-management` (seabreeze-management.pages.dev) also builds from this repository. Its build output directory must be `public`, with no build command.
+
 ## Domain
 
 All page addresses (canonical links, sitemap, share links, Google data) use `https://seabreezedata.co.ke`. If the domain ever changes, replace that text in every file and resubmit `sitemap.xml` in Google Search Console.
