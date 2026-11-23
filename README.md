@@ -1,6 +1,6 @@
 # Seabreeze Data Ventures website
 
-Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised Airtel Kenya Enterprise Solution Partner. It is a plain static site with no build step, hosted on Cloudflare Workers (static assets). The site files live in `public/`.
+Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised Airtel Kenya Enterprise Solution Partner. It is a plain static site with no build step, hosted on Cloudflare Pages. The site files live in `public/`.
 
 ## Pages
 
@@ -15,17 +15,11 @@ Shared files: `styles.css`, `app.js`, `favicon.svg`, `og.png` (link preview imag
 
 ## Deploying on Cloudflare
 
-`wrangler.jsonc` tells Cloudflare to serve the `public/` folder. In Cloudflare, Workers & Pages > Create > Continue with GitHub, pick this repository and use:
+The site is served by the Cloudflare Pages project `seabreeze-management`, connected to this repository. `wrangler.jsonc` sets its build output directory to `public/` (Cloudflare reads it from the file, so the dashboard field is locked). There is no build command. Every merge to `main` deploys automatically and each pull request gets a preview link.
 
-- Worker name: `seabreezewebsite` (must match `name` in `wrangler.jsonc`)
-- Build command: leave empty
-- Deploy command: `npx wrangler deploy`
-- Non-production branch deploy command: `npx wrangler versions upload` (gives each branch a preview link)
-- Path: `/`
+Custom domains `seabreezedata.co.ke` and `www.seabreezedata.co.ke` are added under the project's Custom domains tab.
 
-Every merge to `main` then deploys automatically. Add `seabreezedata.co.ke` and `www.seabreezedata.co.ke` under the Worker's Settings > Domains & Routes.
-
-If Cloudflare shows "This project is disconnected from your Git account", pushes to `main` will not deploy. Fix it under Settings > Builds > Git repository (Disconnect, then connect the repository again with your GitHub sign-in).
+If Cloudflare shows "This project is disconnected from your Git account", reinstall or reconfigure the Cloudflare Workers and Pages app in GitHub (Settings > Applications) so it can access this repository.
 
 ## Domain
 
