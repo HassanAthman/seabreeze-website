@@ -23,7 +23,7 @@ SITE = "https://seabreezedata.co.ke"
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from coverage import AREAS
 PAGES = ["index.html", "renew-airtel-5g/index.html", "lipa-mdogo-mdogo/index.html",
-         "sms/index.html"] + [f"airtel-5g/{s}/index.html" for s in AREAS]
+         "sms/index.html", "get-airtel-5g/index.html"] + [f"airtel-5g/{s}/index.html" for s in AREAS]
 LANGS = {"sw": ("Kiswahili", "sw_KE", "sw-KE"), "it": ("Italiano", "it_IT", "it")}
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 INLINE = {"a", "b", "strong", "em", "i", "br", "code", "span", "small", "abbr", "kbd", "s", "u", "mark"}
@@ -232,9 +232,7 @@ def switcher(page, current):
     for code, short, name, href in items:
         cur = ' aria-current="true"' if code == current else ""
         parts.append(f'<a href="{href}" hreflang="{code}" lang="{code}" title="{name}"{cur}>{short}</a>')
-    globe = ('<svg class="globe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/>'
-             '<path d="M2.5 12h19M12 2.5c2.8 2.6 4.2 5.8 4.2 9.5s-1.4 6.9-4.2 9.5c-2.8-2.6-4.2-5.8-4.2-9.5S9.2 5.1 12 2.5z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>')
-    return '<nav class="lang" aria-label="Language">' + globe + "".join(parts) + "</nav>"
+    return '<nav class="lang" aria-label="Language">' + "".join(parts) + "</nav>"
 
 def add_chrome(src, page, lang):
     """hreflang links and the language switcher, on every language version."""
