@@ -36,6 +36,8 @@ h1 em{font-style:normal;color:var(--sun)}
 .glow{position:absolute;border-radius:50%;background:radial-gradient(circle,#f08a2455,transparent 65%)}
 .foot{color:#9fc3c8}
 svg{display:block}
+.kmap text{font:500 14px var(--body);fill:var(--ink)}.kmap text.ocean{font:italic 500 13px var(--body);fill:var(--sea);text-anchor:middle}
+.kmap text.county{font:700 11px var(--body);letter-spacing:.12em;fill:#9aa9ad;text-anchor:middle}
 """
 
 def waves(w, h=140):
@@ -59,9 +61,10 @@ def og(title_html, sub, art_html, tag="Paybill 4129691"):
             f'<div>{art_html}</div></div>')
     return page(1200, 630, body, ".kmap text{font:500 14px var(--body);fill:var(--ink)}.kmap text.ocean{font:italic 500 13px var(--body);fill:var(--sea);text-anchor:middle}")
 
-def map_card(highlight=None):
-    return (f'<div style="background:#eef7f7;border-radius:28px;padding:12px">'
-            f'{art.kenya_map(highlight=highlight, links=False)}</div>')
+def map_card(slug=None, height=500):
+    svg = art.area_map(slug) if slug else art.kenya_map(links=False)
+    svg = svg.replace("<svg ", f'<svg style="height:{height}px;width:auto;max-width:100%" ', 1)
+    return (f'<div style="background:#eef7f7;border-radius:28px;padding:12px;display:grid;place-items:center">{svg}</div>')
 
 def paybill_card(scale=1.0):
     s = scale
@@ -125,9 +128,11 @@ def build(out):
                                                "Pay from KES 500 at a time. We renew your line when it adds up.", mdogo_card())
     files["og/sms_1200x630"] = og("Choose the <em>SMS</em> you get from us",
                                   "Join or stop renewal reminders and offers. Payment receipts always sent.", sms_card(), tag="seabreezedata.co.ke/sms")
-    for slug, (name, *_rest) in art.TOWNS.items():
-        files[f"og/town-{slug}_1200x630"] = og(f"Airtel 5G home internet in <em>{html.escape(name)}</em>",
-                                               "Set up by a local Seabreeze agent. Renew any time on M-Pesa.", map_card(slug))
+    for slug, a in art.AREAS.items():
+        where = f"<em>{html.escape(a['name'])}</em>" + (" County" if a["kind"] == "county" else "")
+        sub = ("Whole county covered by local Seabreeze agents." if a["kind"] == "county"
+               else "Set up by a local Seabreeze agent.") + " Renew any time on M-Pesa."
+        files[f"og/town-{slug}_1200x630"] = og(f"Airtel 5G home internet in {where}", sub, map_card(slug))
     # WhatsApp status and post cards (for Hassan to share; not on the site)
     files["share/status-renew_1080x1920"] = status("Renew your Airtel 5G from <em>any phone</em>",
         "Lipa na M-Pesa. No app, no data bundle, no *400# needed.", paybill_card(1.6), "Paybill 4129691")
@@ -143,7 +148,7 @@ def build(out):
     files["share/post-mdogo_1080x1080"] = square("Lipa <em>Mdogo Mdogo</em>",
         "From KES 500 at a time. We renew when it adds up.", art.mdogo_art().replace('class="mdogo-art"', 'class="mdogo-art" width="560"'), "Paybill 4129691")
     files["share/post-coverage_1080x1080"] = square("Seabreeze agents near <em>you</em>",
-        "From Malindi and the coast to Kisumu and western Kenya.", map_card().replace("padding:12px", "padding:12px;width:520px"), "Get connected")
+        "Whole counties across the Coast, Nairobi, the Rift Valley and western Kenya.", map_card(height=440), "Get connected")
     # Google Business Profile
     files["gbp/logo_720x720"] = page(720, 720, f'<div style="position:absolute;inset:0;display:grid;place-items:center;background:#0a3d47">'
                                      f'{art.mark(520, wave="#0a3d47", bg="#ffffff", sun="#f08a24")}</div>')

@@ -11,8 +11,21 @@
       ["Nambari ya biashara: 4129691","Andika kama ilivyo. Hii ni paybill ya Seabreeze."],
       ["Nambari ya akaunti","Nambari ya laini yako ya Airtel 5G, mfano 0101234567."],
       ["Kiasi na PIN","Weka bei ya kifurushi chako, kisha PIN yako. Umemaliza."]
+    ],
+    it: [
+      ["Apri M-Pesa","Scegli Lipa na M-Pesa, poi Pay Bill."],
+      ["Numero aziendale: 4129691","Scrivilo esattamente così. È il paybill di Seabreeze."],
+      ["Numero di conto","Il numero della tua linea Airtel 5G, ad esempio 0101234567."],
+      ["Importo e PIN","Inserisci il prezzo del pacchetto, poi il tuo PIN. Fatto."]
     ]
   };
+  var pageLang = (document.documentElement.lang||'en').slice(0,2);
+  if(!steps[pageLang]) pageLang = 'en';
+  var say = {
+    en: {need:'Please add your name, a phone number we can call and your town.', open:'Opening WhatsApp. If it does not open, message 0720 499 691 directly.'},
+    sw: {need:'Tafadhali weka jina lako, namba ya simu tunayoweza kupiga na mji wako.', open:'Tunafungua WhatsApp. Isipofunguka, tuma ujumbe kwa 0720 499 691 moja kwa moja.'},
+    it: {need:'Inserisci il tuo nome, un numero di telefono a cui chiamarti e la tua città.', open:'Stiamo aprendo WhatsApp. Se non si apre, scrivi direttamente al 0720 499 691.'}
+  }[pageLang];
   var list = document.getElementById('steps');
   if(list){
   function renderSteps(lang){
@@ -24,12 +37,10 @@
       var sm = document.createElement('small'); sm.textContent = s[1];
       d.appendChild(b); d.appendChild(sm); li.appendChild(d); list.appendChild(li);
     });
-    document.getElementById('lang-en').setAttribute('aria-pressed', lang==='en');
-    document.getElementById('lang-sw').setAttribute('aria-pressed', lang==='sw');
+    Object.keys(steps).forEach(function(k){ var b=document.getElementById('lang-'+k); if(b) b.setAttribute('aria-pressed', lang===k); });
   }
-  document.getElementById('lang-en').onclick = function(){ renderSteps('en'); };
-  document.getElementById('lang-sw').onclick = function(){ renderSteps('sw'); };
-  renderSteps('en');
+  Object.keys(steps).forEach(function(k){ var b=document.getElementById('lang-'+k); if(b) b.onclick = function(){ renderSteps(k); }; });
+  renderSteps(pageLang);
   }
 
   // Basic phone walkthrough
@@ -78,10 +89,10 @@
     var g = function(id){ return (document.getElementById(id).value||'').trim(); };
     var m = document.getElementById('formMsg');
     if(g('f-phone').replace(/\D/g,'').length < 9 || !g('f-name') || !g('f-town')){
-      m.hidden=false; m.textContent = 'Please add your name, a phone number we can call and your town.'; return;
+      m.hidden=false; m.textContent = say.need; return;
     }
     var msg = 'Hi Seabreeze, I have an enquiry.\nName: '+g('f-name')+'\nPhone: '+g('f-phone')+'\nTown: '+g('f-town')+(g('f-landmark')?'\nLandmark: '+g('f-landmark'):'')+'\nNeed: '+g('f-need')+'\nHeard about you via: '+g('f-src');
-    m.hidden=false; m.textContent = 'Opening WhatsApp. If it does not open, message 0720 499 691 directly.';
+    m.hidden=false; m.textContent = say.open;
     window.location.href = 'https://wa.me/254720499691?text=' + encodeURIComponent(msg);
   });
 })();

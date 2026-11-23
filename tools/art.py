@@ -42,8 +42,8 @@ def logo_file(dark_bg=False):
 KENYA = [
     (33.95, 4.22), (34.39, 4.62), (35.3, 5.15), (35.85, 4.65), (36.9, 4.42), (38.1, 3.62),
     (39.5, 3.45), (40.75, 4.0), (41.9, 3.98), (41.0, 2.8), (41.0, -0.85), (41.56, -1.68),
-    (41.1, -1.95), (40.65, -2.35), (40.25, -2.65), (40.12, -3.2), (39.85, -3.7), (39.6, -4.15),
-    (39.2, -4.68), (37.75, -3.65), (37.6, -3.0), (34.07, -1.0), (33.92, -0.45), (33.99, 0.23),
+    (41.1, -1.95), (40.65, -2.35), (40.25, -2.65), (40.15, -3.2), (39.9, -3.6), (39.75, -3.95),
+    (39.68, -4.1), (39.6, -4.3), (39.52, -4.5), (39.2, -4.68), (37.75, -3.65), (37.6, -3.0), (34.07, -1.0), (33.92, -0.45), (33.99, 0.23),
     (34.43, 0.85), (34.6, 1.2), (34.82, 1.85), (35.0, 2.45), (34.6, 3.3), (34.4, 3.75),
 ]
 LAKE_VICTORIA = [(34.07, -1.0), (33.92, -0.45), (33.99, 0.12), (34.25, 0.05), (34.5, -0.22),
@@ -51,70 +51,95 @@ LAKE_VICTORIA = [(34.07, -1.0), (33.92, -0.45), (33.99, 0.12), (34.25, 0.05), (3
 LAKE_TURKANA = [(35.95, 4.55), (36.25, 4.45), (36.35, 3.6), (36.6, 2.75), (36.55, 2.4),
                 (36.38, 2.55), (36.15, 3.3), (35.95, 4.0)]
 
-COAST = [(41.56, -1.68), (41.1, -1.95), (40.65, -2.35), (40.25, -2.65), (40.12, -3.2),
-         (39.85, -3.7), (39.6, -4.15), (39.2, -4.68)]
+COAST = [(41.56, -1.68), (41.1, -1.95), (40.65, -2.35), (40.25, -2.65), (40.15, -3.2),
+         (39.9, -3.6), (39.75, -3.95), (39.68, -4.1), (39.6, -4.3), (39.52, -4.5), (39.2, -4.68)]
 
-TOWNS = {  # slug: (name, lon, lat, label side)
-    "malindi": ("Malindi", 40.12, -3.22, "r"),
-    "kilifi": ("Kilifi", 39.85, -3.63, "r"),
-    "mombasa": ("Mombasa", 39.67, -4.05, "r"),
-    "lamu": ("Lamu", 40.90, -2.27, "r"),
-    "mpeketoni": ("Mpeketoni", 40.69, -2.39, "l"),
-    "voi": ("Voi", 38.56, -3.40, "l"),
-    "kisumu": ("Kisumu", 34.76, -0.09, "r"),
-    "kakamega": ("Kakamega", 34.75, 0.28, "l", 4),
-    "bungoma": ("Bungoma", 34.56, 0.56, "l", -5),
-    "kapsabet": ("Kapsabet", 35.10, 0.20, "r"),
-    "kapenguria": ("Kapenguria", 35.12, 1.24, "r"),
+from coverage import AREAS, PINS, pins_for
+
+# county areas covered as a whole, shown as faint labels on the close-up maps
+COUNTY_LABELS = {
+    "coast": [("TANA RIVER", 39.25, -1.75), ("LAMU", 40.95, -1.75), ("KILIFI", 39.45, -3.05),
+              ("KWALE", 38.95, -4.38), ("TAITA TAVETA", 38.62, -2.95)],
+    "rift": [("TURKANA", 35.75, 2.2), ("SAMBURU", 37.1, 1.6), ("BARINGO", 36.0, 1.0), ("LAIKIPIA", 36.9, 0.45),
+             ("NAROK", 35.6, -1.6), ("KAJIADO", 36.6, -2.25), ("NAIROBI", 37.2, -1.05)],
 }
 
-K = 46          # pixels per degree
-X0, Y0 = 32.55, 5.5  # top left corner in lon/lat
-W, H = 480, 480
+VIEWS = {
+    "kenya": dict(x0=32.55, y0=5.5, k=46, w=480, h=480, ocean=(41.75, -4.25)),
+    "coast": dict(x0=38.15, y0=-0.75, k=118, w=420, h=500, ocean=(40.95, -3.75)),
+    "rift": dict(x0=33.4, y0=4.75, k=96, w=451, h=662, ocean=(40, 0)),
+}
 
-def px(lon, lat):
-    return round((lon - X0) * K, 1), round((Y0 - lat) * K, 1)
+def projector(view):
+    v = VIEWS[view]
+    def px(lon, lat):
+        return round((lon - v["x0"]) * v["k"], 1), round((v["y0"] - lat) * v["k"], 1)
+    def poly(points):
+        return "M" + " L".join(f"{x},{y}" for x, y in (px(*p) for p in points)) + "Z"
+    return px, poly
 
-def poly(points):
-    return "M" + " L".join(f"{x},{y}" for x, y in (px(*p) for p in points)) + "Z"
+px, poly = projector("kenya")
+W, H = VIEWS["kenya"]["w"], VIEWS["kenya"]["h"]
 
-def kenya_map(highlight=None, links=True, labels=True, cls="kmap"):
-    """Coverage map. highlight = town slug to emphasise (town pages)."""
-    out = [f'<svg class="{cls}" viewBox="0 0 {W} {H}" role="img" aria-labelledby="{cls}-t">'
-           f'<title id="{cls}-t">Map of Kenya showing towns where Seabreeze agents work. Illustration, not to scale.</title>'
-           '<defs><linearGradient id="kocean" x1="0" x2="1"><stop offset="0" stop-color="var(--sea)" stop-opacity="0"/>'
+def kenya_map(highlight=None, links=True, labels=True, cls="kmap", view="kenya", uid=None):
+    """Coverage map. view = "kenya", "coast" or "rift" (close-ups). highlight =
+    a set of pin labels to emphasise (area pages)."""
+    hl = set(highlight or ())
+    v = VIEWS[view]
+    px, poly = projector(view)
+    uid = uid or view
+    title = {"kenya": "Map of Kenya showing where Seabreeze agents work",
+             "coast": "Map of the Kenyan coast showing where Seabreeze agents work",
+             "rift": "Map of Nairobi, the Rift Valley and western Kenya showing where Seabreeze agents work"}[view]
+    out = [f'<svg class="{cls}" viewBox="0 0 {v["w"]} {v["h"]}" role="img" aria-labelledby="{uid}-t">'
+           f'<title id="{uid}-t">{title}. Illustration, not to scale.</title>'
+           f'<defs><linearGradient id="{uid}-oc" x1="0" x2="1"><stop offset="0" stop-color="var(--sea)" stop-opacity="0"/>'
            '<stop offset="1" stop-color="var(--sea)" stop-opacity=".22"/></linearGradient>'
-           '<pattern id="kdots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.1" fill="var(--sea)" opacity=".28"/></pattern></defs>'
-           f'<path d="{poly(COAST + [(39.2, -6), (43.5, -6), (43.5, -0.2), (42.4, -0.45)])}" fill="url(#kocean)"/>']
-    ox, oy = px(41.75, -4.25)
+           f'<pattern id="{uid}-dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.1" fill="var(--sea)" opacity=".28"/></pattern></defs>'
+           f'<path d="{poly(COAST + [(39.2, -6), (43.5, -6), (43.5, -0.2), (42.4, -0.45)])}" fill="url(#{uid}-oc)"/>']
+    ox, oy = px(*v["ocean"])
     out.append(f'<text x="{ox}" y="{oy}" class="ocean">Indian Ocean</text>')
     out.append(f'<path d="{poly(KENYA)}" fill="var(--surface)" stroke="var(--sea)" stroke-width="2" stroke-linejoin="round"/>')
-    out.append(f'<path d="{poly(KENYA)}" fill="url(#kdots)"/>')
+    out.append(f'<path d="{poly(KENYA)}" fill="url(#{uid}-dots)"/>')
     for lake in (LAKE_VICTORIA, LAKE_TURKANA):
         out.append(f'<path d="{poly(lake)}" fill="var(--sea)" opacity=".35"/>')
-    # coast and west clusters: soft halos
-    for lon, lat, r in ((40.0, -3.2, 72), (34.85, 0.45, 64)):
+    if view == "kenya":
+        for lon, lat, r in ((39.85, -3.0, 96), (35.6, 1.0, 120), (36.82, -1.29, 26)):
+            x, y = px(lon, lat)
+            out.append(f'<circle cx="{x}" cy="{y}" r="{r}" fill="var(--sun)" opacity=".10"/>')
+    else:
+        for name, lon, lat in COUNTY_LABELS.get(view, []):
+            x, y = px(lon, lat)
+            out.append(f'<text x="{x}" y="{y}" class="county">{name}</text>')
+    pins = sorted(PINS, key=lambda p: (p[0] in hl, p[0] == "Malindi"))
+    for name, lon, lat, page, sides in pins:
         x, y = px(lon, lat)
-        out.append(f'<circle cx="{x}" cy="{y}" r="{r}" fill="var(--sun)" opacity=".10"/>')
-    for slug, (name, lon, lat, side, *dy) in TOWNS.items():
-        dy = dy[0] if dy else 0
-        x, y = px(lon, lat)
-        hq = slug == "malindi"
-        on = highlight == slug
-        dim = highlight and not on
-        r = 7 if (hq or on) else 5
+        if view != "kenya" and not (0 <= x <= v["w"] and 0 <= y <= v["h"]):
+            continue
+        side, dy = sides.get(view, (None, 0))
+        if view != "kenya" and not side:
+            side = "r"
+        hq = name == "Malindi"
+        on = name in hl
+        dim = hl and not on
+        big = hq or on
+        r = (7 if big else 5) if side else (6 if big else 3.5)
         g = []
-        if hq or on:
+        if big:
             g.append(f'<circle class="pulse" cx="{x}" cy="{y}" r="{r+6}" fill="var(--sun)" opacity=".35"/>')
-        g.append(f'<circle cx="{x}" cy="{y}" r="{r}" fill="{"var(--sun)" if not dim else "var(--muted)"}" stroke="var(--surface)" stroke-width="2.5"/>')
-        if labels:
-            tx = x + 11 if side == "r" else x - 11
-            anchor = "start" if side == "r" else "end"
-            weight = ' font-weight="700"' if (hq or on) else ""
-            g.append(f'<text x="{tx}" y="{y + 4.5 + dy}" text-anchor="{anchor}"{weight}>{name}{" HQ" if hq and not highlight else ""}</text>')
+        g.append(f'<circle cx="{x}" cy="{y}" r="{r}" fill="{"var(--sun)" if not dim else "var(--muted)"}" stroke="var(--surface)" stroke-width="{2.5 if side else 1.5}"/>')
+        if labels and (side or on):
+            side = side or "r"
+            tx, ty, anchor = {"r": (x + 11, y + 4.5, "start"), "l": (x - 11, y + 4.5, "end"),
+                              "a": (x, y - 11, "middle"), "b": (x, y + 20, "middle")}[side]
+            weight = ' font-weight="700"' if big else ""
+            g.append(f'<text x="{tx}" y="{ty + dy}" text-anchor="{anchor}"{weight}>{name}{" HQ" if hq and not hl else ""}</text>')
+        else:
+            g.append(f"<title>{name}</title>")
         body = "".join(g)
+        place = AREAS[page]["name"] + (" County" if AREAS[page]["kind"] == "county" else "")
         if links and not on:
-            out.append(f'<a href="/airtel-5g/{slug}/" aria-label="Airtel 5G in {name}">{body}</a>')
+            out.append(f'<a href="/airtel-5g/{page}/" aria-label="Airtel 5G in {name}, {place}">{body}</a>')
         else:
             out.append(body)
     out.append("</svg>")
@@ -201,6 +226,11 @@ def sms_art():
             '<rect x="240" y="106" width="50" height="26" rx="13" fill="#2f6670"/><circle cx="253" cy="119" r="10" fill="#9fc3c8"/>'
             '<text x="156" y="168" font-family="var(--body)" font-size="12" fill="#9fc3c8">Receipts always sent</text></svg>')
 
+def area_map(slug, links=False):
+    """Close-up map for an area page with that area's towns highlighted."""
+    return kenya_map(highlight=pins_for(slug), links=links, view=AREAS[slug]["region"],
+                     cls="kmap kmap-town", uid=f"a-{slug}")
+
 # ---------------------------------------------------------------- patching
 def put(html, name, content):
     pat = re.compile(rf"<!--art:{name}-->.*?<!--/art:{name}-->", re.S)
@@ -231,8 +261,9 @@ def main():
             html = put(html, "brand", brand_link())
         if "<!--art:fbrand-->" in html:
             html = put(html, "fbrand", mark(40))
-        if "<!--art:kenya-->" in html:
-            html = put(html, "kenya", kenya_map())
+        for view in ("kenya", "coast", "rift"):
+            if f"<!--art:map-{view}-->" in html:
+                html = put(html, f"map-{view}", kenya_map(view=view, cls=f"kmap kmap-{view}"))
         if "<!--art:mdogo-->" in html:
             html = put(html, "mdogo", mdogo_art())
         if "<!--art:agents-->" in html:
@@ -242,9 +273,10 @@ def main():
         for k, v in icons.items():
             if f"<!--art:why-{k}-->" in html:
                 html = put(html, f"why-{k}", v)
-        m = re.search(r"<!--art:town-(\w+)-->", html)
+        m = re.search(r"<!--art:area-([\w-]+)-->", html)
         if m:
-            html = put(html, f"town-{m.group(1)}", kenya_map(highlight=m.group(1), links=False, cls="kmap kmap-town"))
+            slug = m.group(1)
+            html = put(html, f"area-{slug}", area_map(slug))
         if html != orig:
             page.write_text(html)
             print("updated", page.relative_to(ROOT))

@@ -51,3 +51,13 @@ WhatsApp status and post cards and Google Business Profile images:
 
 Copy `/tmp/cards/og/NAME_1200x630.png` to `public/og/NAME.png` to update
 the site.
+
+## Coverage areas and languages
+
+- `tools/coverage.py` lists every county and town page, the map pins and
+  the homepage groups. Add an area there.
+- `i18n/sw.json` and `i18n/it.json` hold the Kiswahili and Italian text,
+  keyed by the English text. `_patterns` translates the generated area pages.
+- After any change, run `tools/build.sh`. It regenerates the area pages,
+  maps, `/sw/` and `/it/` pages and the sitemap, and stops if an English
+  sentence has no translation (`python3 tools/i18n.py --missing` lists them).
