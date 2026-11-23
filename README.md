@@ -21,6 +21,10 @@ Custom domains `seabreezedata.co.ke` and `www.seabreezedata.co.ke` are added und
 
 If Cloudflare shows "This project is disconnected from your Git account", reinstall or reconfigure the Cloudflare Workers and Pages app in GitHub (Settings > Applications) so it can access this repository.
 
+## SMS preferences form
+
+`/sms/` lets clients join or stop renewal reminders and offers. It posts to `functions/api/sms-preferences.js` (a Pages Function), which writes to the shared CBriz D1 database through the `DB` binding in `wrangler.jsonc`. The tables come from cbriz-dashboard `migrations/007_sms_preferences.sql`, which must be run in the D1 console before this goes live. The cbriz-sms-sender worker checks `sms_preferences` before every reminder or marketing SMS. Payment receipts are always sent.
+
 ## Domain
 
 All page addresses (canonical links, sitemap, share links, Google data) use `https://seabreezedata.co.ke`. If the domain ever changes, replace that text in every file and resubmit `sitemap.xml` in Google Search Console.
