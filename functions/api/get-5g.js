@@ -11,7 +11,7 @@
 
 const MAX_PER_CLIENT_PER_DAY = 5;
 // Staff phone(s) that get the "new website lead" SMS. Override with the Pages
-// variable LEAD_ALERT_PHONES (comma separated). 0720 499 691 is WhatsApp Business only, not for SMS.
+// variable LEAD_ALERT_PHONES (comma separated). Only Airtel numbers are used.
 const DEFAULT_ALERT_PHONES = "254734782203,254782998842";
 const HEARD_FROM = ["Facebook", "TikTok", "Instagram", "WhatsApp", "Google", "A friend", "An agent or installer", "SMS", "Other"];
 
@@ -72,7 +72,7 @@ export async function onRequestPost({ request, env }) {
   if (![15, 30].includes(speed)) return reply(400, { error: "Please choose 15 Mbps or 30 Mbps." });
   if (![30, 90, 180].includes(days)) return reply(400, { error: "Please choose 30, 90 or 180 days." });
 
-  if (!env.DB) return reply(503, { error: "Sorry, this is not available right now. Please WhatsApp 0720 499 691." });
+  if (!env.DB) return reply(503, { error: "Sorry, this is not available right now. Please WhatsApp 0734 782 203." });
 
   const day = new Date().toISOString().slice(0, 10);
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
@@ -84,14 +84,14 @@ export async function onRequestPost({ request, env }) {
     ).bind(phone).first();
     if (open) {
       return reply(200, { ok: true, ref: open.lead_ref, existing: true,
-        message: `We already have your request (${open.lead_ref}). We will call you on 0${phone.slice(3)}. To speed things up, WhatsApp 0720 499 691.` });
+        message: `We already have your request (${open.lead_ref}). We will call you on 0${phone.slice(3)}. To speed things up, WhatsApp 0734 782 203.` });
     }
 
     const recent = await env.DB.prepare(
       "SELECT COUNT(*) AS n FROM new_5g_leads WHERE client_hash = ?1 AND created_at >= datetime('now','-1 day')"
     ).bind(clientHash).first();
     if (Number(recent?.n) >= MAX_PER_CLIENT_PER_DAY)
-      return reply(429, { error: "We have received several requests from this connection today. Please WhatsApp 0720 499 691 instead." });
+      return reply(429, { error: "We have received several requests from this connection today. Please WhatsApp 0734 782 203 instead." });
 
     const ref = leadRef();
     const notes = `Website sign-up. Heard about us via: ${heard}.`;
@@ -126,6 +126,6 @@ export async function onRequestPost({ request, env }) {
     return reply(201, { ok: true, ref });
   } catch (e) {
     console.error("get-5g failed", String(e));
-    return reply(500, { error: "Sorry, that did not save. Please try again or WhatsApp 0720 499 691." });
+    return reply(500, { error: "Sorry, that did not save. Please try again or WhatsApp 0734 782 203." });
   }
 }

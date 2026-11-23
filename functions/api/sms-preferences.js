@@ -55,7 +55,7 @@ export async function onRequestPost({ request, env }) {
   if (reminders === undefined || marketing === undefined) return reply(400, { error: "Please choose Yes or No." });
   if (reminders === null && marketing === null) return reply(400, { error: "Please choose for reminders, offers, or both." });
 
-  if (!env.DB) return reply(503, { error: "Sorry, this is not available right now. Please WhatsApp 0720 499 691." });
+  if (!env.DB) return reply(503, { error: "Sorry, this is not available right now. Please WhatsApp 0734 782 203." });
 
   const day = new Date().toISOString().slice(0, 10);
   const ip = request.headers.get("CF-Connecting-IP") || "unknown";
@@ -68,7 +68,7 @@ export async function onRequestPost({ request, env }) {
         (SELECT COUNT(*) FROM sms_preference_requests WHERE client_hash = ?2 AND created_at >= datetime('now','-1 day')) AS per_client
     `).bind(phone, clientHash).first();
     if (Number(counts?.per_phone) >= MAX_PER_PHONE_PER_DAY || Number(counts?.per_client) >= MAX_PER_CLIENT_PER_DAY) {
-      return reply(429, { error: "Too many changes today. Please try again tomorrow or WhatsApp 0720 499 691." });
+      return reply(429, { error: "Too many changes today. Please try again tomorrow or WhatsApp 0734 782 203." });
     }
 
     await env.DB.batch([
@@ -88,7 +88,7 @@ export async function onRequestPost({ request, env }) {
     ]);
   } catch (error) {
     console.error("sms-preferences save failed:", String(error));
-    return reply(500, { error: "Sorry, that did not save. Please try again or WhatsApp 0720 499 691." });
+    return reply(500, { error: "Sorry, that did not save. Please try again or WhatsApp 0734 782 203." });
   }
 
   const parts = [];

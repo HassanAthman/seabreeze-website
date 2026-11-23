@@ -33,7 +33,7 @@ All page addresses (canonical links, sitemap, share links, Google data) use `htt
 
 - Offer text (Black November runs 24 November to 31 December 2026): home page and town pages.
 - Package prices: home page, town pages and the Google data in each page's head.
-- Contact numbers: WhatsApp Business 0720 499 691, office 0782 998 842.
+- Contact numbers: WhatsApp Business 0782 998 842, office 0782 998 842.
 
 ## Artwork
 

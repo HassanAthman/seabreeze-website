@@ -91,7 +91,7 @@ def status(title_html, sub, art_html, cta, w=1080, h=1920):
             f'<p class="sub" style="font-size:44px">{sub}</p>'
             f'<div style="flex:1;display:grid;place-items:center">{art_html}</div>'
             f'<div style="display:grid;gap:22px;justify-items:start"><span class="pill" style="font-size:46px">{cta}</span>'
-            '<span class="foot" style="font-size:36px">WhatsApp 0720 499 691 · seabreezedata.co.ke</span></div></div>')
+            '<span class="foot" style="font-size:36px">WhatsApp 0734 782 203 · seabreezedata.co.ke</span></div></div>')
     return page(w, h, body, ".kmap text{font:500 14px var(--body);fill:var(--ink)}.kmap text.ocean{font:italic 500 13px var(--body);fill:var(--sea);text-anchor:middle}")
 
 def square(title_html, sub, art_html, cta):
@@ -101,7 +101,7 @@ def square(title_html, sub, art_html, cta):
             f'<p class="sub" style="font-size:34px">{sub}</p>'
             f'<div style="flex:1;display:grid;place-items:center;min-height:0">{art_html}</div>'
             f'<div style="display:flex;gap:20px;align-items:center"><span class="pill" style="font-size:36px">{cta}</span>'
-            '<span class="foot" style="font-size:28px">WhatsApp 0720 499 691</span></div></div>')
+            '<span class="foot" style="font-size:28px">WhatsApp 0734 782 203</span></div></div>')
     return page(1080, 1080, body, ".kmap text{font:500 14px var(--body);fill:var(--ink)}.kmap text.ocean{font:italic 500 13px var(--body);fill:var(--sea);text-anchor:middle}")
 
 def price_card():
@@ -117,19 +117,19 @@ def agents_card(width=520):
 # ------------------------------------------------------ new client steps
 ONBOARD = {
     "en": dict(title="Get Airtel 5G in <em>5 steps</em>",
-               steps=[("Send us your details", "Name, phone, email and location, on our website or WhatsApp 0720 499 691."),
-                      ("Confirm the Airtel code", "Airtel sends you a one-time code (OTP) by SMS. Share it only with Seabreeze: a call from 0782 998 842 or WhatsApp&nbsp;0720&nbsp;499&nbsp;691."),
+               steps=[("Send us your details", "Name, phone, email and location, on our website or WhatsApp 0734 782 203."),
+                      ("Confirm the Airtel code", "Airtel sends you a one-time code (OTP) by SMS. Share it only with Seabreeze on 0782&nbsp;998&nbsp;842 or 0734&nbsp;782&nbsp;203."),
                       ("Pay with the Airtel link", "You get a one-time Airtel payment link by SMS. Pay Airtel directly through it."),
                       ("Installer visits", "An Airtel installer calls you, checks your ID and sets up the router."),
                       ("Renew every month", "Pay on M-Pesa Paybill 4129691, account = your 5G number.")],
-               note="Never pay the installer cash. We never ask for your M-Pesa PIN.", cta="WhatsApp 0720 499 691"),
+               note="Never pay the installer cash. We never ask for your M-Pesa PIN.", cta="WhatsApp 0734 782 203"),
     "sw": dict(title="Pata Airtel 5G kwa <em>hatua 5</em>",
-               steps=[("Tutumie maelezo yako", "Jina, simu, barua pepe na eneo, kwenye tovuti yetu au WhatsApp 0720 499 691."),
-                      ("Thibitisha nambari ya Airtel", "Airtel inakutumia nambari ya siri ya mara moja (OTP) kwa SMS. Mpe Seabreeze pekee: simu kutoka 0782 998 842 au WhatsApp&nbsp;0720&nbsp;499&nbsp;691."),
+               steps=[("Tutumie maelezo yako", "Jina, simu, barua pepe na eneo, kwenye tovuti yetu au WhatsApp 0734 782 203."),
+                      ("Thibitisha nambari ya Airtel", "Airtel inakutumia nambari ya siri ya mara moja (OTP) kwa SMS. Mpe Seabreeze pekee kupitia 0782&nbsp;998&nbsp;842 au 0734&nbsp;782&nbsp;203."),
                       ("Lipa kupitia kiungo cha Airtel", "Unapokea kiungo cha malipo cha Airtel kwa SMS. Lipa Airtel moja kwa moja kupitia kiungo hicho."),
                       ("Fundi anakutembelea", "Fundi wa Airtel anakupigia, anakagua kitambulisho chako na kuweka router."),
                       ("Lipia kila mwezi", "Lipa kwa M-Pesa Paybill 4129691, akaunti = nambari yako ya 5G.")],
-               note="Usimlipe fundi pesa taslimu. Hatutawahi kuuliza PIN yako ya M-Pesa.", cta="WhatsApp 0720 499 691"),
+               note="Usimlipe fundi pesa taslimu. Hatutawahi kuuliza PIN yako ya M-Pesa.", cta="WhatsApp 0734 782 203"),
 }
 
 def onboard(lang, w, h):

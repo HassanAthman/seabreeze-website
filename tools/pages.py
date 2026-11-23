@@ -26,7 +26,7 @@ def footer_html():
                     for _g, slugs in GROUPS for s in slugs)
     return ('<div>Head office: Malindi, Kilifi County. Agents across the Coast, Nairobi, the Rift Valley and western Kenya.</div>\n'
             f'    <div style="flex-basis:100%"><nav aria-label="Areas">{links}<a href="/renew-airtel-5g/">How to renew Airtel 5G</a>'
-            '<a href="/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a></nav></div>')
+            '<a href="/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a><a href="/contact/">Contact us</a><a href="/we-are-hiring/">We are hiring</a></nav></div>')
 
 def coverage_html():
     rows = []
@@ -73,7 +73,7 @@ def county_page(slug, tpl):
     ]
     h1_place = (f"<em>{esc(place.split(' and ')[0])}</em> and {esc(place.split(' and ')[1])} County"
                 if "title_place" in a else f"<em>{esc(name)}</em> County")
-    wa = f"https://wa.me/254720499691?text=Hi%20Seabreeze,%20I%20want%20Airtel%205G%20at%20home%20in%20{name.replace(' ', '%20')}%20County."
+    wa = f"https://wa.me/254734782203?text=Hi%20Seabreeze,%20I%20want%20Airtel%205G%20at%20home%20in%20{name.replace(' ', '%20')}%20County."
     url = f"{SITE}/airtel-5g/{slug}/"
 
     head_end = tpl.index("<main id=\"top\">")
@@ -135,7 +135,7 @@ def county_page(slug, tpl):
     return head + body + foot
 
 def sitemap():
-    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
+    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
     langs = [p.name for p in PUB.iterdir() if p.is_dir() and p.name in ("sw", "it")]
     translated = []
     for lang in langs:

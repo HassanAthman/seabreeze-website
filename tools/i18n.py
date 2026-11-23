@@ -23,7 +23,7 @@ SITE = "https://seabreezedata.co.ke"
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from coverage import AREAS
 PAGES = ["index.html", "renew-airtel-5g/index.html", "lipa-mdogo-mdogo/index.html",
-         "sms/index.html", "get-airtel-5g/index.html"] + [f"airtel-5g/{s}/index.html" for s in AREAS]
+         "sms/index.html", "get-airtel-5g/index.html", "contact/index.html", "we-are-hiring/index.html"] + [f"airtel-5g/{s}/index.html" for s in AREAS]
 LANGS = {"sw": ("Kiswahili", "sw_KE", "sw-KE"), "it": ("Italiano", "it_IT", "it")}
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 INLINE = {"a", "b", "strong", "em", "i", "br", "code", "span", "small", "abbr", "kbd", "s", "u", "mark"}
@@ -180,7 +180,7 @@ def page_strings(src):
     return [k for k in keys if re.search(r"[A-Za-z]", re.sub(r"<[^>]+>", "", k))]
 
 # keys that must never be translated (names, numbers, brands)
-KEEP = re.compile(r"^([A-Z]{2}|Content-Type|Lipa Mdogo Mdogo|Lipa na M-Pesa|Seabreeze( 5G| Data Ventures Ltd)?|Seabreeze <b class=\"g5\">5G</b>|Airtel 5G Smart Connect|Airtel 5G|M-PESA|M-Pesa|TikTok|WhatsApp|FAQ|CCTV|Paybill 4129691|4129691|WhatsApp 0720 499 691|KES [\d,]+|<b>KES [\d,]+</b>|\d+ Mbps|English|Kiswahili|Italiano|Black November|e\.g\. 0\d.*|0\d{9})$")
+KEEP = re.compile(r"^([A-Z]{2}|Content-Type|Lipa Mdogo Mdogo|Lipa na M-Pesa|Seabreeze( 5G| Data Ventures Ltd)?|Seabreeze <b class=\"g5\">5G</b>|Airtel 5G Smart Connect|Airtel 5G|M-PESA|M-Pesa|TikTok|WhatsApp|FAQ|CCTV|Paybill 4129691|4129691|WhatsApp 0734 782 203|KES [\d,]+|<b>KES [\d,]+</b>|\d+ Mbps|English|Kiswahili|Italiano|Black November|e\.g\. 0\d.*|0\d{9})$")
 from coverage import PINS
 NAMES = {a["name"] for a in AREAS.values()} | {t for a in AREAS.values() for t in a.get("towns", [])} | {p[0] for p in PINS} | {a["county"] for a in AREAS.values() if a.get("county")} | {"Kenya"}
 
@@ -238,7 +238,7 @@ def add_chrome(src, page, lang):
     """hreflang links and the language switcher, on every language version."""
     src = re.sub(r'\n?<link rel="alternate" hreflang=[^>]+>', "", src)
     src = src.replace('<link rel="canonical"', alternates(page) + '\n<link rel="canonical"', 1)
-    src = re.sub(r'<nav class="lang".*?</nav>', "", src, flags=re.S)
+    src = re.sub(r'\s*<nav class="lang".*?</nav>', "", src, flags=re.S)
     src = src.replace('<a class="btn btn-sun btn-sm"', switcher(page, lang) + '\n    <a class="btn btn-sun btn-sm"', 1)
     return src
 
