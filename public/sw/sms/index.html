@@ -33,8 +33,13 @@
     <a class="brand" href="/sw/" aria-label="Seabreeze 5G, ukurasa wa mwanzo"><!--art:brand--><svg viewBox="0 0 64 64" width="32" height="32" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="var(--sea)"/><path d="M20 35a12 12 0 0 1 24 0z" fill="var(--sun)"/><path d="M14 24a22 22 0 0 1 36 0" stroke="var(--bg)" stroke-width="4" fill="none" stroke-linecap="round" opacity=".9"/><path d="M6 42c6.5-5 13-5 19.5 0s13 5 19.5 0 13-5 13-5" stroke="var(--bg)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M10 51c5.5-4 11-4 16.5 0s11 4 16.5 0 11-4 11-4" stroke="var(--bg)" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/></svg>
       <span>Seabreeze <b class="g5">5G</b></span><!--/art:brand--></a>
     <nav class="links" aria-label="Menyu kuu">
-      <a href="/sw/#renew">Lipia</a><a href="/sw/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a><a href="/sw/#get5g">Pata 5G</a><a href="/sw/#services">Huduma</a><a href="/sw/#coverage">Maeneo</a><a href="/sw/#agents">Kuwa wakala</a><a href="/sw/#faq">FAQ</a>
+      <a href="/sw/#renew">Lipia</a><a href="/sw/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a><a href="/sw/#get5g">Pata 5G</a><a href="/sw/#services">Huduma</a><a href="/sw/#coverage">Maeneo</a><a class="nav-sms" href="/sw/sms/">SMS za ukumbusho</a><a href="/sw/#agents">Kuwa wakala</a><a href="/sw/#faq">FAQ</a>
     </nav>
+    
+    
+    
+    
+    
     
     
     
@@ -56,7 +61,7 @@
     <div class="eyebrow">Chaguo za SMS</div>
     <h1 style="margin-top:8px">Chagua SMS unazopata kutoka kwetu</h1>
     <p style="margin:12px 0 18px">Chagua unachotaka kwa nambari yako ya simu. Chaguo lako linahifadhiwa mara moja na mfumo wetu unalifuata wenyewe.</p>
-    <div class="sms-art-wrap"><!--art:sms--><svg class="sms-art" viewBox="0 0 320 200" role="img" aria-labelledby="sm-t"><title id="sm-t">A phone with SMS switches for reminders and offers</title><rect width="320" height="200" rx="20" fill="var(--sea-deep)"/><rect x="34" y="22" width="96" height="170" rx="16" fill="#1d2326"/><rect x="42" y="36" width="80" height="128" rx="6" fill="#c9d8b4"/><rect x="50" y="46" width="56" height="20" rx="8" fill="#0b6e78"/><rect x="66" y="74" width="48" height="20" rx="8" fill="#f08a24"/><rect x="50" y="102" width="50" height="20" rx="8" fill="#0b6e78"/><g font-family="var(--body)" font-size="15" fill="#e6f2f3"><text x="156" y="68">Ukumbusho</text><text x="156" y="122">Ofa</text></g><rect x="240" y="52" width="50" height="26" rx="13" fill="#3fb3bd"/><circle cx="277" cy="65" r="10" fill="#fff"/><rect x="240" y="106" width="50" height="26" rx="13" fill="#2f6670"/><circle cx="253" cy="119" r="10" fill="#9fc3c8"/><text x="156" y="168" font-family="var(--body)" font-size="12" fill="#9fc3c8">Risiti hutumwa kila mara</text></svg><!--/art:sms--></div>
+    <div class="sms-art-wrap"><!--art:sms--><svg class="sms-art" viewBox="0 0 320 200" role="img" aria-labelledby="sm-t"><title id="sm-t">A phone with SMS switches for reminders and offers</title><rect width="320" height="200" rx="20" fill="var(--sea-deep)"/><rect x="34" y="22" width="96" height="170" rx="16" fill="#1d2326"/><rect x="42" y="36" width="80" height="128" rx="6" fill="#c9d8b4"/><rect x="50" y="46" width="56" height="20" rx="8" fill="#0b6e78"/><rect x="66" y="74" width="48" height="20" rx="8" fill="#f08a24"/><rect x="50" y="102" width="50" height="20" rx="8" fill="#0b6e78"/><g font-family="var(--body)" font-size="15" fill="#e6f2f3"><text x="146" y="70">Ukumbusho</text><text x="146" y="124">Ofa</text></g><rect x="262" y="52" width="46" height="26" rx="13" fill="#3fb3bd"/><circle cx="295" cy="65" r="10" fill="#fff"/><rect x="262" y="106" width="46" height="26" rx="13" fill="#2f6670"/><circle cx="275" cy="119" r="10" fill="#9fc3c8"/><text x="146" y="168" font-family="var(--body)" font-size="12" fill="#9fc3c8">Risiti hutumwa kila mara</text></svg><!--/art:sms--></div>
     <form class="lead" id="smsForm" novalidate>
       <label for="s-phone">Nambari ya simu inayopokea SMS zetu<input id="s-phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="e.g. 0712 345 678" required><span class="hint">Nambari ya Safaricom au Airtel, 07…, 01… au 254…</span></label>
       <fieldset style="border:0;padding:0;margin:0;display:grid;gap:8px">
@@ -81,6 +86,8 @@
 <script>
 (function(){
   var f=document.getElementById('smsForm'), msg=document.getElementById('smsMsg');
+  var want=new URLSearchParams(location.search).get('want');
+  if(want==='join'||want==='stop'){var v=want==='join'?'1':'0';['reminders','marketing'].forEach(function(n){var e=f.querySelector('input[name="'+n+'"][value="'+v+'"]');if(e)e.checked=true;});}
   function pick(n){var e=f.querySelector('input[name="'+n+'"]:checked');return e?Number(e.value):null;}
   f.addEventListener('submit',function(ev){
     ev.preventDefault();
@@ -99,7 +106,7 @@
 </script>
 <footer>
   <div class="wrap">
-    <div><b style="color:var(--ink)">Seabreeze Data Ventures Ltd</b> (Sea Breeze)<br>Mshirika rasmi wa Airtel Kenya (Enterprise Solution Partner, ESP)<br>Paybill 4129691 · WhatsApp 0720 499 691 · Ofisi 0782 998 842<br><a href="/sw/sms/">SMS za ukumbusho na ofa: jiunge au acha</a></div>
+    <div><b style="color:var(--ink)">Seabreeze Data Ventures Ltd</b> (Sea Breeze)<br>Mshirika rasmi wa Airtel Kenya (Enterprise Solution Partner, ESP)<br>Paybill 4129691 · WhatsApp 0720 499 691 · Ofisi 0782 998 842<br><a class="sms-foot" href="/sw/sms/">SMS za ukumbusho na ofa: jiunge au acha</a></div>
     <div>Ofisi kuu: Malindi, Kaunti ya Kilifi. Mawakala kote Pwani, Nairobi, Bonde la Ufa na magharibi mwa Kenya.</div>
     <div style="flex-basis:100%"><nav aria-label="Maeneo"><a href="/sw/airtel-5g/malindi/">Airtel 5G Malindi</a><a href="/sw/airtel-5g/kilifi/">Airtel 5G Kaunti ya Kilifi</a><a href="/sw/airtel-5g/mombasa/">Airtel 5G Kaunti ya Mombasa</a><a href="/sw/airtel-5g/kwale/">Airtel 5G Kaunti ya Kwale</a><a href="/sw/airtel-5g/lamu/">Airtel 5G Kaunti ya Lamu</a><a href="/sw/airtel-5g/mpeketoni/">Airtel 5G Mpeketoni</a><a href="/sw/airtel-5g/tana-river/">Airtel 5G Kaunti ya Tana River</a><a href="/sw/airtel-5g/voi/">Airtel 5G Voi</a><a href="/sw/airtel-5g/nairobi/">Airtel 5G Kaunti ya Nairobi</a><a href="/sw/airtel-5g/turkana/">Airtel 5G Kaunti ya Turkana</a><a href="/sw/airtel-5g/kapenguria/">Airtel 5G Kaunti ya West Pokot</a><a href="/sw/airtel-5g/samburu/">Airtel 5G Kaunti ya Samburu</a><a href="/sw/airtel-5g/trans-nzoia/">Airtel 5G Kaunti ya Trans Nzoia</a><a href="/sw/airtel-5g/uasin-gishu/">Airtel 5G Kaunti ya Uasin Gishu</a><a href="/sw/airtel-5g/elgeyo-marakwet/">Airtel 5G Kaunti ya Elgeyo-Marakwet</a><a href="/sw/airtel-5g/kapsabet/">Airtel 5G Kaunti ya Nandi</a><a href="/sw/airtel-5g/baringo/">Airtel 5G Kaunti ya Baringo</a><a href="/sw/airtel-5g/laikipia/">Airtel 5G Kaunti ya Laikipia</a><a href="/sw/airtel-5g/nakuru/">Airtel 5G Kaunti ya Nakuru</a><a href="/sw/airtel-5g/narok/">Airtel 5G Kaunti ya Narok</a><a href="/sw/airtel-5g/kajiado/">Airtel 5G Kaunti ya Kajiado</a><a href="/sw/airtel-5g/kericho/">Airtel 5G Kaunti ya Kericho</a><a href="/sw/airtel-5g/bomet/">Airtel 5G Kaunti ya Bomet</a><a href="/sw/airtel-5g/kisumu/">Airtel 5G Kaunti ya Kisumu</a><a href="/sw/airtel-5g/kakamega/">Airtel 5G Kaunti ya Kakamega</a><a href="/sw/airtel-5g/bungoma/">Airtel 5G Kaunti ya Bungoma</a><a href="/sw/renew-airtel-5g/">Jinsi ya kulipia Airtel 5G</a><a href="/sw/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a></nav></div>
   </div>

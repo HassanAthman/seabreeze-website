@@ -248,7 +248,6 @@
  "Yes, with a fair use limit of 1,000 GB per plan. After that you keep browsing at 2 Mbps until you renew, or you can buy a 500 GB booster for KES 1,000.": "Sì, con un limite di uso corretto di 1.000 GB per pacchetto. Dopo continui a navigare a 2 Mbps fino al rinnovo, oppure puoi acquistare un extra da 500 GB a KES 1,000.",
  "How do I stop promotional SMS?": "Come blocco gli SMS promozionali?",
  "Use our <a href=\"/sms/\">SMS preferences form</a> to stop offers, renewal reminders or both, or text STOP to 0782 998 842. Payment receipts are always sent.": "Usa il nostro <a href=\"/sms/\">modulo preferenze SMS</a> per bloccare offerte, promemoria di rinnovo o entrambi, oppure invia STOP allo 0782 998 842. Le ricevute di pagamento vengono sempre inviate.",
- "<b style=\"color:var(--ink)\">Seabreeze Data Ventures Ltd</b> (Sea Breeze)<br>Authorised Airtel Kenya Enterprise Solution Partner (ESP)<br>Paybill 4129691 · WhatsApp 0720 499 691 · Office 0782 998 842<br><a href=\"/sms/\">SMS reminders and offers: join or stop</a>": "<b style=\"color:var(--ink)\">Seabreeze Data Ventures Ltd</b> (Sea Breeze)<br>Partner autorizzato Airtel Kenya (Enterprise Solution Partner, ESP)<br>Paybill 4129691 · WhatsApp 0720 499 691 · Ufficio 0782 998 842<br><a href=\"/sms/\">SMS di promemoria e offerte: iscriviti o disiscriviti</a>",
  "Head office: Malindi, Kilifi County. Agents across the Coast, Nairobi, the Rift Valley and western Kenya.": "Sede centrale: Malindi, Contea di Kilifi. Agenti sulla Costa, a Nairobi, nella Rift Valley e nel Kenya occidentale.",
  "Areas": "Zone",
  "How to renew Airtel 5G": "Come rinnovare Airtel 5G",
@@ -346,5 +345,12 @@
   "Map of Nairobi, the Rift Valley and western Kenya showing where Seabreeze agents work. Illustration, not to scale.": "Mappa di Nairobi, Rift Valley e Kenya occidentale con le zone degli agenti Seabreeze. Illustrazione, non in scala."
  },
  "Airtel installs the 5G unit": "Airtel installa l'unità 5G",
- "An Airtel installer checks your ID, mounts the outdoor unit and sets up WiFi indoors.": "Un installatore Airtel verifica il tuo documento, monta l'unità esterna e configura il WiFi in casa."
+ "An Airtel installer checks your ID, mounts the outdoor unit and sets up WiFi indoors.": "Un installatore Airtel verifica il tuo documento, monta l'unità esterna e configura il WiFi in casa.",
+ "<b style=\"color:var(--ink)\">Seabreeze Data Ventures Ltd</b> (Sea Breeze)<br>Authorised Airtel Kenya Enterprise Solution Partner (ESP)<br>Paybill 4129691 · WhatsApp 0720 499 691 · Office 0782 998 842<br><a class=\"sms-foot\" href=\"/sms/\">SMS reminders and offers: join or stop</a>": "<b style=\"color:var(--ink)\">Seabreeze Data Ventures Ltd</b> (Sea Breeze)<br>Partner autorizzato Airtel Kenya (Enterprise Solution Partner, ESP)<br>Paybill 4129691 · WhatsApp 0720 499 691 · Ufficio 0782 998 842<br><a class=\"sms-foot\" href=\"/sms/\">SMS di promemoria e offerte: iscriviti o disiscriviti</a>",
+ "SMS alerts": "Avvisi SMS",
+ "SMS from Seabreeze": "SMS da Seabreeze",
+ "SMS reminders: join or stop any time": "Promemoria via SMS: iscriviti o disiscriviti quando vuoi",
+ "Get an SMS before your Airtel 5G runs out, with the exact amount to pay. Don't want our SMS? Stop reminders, offers or both in one minute. Payment receipts always come, so you know your money arrived.": "Ricevi un SMS prima che il tuo Airtel 5G scada, con l'importo esatto da pagare. Non vuoi i nostri SMS? Blocca promemoria, offerte o entrambi in un minuto. Le ricevute di pagamento arrivano sempre, così sai che il denaro è arrivato.",
+ "Join SMS reminders": "Attiva i promemoria SMS",
+ "Stop our SMS": "Blocca i nostri SMS"
 }

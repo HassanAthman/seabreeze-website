@@ -221,10 +221,10 @@ def sms_art():
             '<rect x="34" y="22" width="96" height="170" rx="16" fill="#1d2326"/><rect x="42" y="36" width="80" height="128" rx="6" fill="#c9d8b4"/>'
             '<rect x="50" y="46" width="56" height="20" rx="8" fill="#0b6e78"/><rect x="66" y="74" width="48" height="20" rx="8" fill="#f08a24"/><rect x="50" y="102" width="50" height="20" rx="8" fill="#0b6e78"/>'
             '<g font-family="var(--body)" font-size="15" fill="#e6f2f3">'
-            '<text x="156" y="68">Reminders</text><text x="156" y="122">Offers</text></g>'
-            '<rect x="240" y="52" width="50" height="26" rx="13" fill="#3fb3bd"/><circle cx="277" cy="65" r="10" fill="#fff"/>'
-            '<rect x="240" y="106" width="50" height="26" rx="13" fill="#2f6670"/><circle cx="253" cy="119" r="10" fill="#9fc3c8"/>'
-            '<text x="156" y="168" font-family="var(--body)" font-size="12" fill="#9fc3c8">Receipts always sent</text></svg>')
+            '<text x="146" y="70">Reminders</text><text x="146" y="124">Offers</text></g>'
+            '<rect x="262" y="52" width="46" height="26" rx="13" fill="#3fb3bd"/><circle cx="295" cy="65" r="10" fill="#fff"/>'
+            '<rect x="262" y="106" width="46" height="26" rx="13" fill="#2f6670"/><circle cx="275" cy="119" r="10" fill="#9fc3c8"/>'
+            '<text x="146" y="168" font-family="var(--body)" font-size="12" fill="#9fc3c8">Receipts always sent</text></svg>')
 
 def area_map(slug, links=False):
     """Close-up map for an area page with that area's towns highlighted."""
