@@ -1,6 +1,6 @@
 # Seabreeze Data Ventures website
 
-Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised Airtel Kenya Enterprise Solution Partner. It is a plain static site with no build step, hosted on Cloudflare Workers (static assets). The site files live in `public/`.
+Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised Airtel Kenya Enterprise Solution Partner. It is a plain static site with no build step, hosted on Cloudflare Pages. The site files live in `public/`.
 
 ## Pages
 
