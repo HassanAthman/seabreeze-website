@@ -1,6 +1,6 @@
 # Seabreeze Data Ventures website
 
-Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised Airtel Kenya Enterprise Solution Partner. It is a plain static site with no build step, hosted on Cloudflare Pages.
+Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised Airtel Kenya Enterprise Solution Partner. It is a plain static site with no build step, hosted on Cloudflare Workers (static assets). The site files live in `public/`.
 
 ## Pages
 
@@ -13,9 +13,17 @@ Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised A
 
 Shared files: `styles.css`, `app.js`, `favicon.svg`, `og.png` (link preview image), `sitemap.xml`, `robots.txt`, `_headers` (Cloudflare security and caching headers).
 
-## Deploying on Cloudflare Pages
+## Deploying on Cloudflare
 
-Connect this repository to a Cloudflare Pages project with **no build command** and **build output directory `/`**. Every merge to `main` then deploys automatically, and each pull request gets its own preview link.
+`wrangler.jsonc` tells Cloudflare to serve the `public/` folder. In Cloudflare, Workers & Pages > Create > Continue with GitHub, pick this repository and use:
+
+- Project name: `seabreeze-website` (must match `name` in `wrangler.jsonc`)
+- Build command: leave empty
+- Deploy command: `npx wrangler deploy`
+- Non-production branch deploy command: `npx wrangler versions upload` (gives each branch a preview link)
+- Path: `/`
+
+Every merge to `main` then deploys automatically. Add `seabreezedata.co.ke` and `www.seabreezedata.co.ke` under the Worker's Settings > Domains & Routes.
 
 ## Domain
 
