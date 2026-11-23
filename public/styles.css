@@ -281,11 +281,10 @@ footer a.sms-foot{display:inline-block;margin-top:6px;font-weight:700}
 nav.links{gap:14px;font-size:.9rem}
 @media (max-width:1200px){nav.links{display:none}}
 header.top .wrap{max-width:1300px}
-/* language selector: globe + separate pills */
+/* language selector: separate pills */
 nav.lang{gap:4px;align-items:center;background:none;border:0;padding:0}
-nav.lang .globe{width:18px;height:18px;color:var(--sea);margin-right:2px;flex:none}
 nav.lang a{border:1px solid var(--line);background:var(--surface);padding:4px 9px}
 nav.lang a[aria-current]{border-color:var(--sea)}
-@media (max-width:420px){nav.lang .globe{display:none}nav.lang{gap:3px}nav.lang a{padding:3px 6px}}
-@media (max-width:420px){nav.lang .globe{display:block;width:15px;height:15px;margin-right:0}nav.lang a{padding:3px 5px;font-size:.74rem}header.top .btn-sm{padding:8px 8px}}
-@media (max-width:380px){nav.lang .globe{display:none}}@media (max-width:350px){.brand span{display:none}}
+@media (max-width:420px){nav.lang{gap:3px}nav.lang a{padding:3px 6px}}
+@media (max-width:420px){nav.lang a{padding:3px 5px;font-size:.74rem}header.top .btn-sm{padding:8px 8px}}
+@media (max-width:350px){.brand span{display:none}}
