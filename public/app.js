@@ -111,7 +111,7 @@
   function proj(x,y,z,yaw){
     var c=Math.cos(yaw), s=Math.sin(yaw), X=x*c-z*s, Z=x*s+z*c;
     var tilt=.3, Y=y*Math.cos(tilt)-Z*Math.sin(tilt), D=Z*Math.cos(tilt)+y*Math.sin(tilt)+11;
-    var f=Math.min(W,H)*.95/D; return {x:W/2+X*f, y:H*.74-Y*f, d:D, f:f};
+    var f=Math.min(W,H)*.8/D; return {x:W/2+X*f, y:H*.74-Y*f, d:D, f:f};
   }
   function poly(pts,fill){ ctx.beginPath(); ctx.moveTo(pts[0].x,pts[0].y); for(var i=1;i<pts.length;i++) ctx.lineTo(pts[i].x,pts[i].y); ctx.closePath(); ctx.fillStyle=fill; ctx.fill(); }
   function box(b,yaw,glow){
@@ -129,29 +129,13 @@
     ctx.fillStyle='rgba(240,138,36,'+(.25+glow*.75)+')'; ctx.fill();
     if(glow>.05){ ctx.beginPath(); ctx.arc(wp.x,wp.y,wp.f*.35*glow,0,Math.PI*2); ctx.fillStyle='rgba(240,138,36,'+(.18*glow)+')'; ctx.fill(); }
   }
-  // sunrise over the ocean, with a small island for the homes
+  // a small island for the homes, floating on the page's own ocean background
   function backdrop(t, yaw){
-    var hy=H*.27, m=Math.min(W,H), sx=W*.7, sr=m*.085;
-    var sky=ctx.createLinearGradient(0,0,0,hy);
-    sky.addColorStop(0,'#1d2b4f'); sky.addColorStop(.45,'#6a4a78'); sky.addColorStop(.8,'#e4806a'); sky.addColorStop(1,'#ffc07a');
-    ctx.fillStyle=sky; ctx.fillRect(0,0,W,hy+1);
-    var glow=ctx.createRadialGradient(sx,hy,0,sx,hy,m*.55);
-    glow.addColorStop(0,'rgba(255,214,140,.75)'); glow.addColorStop(1,'rgba(255,214,140,0)');
-    ctx.fillStyle=glow; ctx.fillRect(0,0,W,hy);
-    var rise=reduce?0:Math.sin(t*.15)*sr*.12;
-    ctx.save(); ctx.beginPath(); ctx.rect(0,0,W,hy); ctx.clip();
-    ctx.beginPath(); ctx.arc(sx,hy+sr*.25-rise,sr,0,Math.PI*2); ctx.fillStyle='#ffd88a'; ctx.fill(); ctx.restore();
-    var sea=ctx.createLinearGradient(0,hy,0,H);
-    sea.addColorStop(0,'#d98a6e'); sea.addColorStop(.12,'#3c6f82'); sea.addColorStop(.55,'#0e4d5a'); sea.addColorStop(1,'#072b33');
-    ctx.fillStyle=sea; ctx.fillRect(0,hy,W,H-hy);
-    // sun path on the water
-    for(var k=0;k<26;k++){ var yy=hy+4+k*k*.55, wv=reduce?0:Math.sin(t*1.6+k*1.3);
-      if(yy>H) break; var ww=sr*(1.4-k*.03)*(1+.25*wv);
-      ctx.fillStyle='rgba(255,210,140,'+Math.max(0,.55-k*.025)+')'; ctx.fillRect(sx-ww/2+wv*3,yy,ww,1.6+k*.08); }
-    // soft wave lines
-    ctx.strokeStyle='rgba(255,255,255,.07)'; ctx.lineWidth=1;
-    for(var j=1;j<9;j++){ var wy=hy+j*j*4.2, off=reduce?0:(t*12*j)%40; ctx.beginPath();
-      for(var x=-40;x<W+40;x+=40){ ctx.moveTo(x+off,wy); ctx.lineTo(x+off+18,wy); } ctx.stroke(); }
+    var hy=H*.27;
+    // shallow water and a slow ripple around the island
+    for(var r=0;r<2;r++){ var rr=6.2+r*.7+(reduce?0:Math.sin(t*.8+r)*.15); ctx.beginPath();
+      for(var q0=0;q0<=72;q0++){ var a0=q0/72*Math.PI*2, p0=proj(Math.cos(a0)*rr,0,Math.sin(a0)*rr,yaw); q0?ctx.lineTo(p0.x,p0.y):ctx.moveTo(p0.x,p0.y); }
+      ctx.fillStyle=r?'rgba(120,200,205,.07)':'rgba(120,200,205,.14)'; ctx.fill(); }
     // island
     ctx.beginPath();
     for(var q=0;q<=72;q++){ var qa=q/72*Math.PI*2, qp=proj(Math.cos(qa)*5.8,0,Math.sin(qa)*5.8,yaw); q?ctx.lineTo(qp.x,qp.y):ctx.moveTo(qp.x,qp.y); }

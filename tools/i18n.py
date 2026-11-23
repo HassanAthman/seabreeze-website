@@ -23,7 +23,7 @@ SITE = "https://seabreezedata.co.ke"
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from coverage import AREAS
 PAGES = ["index.html", "renew-airtel-5g/index.html", "lipa-mdogo-mdogo/index.html",
-         "sms/index.html", "get-airtel-5g/index.html"] + [f"airtel-5g/{s}/index.html" for s in AREAS]
+         "sms/index.html", "get-airtel-5g/index.html", "contact/index.html", "we-are-hiring/index.html"] + [f"airtel-5g/{s}/index.html" for s in AREAS]
 LANGS = {"sw": ("Kiswahili", "sw_KE", "sw-KE"), "it": ("Italiano", "it_IT", "it")}
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 INLINE = {"a", "b", "strong", "em", "i", "br", "code", "span", "small", "abbr", "kbd", "s", "u", "mark"}
@@ -238,7 +238,7 @@ def add_chrome(src, page, lang):
     """hreflang links and the language switcher, on every language version."""
     src = re.sub(r'\n?<link rel="alternate" hreflang=[^>]+>', "", src)
     src = src.replace('<link rel="canonical"', alternates(page) + '\n<link rel="canonical"', 1)
-    src = re.sub(r'<nav class="lang".*?</nav>', "", src, flags=re.S)
+    src = re.sub(r'\s*<nav class="lang".*?</nav>', "", src, flags=re.S)
     src = src.replace('<a class="btn btn-sun btn-sm"', switcher(page, lang) + '\n    <a class="btn btn-sun btn-sm"', 1)
     return src
 
