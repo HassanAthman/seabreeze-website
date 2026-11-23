@@ -1,6 +1,6 @@
 {
   // Static site served by Cloudflare Workers (static assets, no build step).
-  "name": "seabreeze-website",
+  "name": "seabreezewebsite",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./public",

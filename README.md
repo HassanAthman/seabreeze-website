@@ -17,7 +17,7 @@ Shared files: `styles.css`, `app.js`, `favicon.svg`, `og.png` (link preview imag
 
 `wrangler.jsonc` tells Cloudflare to serve the `public/` folder. In Cloudflare, Workers & Pages > Create > Continue with GitHub, pick this repository and use:
 
-- Project name: `seabreeze-website` (must match `name` in `wrangler.jsonc`)
+- Worker name: `seabreezewebsite` (must match `name` in `wrangler.jsonc`)
 - Build command: leave empty
 - Deploy command: `npx wrangler deploy`
 - Non-production branch deploy command: `npx wrangler versions upload` (gives each branch a preview link)
