@@ -34,3 +34,20 @@ All page addresses (canonical links, sitemap, share links, Google data) use `htt
 - Offer text (Black November runs 24 November to 31 December 2026): home page and town pages.
 - Package prices: home page, town pages and the Google data in each page's head.
 - Contact numbers: WhatsApp Business 0720 499 691, office 0782 998 842.
+
+## Artwork
+
+All artwork is original and drawn as SVG in `tools/art.py` (logo, coverage
+map, Lipa Mdogo Mdogo meter, agent network, icons). It uses the site's
+colour variables, so it follows light and dark mode. After changing it, run
+`python3 tools/art.py` to re-insert it into the pages between
+`<!--art:NAME-->` markers.
+
+Share images (`public/og/*.png`, shown when a page link is posted on
+WhatsApp, Facebook or X) are made by `tools/cards.py`, which also makes
+WhatsApp status and post cards and Google Business Profile images:
+
+    python3 tools/cards.py /tmp/cards && node tools/render.js /tmp/cards
+
+Copy `/tmp/cards/og/NAME_1200x630.png` to `public/og/NAME.png` to update
+the site.
