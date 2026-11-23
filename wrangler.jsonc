@@ -1,6 +1,15 @@
 {
   // Cloudflare Pages project settings. The site is plain static files in public/, no build step.
+  // functions/ holds the one server endpoint: /api/sms-preferences.
   "name": "seabreeze-management",
   "pages_build_output_dir": "./public",
-  "compatibility_date": "2026-11-01"
+  "compatibility_date": "2026-11-01",
+  "d1_databases": [
+    {
+      // Shared CBriz database. Needs cbriz-dashboard migrations/007_sms_preferences.sql.
+      "binding": "DB",
+      "database_name": "cbriz-mpesa-payments",
+      "database_id": "7c855aed-0ce5-4b71-a849-9b602327d14e"
+    }
+  ]
 }

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-KE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SMS reminders and offers: join or stop | Seabreeze 5G</title>
+<meta name="description" content="Choose which SMS you get from Seabreeze (Sea Breeze) 5G: Airtel 5G renewal reminders, offers, or both. Join or stop any time.">
+<link rel="canonical" href="https://seabreezedata.co.ke/sms/">
+<meta name="theme-color" content="#0a3d47">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Seabreeze 5G">
+<meta property="og:title" content="SMS reminders and offers: join or stop | Seabreeze 5G">
+<meta property="og:description" content="Choose which SMS you get from Seabreeze (Sea Breeze) 5G: Airtel 5G renewal reminders, offers, or both. Join or stop any time.">
+<meta property="og:url" content="https://seabreezedata.co.ke/sms/">
+<meta property="og:image" content="https://seabreezedata.co.ke/og.png">
+<meta property="og:locale" content="en_KE">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Seabreeze 5G home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="var(--sea)"/><path d="M5 19c3.5-3 7-3 11 0s7.5 3 11 0" stroke="var(--bg)" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M8 13c2.6-2.2 5.4-2.2 8 0s5.4 2.2 8 0" stroke="var(--sun)" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>
+      Seabreeze 5G
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="/#renew">Renew</a><a href="/#get5g">Get 5G</a><a href="/#services">Services</a><a href="/#coverage">Coverage</a><a href="/#agents">Become an agent</a><a href="/#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-sun btn-sm" href="/#renew">Renew now</a>
+  </div>
+</header>
+<main id="top">
+<section>
+  <div class="wrap" style="max-width:640px">
+    <div class="eyebrow">SMS preferences</div>
+    <h1 style="margin-top:8px">Choose the SMS you get from us</h1>
+    <p style="margin:12px 0 18px">Pick what you want for your phone number. Your choice is saved straight away and our system follows it automatically.</p>
+    <form class="lead" id="smsForm" novalidate>
+      <label for="s-phone">Phone number that gets our SMS<input id="s-phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="e.g. 0712 345 678" required><span class="hint">Safaricom or Airtel number, 07…, 01… or 254…</span></label>
+      <fieldset style="border:0;padding:0;margin:0;display:grid;gap:8px">
+        <legend style="font-weight:600;font-size:.92rem;margin-bottom:6px">Renewal reminders (before your Airtel 5G expires)</legend>
+        <label style="display:flex;gap:10px;align-items:center;font-weight:400"><input type="radio" name="reminders" value="1" style="width:auto"> Yes, remind me</label>
+        <label style="display:flex;gap:10px;align-items:center;font-weight:400"><input type="radio" name="reminders" value="0" style="width:auto"> No, stop reminders</label>
+      </fieldset>
+      <fieldset style="border:0;padding:0;margin:0;display:grid;gap:8px">
+        <legend style="font-weight:600;font-size:.92rem;margin-bottom:6px">Offers and news (discounts, new packages)</legend>
+        <label style="display:flex;gap:10px;align-items:center;font-weight:400"><input type="radio" name="marketing" value="1" style="width:auto"> Yes, send me offers</label>
+        <label style="display:flex;gap:10px;align-items:center;font-weight:400"><input type="radio" name="marketing" value="0" style="width:auto"> No, stop offers</label>
+      </fieldset>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <p class="hint" style="margin:0">Payment receipts (the thank-you SMS after you pay) are always sent, so you know your money arrived.</p>
+      <button class="btn btn-sun" type="submit">Save my choice</button>
+      <p id="smsMsg" role="status" aria-live="polite" style="margin:0;font-weight:600"></p>
+    </form>
+    <p class="hint" style="margin-top:16px">Prefer SMS? Text STOP to 0782 998 842 to stop offers. Questions: WhatsApp 0720 499 691.</p>
+  </div>
+</section>
+</main>
+<script>
+(function(){
+  var f=document.getElementById('smsForm'), msg=document.getElementById('smsMsg');
+  function pick(n){var e=f.querySelector('input[name="'+n+'"]:checked');return e?Number(e.value):null;}
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var phone=f.phone.value.trim(), r=pick('reminders'), m=pick('marketing');
+    if(!phone){msg.textContent='Please enter your phone number.';f.phone.focus();return;}
+    if(r===null&&m===null){msg.textContent='Please choose for reminders, offers, or both.';return;}
+    var btn=f.querySelector('button');btn.disabled=true;msg.textContent='Saving…';
+    fetch('/api/sms-preferences',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({phone:phone,reminders:r,marketing:m,website:f.website.value})})
+    .then(function(res){return res.json().catch(function(){return {};}).then(function(j){return {ok:res.ok,j:j};});})
+    .then(function(x){msg.textContent=x.ok?(x.j.message||'Saved. Thank you.'):(x.j.error||'Sorry, that did not save. Please try again or WhatsApp 0720 499 691.');})
+    .catch(function(){msg.textContent='No connection. Please try again or WhatsApp 0720 499 691.';})
+    .finally(function(){btn.disabled=false;});
+  });
+})();
+</script>
+<footer>
+  <div class="wrap">
+    <div><b style="color:var(--ink)">Seabreeze Data Ventures Ltd</b> (Sea Breeze)<br>Authorised Airtel Kenya Enterprise Solution Partner (ESP)<br>Paybill 4129691 · WhatsApp 0720 499 691 · Office 0782 998 842<br><a href="/sms/">SMS reminders and offers: join or stop</a></div>
+    <div>Head office: Malindi, Kilifi County. Sales agents in Mombasa, Lamu, Mpeketoni, Voi, Kisumu, Kakamega, Bungoma, Kapsabet, Kapenguria and more.</div>
+    <div style="flex-basis:100%"><nav aria-label="Towns"><a href="/airtel-5g/malindi/">Airtel 5G Malindi</a><a href="/airtel-5g/kilifi/">Airtel 5G Kilifi</a><a href="/airtel-5g/mombasa/">Airtel 5G Mombasa</a><a href="/airtel-5g/lamu/">Airtel 5G Lamu</a><a href="/airtel-5g/mpeketoni/">Airtel 5G Mpeketoni</a><a href="/airtel-5g/voi/">Airtel 5G Voi</a><a href="/airtel-5g/kisumu/">Airtel 5G Kisumu</a><a href="/airtel-5g/kakamega/">Airtel 5G Kakamega</a><a href="/airtel-5g/bungoma/">Airtel 5G Bungoma</a><a href="/airtel-5g/kapsabet/">Airtel 5G Kapsabet</a><a href="/airtel-5g/kapenguria/">Airtel 5G Kapenguria</a><a href="/renew-airtel-5g/">How to renew Airtel 5G</a></nav></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/254720499691" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp, 0720 499 691">WhatsApp 0720 499 691</a>
+<script src="/app.js" defer></script>
+</body>
+</html>
