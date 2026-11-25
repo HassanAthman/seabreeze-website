@@ -4,15 +4,17 @@
 // Saved in website_client_updates (cbriz-dashboard migrations/012) for staff
 // to verify and approve in CBriz > Website Approvals. Nothing in the client
 // database changes here.
-// Every submission queues an SMS alert to the management phone (0782 998 842,
-// renewal_monitor_settings.management_phone) through sms_outbox, which
+// Every submission queues an SMS alert to 0782 998 842 and 0734 782 203
+// (renewal_monitor_settings.website_update_alert_phones) through sms_outbox, which
 // cbriz-sms-sender sends between 08:00 and 20:00 Kenya time.
 //
 // Body: { line, name, phone, alt_phone, expiry, note, lang, website (honeypot) }
 
 const MAX_PER_CLIENT_PER_DAY = 6;
 const MAX_PER_LINE_PER_DAY = 3;
-const DEFAULT_ALERT_PHONE = "254782998842";
+// Staff phones that get the alert (Hassan, 25 Nov 2026: two numbers).
+// Override with renewal_monitor_settings.website_update_alert_phones (comma separated).
+const DEFAULT_ALERT_PHONES = "254782998842,254734782203";
 
 function reply(status, body) {
   return new Response(JSON.stringify(body), {
@@ -163,9 +165,10 @@ export async function onRequestPost({ request, env }) {
     // Staff alert. Never block the client's request on it.
     try {
       const rows = await env.DB.prepare(`SELECT setting_key, setting_value FROM renewal_monitor_settings
-        WHERE setting_key IN ('website_update_alerts_enabled', 'management_phone')`).all();
+        WHERE setting_key IN ('website_update_alerts_enabled', 'website_update_alert_phones')`).all();
       const cfg = Object.fromEntries((rows.results || []).map((r) => [r.setting_key, r.setting_value]));
-      const to = normalizeKenyanPhone(cfg.management_phone) || DEFAULT_ALERT_PHONE;
+      const phones = [...new Set(String(cfg.website_update_alert_phones || DEFAULT_ALERT_PHONES).split(",")
+        .map((p) => normalizeKenyanPhone(p)).filter(Boolean))];
       if (cfg.website_update_alerts_enabled !== "0") {
         const line = ident.kind === "NUMERIC" ? "0" + ident.key : ident.key;
         const known = await env.DB.prepare(`SELECT id, customer_name FROM customers
@@ -175,9 +178,11 @@ export async function onRequestPost({ request, env }) {
         const who = known ? `existing client #${known.id}` : "NEW line, not in CBriz";
         const message = `CBriz website update ${ref}: ${name}, line ${line} (${who}), SMS phone 0${phone.slice(3)}.` +
           ` Verify, then approve in CBriz > Website Approvals.`;
-        await env.DB.prepare(`INSERT INTO sms_outbox (customer_id, phone, message, purpose, requested_by, status)
-          VALUES (?1, ?2, ?3, 'STAFF_ALERT', 'website:update-details', 'QUEUED')`)
-          .bind(known ? known.id : null, to, message.slice(0, 300)).run();
+        for (const to of phones) {
+          await env.DB.prepare(`INSERT INTO sms_outbox (customer_id, phone, message, purpose, requested_by, status)
+            VALUES (?1, ?2, ?3, 'STAFF_ALERT', 'website:update-details', 'QUEUED')`)
+            .bind(known ? known.id : null, to, message.slice(0, 300)).run();
+        }
       }
     } catch (e) {
       console.error("Update alert not queued", String(e));
