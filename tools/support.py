@@ -345,7 +345,6 @@ def hub():
     </div>
   </div>
 </section>
-{contact_block()}
 </main>
 <script>var HC_OLD={old};</script>
 '''
@@ -445,7 +444,6 @@ def guide(slug):
     </aside>
   </div>
 </section>
-{contact_block()}
 </main>
 '''
 

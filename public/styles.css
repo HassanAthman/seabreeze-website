@@ -636,3 +636,13 @@ footer nav.fcol a{text-decoration:none}footer nav.fcol a:hover{text-decoration:u
 .hc-hero{padding-block:0}
 @media (max-width:600px){.mk{transform:scale(.88);transform-origin:top center;margin-bottom:-26px}}
 .pop{align-content:start;grid-template-rows:auto 1fr}
+
+/* ===== Site footer: dark, joined to the "Still need help?" band (same on every page) ===== */
+.hc-contact{border-bottom:1px solid rgba(255,255,255,.08)}
+footer{background:#06242b;color:#9fbfc4;border-top:0}
+footer a,footer nav a{color:#cfe4e6}
+footer a:hover{color:#fff}
+footer .f-name,footer nav.fcol b{color:#fff}
+footer nav.fcol a:hover{color:#fff}
+footer a.sms-foot{color:var(--sun)}
+footer .wrap{padding-block:36px 96px}

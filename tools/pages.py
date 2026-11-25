@@ -9,7 +9,7 @@ to draw the maps.
 import json, pathlib, re, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from coverage import AREAS, GROUPS, chip_label
-from support import G as _SG
+from support import G as _SG, contact_block
 SUPPORT_SLUGS = list(_SG)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -83,6 +83,10 @@ def shared(html, path="/"):
         html = re.sub(r'<!--foot-->.*?<!--/foot-->', lambda m: footer_html(), html, flags=re.S)
     else:
         html = re.sub(r'<div>Head office: Malindi.*?</nav></div>', lambda m: footer_html(), html, flags=re.S)
+    # "Still need help?" band above the footer, the same on every page
+    html = re.sub(r'<!--help-->.*?<!--/help-->\n?', "", html, flags=re.S)
+    html = html.replace("<footer>", "<!--help-->" + contact_block() + "<!--/help-->\n<footer>", 1)
+    html = html.replace('<b style="color:var(--ink)">Seabreeze Data Ventures Ltd</b>', '<b class="f-name">Seabreeze Data Ventures Ltd</b>')
     html = re.sub(r'<nav class="links"[^>]*>.*?</nav>', lambda m: nav_html(path), html, flags=re.S)
     if 'class="menu-btn"' not in html:
         html = re.sub(r'(<a class="btn btn-sun btn-sm"[^>]*>[^<]*</a>)', lambda m: m.group(1) + "\n    " + MENU_BTN, html, count=1)
