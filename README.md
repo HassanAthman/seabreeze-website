@@ -30,7 +30,7 @@ If Cloudflare shows "This project is disconnected from your Git account", reinst
 
 ## Update details form
 
-`/update-details/` (also `/sw/` and `/it/`) posts to `functions/api/update-details.js`, which saves the client's line, name and SMS phone in `website_client_updates` (cbriz-dashboard `migrations/012_website_client_updates.sql`, run it in the D1 console first) and queues an SMS alert to the management phone (0782 998 842) through `sms_outbox`. Nothing in the client database changes until staff approve it in CBriz > Website Approvals. A link `?line=0712345678` pre-fills the line.
+`/update-details/` (also `/sw/` and `/it/`) posts to `functions/api/update-details.js`, which saves the client's line, name and SMS phone in `website_client_updates` (cbriz-dashboard `migrations/012_website_client_updates.sql`, run it in the D1 console first) and queues an SMS alert to 0782 998 842 and 0734 782 203 (setting `website_update_alert_phones`) through `sms_outbox`. Nothing in the client database changes until staff approve it in CBriz > Website Approvals. A link `?line=0712345678` pre-fills the line.
 
 ## Domain
 
