@@ -268,3 +268,10 @@
     new IntersectionObserver(function(es){ if(es[0].isIntersecting && !started && auto){ started=true; tick(); } }).observe(sim);
   }
 })();
+
+/* ---- coverage: jump to the chosen area page ---- */
+(function(){
+  var sel=document.getElementById('areaSel'); if(!sel) return;
+  var lang=(document.documentElement.lang||'en').slice(0,2), pre=(lang==='sw'||lang==='it')?'/'+lang:'';
+  sel.addEventListener('change',function(){ if(sel.value) location.href=pre+sel.value; });
+})();

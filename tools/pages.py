@@ -32,7 +32,7 @@ FOOT_COLS = [
     ("Help", [("/support/", "Help centre"), ("/support/#change-wifi-password", "Change your WiFi name and password"),
               ("/support/#paid-no-internet", "Paid but no internet"), ("/support/#check-expiry", "Check your expiry date"),
               ("/update-details/", "Update your details"), ("/sms/", "SMS reminders: join or stop"), ("/#faq", "Common questions")]),
-    ("Company", [("/about/", "About us"), ("/about/#services", "Our services"), ("/#coverage", "Where we work"),
+    ("Company", [("/about/", "About us"), ("/about/#services", "Our services"), ("/coverage/", "Coverage areas"),
                  ("/contact/", "Contact us"), ("/contact/#float", "Airtel Money float"), ("/we-are-hiring/", "We are hiring")]),
 ]
 
@@ -48,19 +48,24 @@ def nav_html(path):
 def footer_html():
     cols = "".join(f'<nav class="fcol" aria-label="{h}"><b>{h}</b>' + "".join(f'<a href="{u}">{t}</a>' for u, t in links) + "</nav>"
                    for h, links in FOOT_COLS)
-    links = "".join(f'<a href="/airtel-5g/{s}/">Airtel 5G {chip_label(s).replace(" (head office)", "")}</a>'
-                    for _g, slugs in GROUPS for s in slugs)
     return ('<!--foot--><div>Head office: Malindi, Kilifi County. Agents across the Coast, Nairobi, the Rift Valley and western Kenya.</div>\n'
-            f'    <div class="fcols">{cols}</div>\n'
-            f'    <div style="flex-basis:100%"><nav aria-label="Areas">{links}<a href="/renew-airtel-5g/">How to renew Airtel 5G</a>'
-            '<a href="/support/">Help centre</a><a href="/about/">About us</a><a href="/contact/">Contact us</a></nav></div><!--/foot-->')
+            f'    <div class="fcols">{cols}</div><!--/foot-->')
 
 def coverage_html():
-    rows = []
+    """Homepage: one tidy 'find your area' picker instead of a wall of town names."""
+    groups = "".join(f'<optgroup label="{g}">' + "".join(f'<option value="/airtel-5g/{s}/">{esc(chip_label(s))}</option>' for s in slugs) + "</optgroup>"
+                     for g, slugs in GROUPS)
+    return ('<div class="areafind"><label for="areaSel">Find your area</label><div class="af-row">'
+            f'<select id="areaSel"><option value="">Choose your county or town</option>{groups}</select>'
+            '<a class="btn btn-ghost" href="/coverage/">See all areas</a></div></div>')
+
+def coverage_full_html():
+    """Coverage page: one card per region with plain links."""
+    cards = []
     for g, slugs in GROUPS:
-        chips = "".join(f'<a{" class=\"hq\"" if s == "malindi" else ""} href="/airtel-5g/{s}/">{esc(chip_label(s))}</a>' for s in slugs)
-        rows.append(f'<div class="cgroup"><h3>{g}</h3><div class="towns">{chips}</div></div>')
-    return "".join(rows)
+        links = "".join(f'<a{" class=\"hq\"" if s == "malindi" else ""} href="/airtel-5g/{s}/">{esc(chip_label(s))}</a>' for s in slugs)
+        cards.append(f'<div class="region"><h3>{g}</h3><div class="rlinks">{links}</div></div>')
+    return '<div class="regions">' + "".join(cards) + "</div>"
 
 def area_served():
     names = []
@@ -80,6 +85,8 @@ def shared(html, path="/"):
     if 'class="menu-btn"' not in html:
         html = re.sub(r'(<a class="btn btn-sun btn-sm"[^>]*>[^<]*</a>)', lambda m: m.group(1) + "\n    " + MENU_BTN, html, count=1)
     html = re.sub(r'<!--cov-->.*?<!--/cov-->', lambda m: f"<!--cov-->{coverage_html()}<!--/cov-->", html, flags=re.S)
+    html = re.sub(r'<!--covfull-->.*?<!--/covfull-->', lambda m: f"<!--covfull-->{coverage_full_html()}<!--/covfull-->", html, flags=re.S)
+    html = html.replace('<a href="/#coverage">Coverage</a>', '<a href="/coverage/">Coverage</a>')
     html = re.sub(r'"areaServed": \[[^\]]*\]', lambda m: '"areaServed": ' + json.dumps(area_served()), html)
     return html
 
@@ -168,7 +175,7 @@ def county_page(slug, tpl):
     return head + body + foot
 
 def sitemap():
-    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/update-details/", "/support/", "/about/", "/privacy/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
+    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/update-details/", "/support/", "/about/", "/coverage/", "/privacy/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
     langs = [p.name for p in PUB.iterdir() if p.is_dir() and p.name in ("sw", "it")]
     translated = []
     for lang in langs:

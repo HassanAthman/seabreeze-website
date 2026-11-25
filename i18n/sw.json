@@ -14,8 +14,8 @@
    "Pata WiFi ya nyumbani ya Airtel 5G Smart Connect mjini {1}, {T2}. Kuanzia KES 1,999 kwa mwezi, data bila kikomo. Lipia kwa M-Pesa Paybill 4129691."
   ],
   [
-   "<a href=\"/\">Home</a> / <a href=\"/#coverage\">Coverage</a> / (.+)",
-   "<a href=\"/\">Mwanzo</a> / <a href=\"/#coverage\">Maeneo</a> / {T1}"
+   "<a href=\"/\">Home</a> / <a href=\"/coverage/\">Coverage</a> / (.+)",
+   "<a href=\"/\">Mwanzo</a> / <a href=\"/coverage/\">Maeneo</a> / {T1}"
   ],
   [
    "Whole of (.+) County",
@@ -775,5 +775,20 @@
  "Missed a renewal? Come back with 99/- off.": "Ulikosa kulipia? Rudi upate punguzo la 99/-.",
  "From 24 November to 31 December, renew through Paybill 4129691 with 99/- off: pay 1,900/- for 15 Mbps or 2,900/- for 30 Mbps. For clients whose 5G has been off for 30+ days, or who are paying through our paybill for the first time.": "Kuanzia 24 Novemba hadi 31 Desemba, lipia kupitia Paybill 4129691 upate punguzo la 99/-: lipa 1,900/- kwa Mbps 15 au 2,900/- kwa Mbps 30. Ni kwa wateja ambao 5G yao imezimwa kwa siku 30 au zaidi, au wanaolipa kupitia paybill yetu kwa mara ya kwanza.",
  "KES 1,000 connection fee on 30-day plans only. 99/- off your comeback renewal until 31 December: 1,900/- (15 Mbps) or 2,900/- (30 Mbps), for lapsed and first-time paybill clients.": "Ada ya kuunganishwa KES 1,000 kwa vifurushi vya siku 30 pekee. Punguzo la 99/- unaporudi kulipia hadi 31 Desemba: 1,900/- (Mbps 15) au 2,900/- (Mbps 30), kwa wateja waliozimwa na wanaolipa kupitia paybill kwa mara ya kwanza.",
- "Update your details": "Sasisha taarifa zako"
+ "Update your details": "Sasisha taarifa zako",
+ "Head office in Malindi, Kilifi County. Our agents cover 26 counties and towns, from the Coast to Nairobi, the Rift Valley and western Kenya. Pick your area to see local details, or send us your town on WhatsApp and we check the signal. You can renew from anywhere.": "Ofisi kuu iko Malindi, Kaunti ya Kilifi. Mawakala wetu wanahudumia kaunti na miji 26, kutoka Pwani hadi Nairobi, Bonde la Ufa na magharibi mwa Kenya. Chagua eneo lako uone maelezo ya karibu, au tutumie mji wako kwa WhatsApp tupime mtandao. Unaweza kulipia ukiwa popote.",
+ "Find your area": "Tafuta eneo lako",
+ "Choose your county or town": "Chagua kaunti au mji wako",
+ "See all areas": "Tazama maeneo yote",
+ "Coverage areas": "Maeneo tunayohudumia",
+ "Airtel 5G coverage areas in Kenya | Seabreeze 5G": "Maeneo ya Airtel 5G nchini Kenya | Seabreeze 5G",
+ "Where Seabreeze installs Airtel 5G home internet: the Coast, Nairobi, the Rift Valley and western Kenya. Find your county or town, or check coverage on WhatsApp.": "Mahali Seabreeze inafunga intaneti ya nyumbani ya Airtel 5G: Pwani, Nairobi, Bonde la Ufa na magharibi mwa Kenya. Tafuta kaunti au mji wako, au uliza kuhusu mtandao kwa WhatsApp.",
+ "<a href=\"/\">Home</a> / Coverage": "<a href=\"/\">Mwanzo</a> / Maeneo",
+ "Airtel 5G where you <em>live</em>": "Airtel 5G pale <em>unapoishi</em>",
+ "Seabreeze agents install Airtel 5G home internet across the Coast, Nairobi, the Rift Valley and western Kenya. The router also works in 4G areas.": "Mawakala wa Seabreeze wanafunga intaneti ya nyumbani ya Airtel 5G Pwani, Nairobi, Bonde la Ufa na magharibi mwa Kenya. Router inafanya kazi pia katika maeneo ya 4G.",
+ "All areas": "Maeneo yote",
+ "Your area not listed?": "Eneo lako halipo kwenye orodha?",
+ "It may still be covered. Send us your estate and nearest landmark on WhatsApp and we check the signal before you pay anything.": "Huenda bado linafikiwa. Tutumie mtaa wako na alama ya karibu kwa WhatsApp, tupime mtandao kabla hujalipa chochote.",
+ "Maps": "Ramani",
+ "Where our agents work": "Mahali mawakala wetu wanapofanya kazi"
 }

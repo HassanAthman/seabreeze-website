@@ -14,8 +14,8 @@
    "WiFi di casa Airtel 5G Smart Connect a {1}, {T2}. Da KES 1,999 al mese, dati illimitati. Rinnovi con M-Pesa Paybill 4129691."
   ],
   [
-   "<a href=\"/\">Home</a> / <a href=\"/#coverage\">Coverage</a> / (.+)",
-   "<a href=\"/\">Home</a> / <a href=\"/#coverage\">Copertura</a> / {T1}"
+   "<a href=\"/\">Home</a> / <a href=\"/coverage/\">Coverage</a> / (.+)",
+   "<a href=\"/\">Home</a> / <a href=\"/coverage/\">Copertura</a> / {T1}"
   ],
   [
    "Whole of (.+) County",
@@ -775,5 +775,20 @@
  "Missed a renewal? Come back with 99/- off.": "Hai saltato un rinnovo? Torna con 99/- di sconto.",
  "From 24 November to 31 December, renew through Paybill 4129691 with 99/- off: pay 1,900/- for 15 Mbps or 2,900/- for 30 Mbps. For clients whose 5G has been off for 30+ days, or who are paying through our paybill for the first time.": "Dal 24 novembre al 31 dicembre, rinnova tramite il Paybill 4129691 con 99/- di sconto: paghi 1,900/- per 15 Mbps o 2,900/- per 30 Mbps. Per i clienti con il 5G spento da 30 giorni o più, o che pagano con il nostro paybill per la prima volta.",
  "KES 1,000 connection fee on 30-day plans only. 99/- off your comeback renewal until 31 December: 1,900/- (15 Mbps) or 2,900/- (30 Mbps), for lapsed and first-time paybill clients.": "Costo di attivazione KES 1,000 solo sui pacchetti da 30 giorni. 99/- di sconto quando torni a rinnovare, fino al 31 dicembre: 1,900/- (15 Mbps) o 2,900/- (30 Mbps), per clienti scaduti o al primo pagamento con il nostro paybill.",
- "Update your details": "Aggiorna i tuoi dati"
+ "Update your details": "Aggiorna i tuoi dati",
+ "Head office in Malindi, Kilifi County. Our agents cover 26 counties and towns, from the Coast to Nairobi, the Rift Valley and western Kenya. Pick your area to see local details, or send us your town on WhatsApp and we check the signal. You can renew from anywhere.": "Sede a Malindi, contea di Kilifi. I nostri agenti coprono 26 contee e città, dalla Costa a Nairobi, alla Rift Valley e al Kenya occidentale. Scegli la tua zona per i dettagli locali, oppure mandaci la tua città su WhatsApp e verifichiamo il segnale. Puoi rinnovare da ovunque.",
+ "Find your area": "Trova la tua zona",
+ "Choose your county or town": "Scegli la tua contea o città",
+ "See all areas": "Vedi tutte le zone",
+ "Coverage areas": "Zone coperte",
+ "Airtel 5G coverage areas in Kenya | Seabreeze 5G": "Zone coperte da Airtel 5G in Kenya | Seabreeze 5G",
+ "Where Seabreeze installs Airtel 5G home internet: the Coast, Nairobi, the Rift Valley and western Kenya. Find your county or town, or check coverage on WhatsApp.": "Dove Seabreeze installa internet di casa Airtel 5G: Costa, Nairobi, Rift Valley e Kenya occidentale. Trova la tua contea o città, oppure verifica la copertura su WhatsApp.",
+ "<a href=\"/\">Home</a> / Coverage": "<a href=\"/\">Home</a> / Copertura",
+ "Airtel 5G where you <em>live</em>": "Airtel 5G dove <em>vivi</em>",
+ "Seabreeze agents install Airtel 5G home internet across the Coast, Nairobi, the Rift Valley and western Kenya. The router also works in 4G areas.": "Gli agenti Seabreeze installano internet di casa Airtel 5G sulla Costa, a Nairobi, nella Rift Valley e nel Kenya occidentale. Il router funziona anche nelle zone 4G.",
+ "All areas": "Tutte le zone",
+ "Your area not listed?": "La tua zona non è nell'elenco?",
+ "It may still be covered. Send us your estate and nearest landmark on WhatsApp and we check the signal before you pay anything.": "Potrebbe essere comunque coperta. Mandaci su WhatsApp il tuo quartiere e un punto di riferimento vicino: verifichiamo il segnale prima che tu paghi qualcosa.",
+ "Maps": "Mappe",
+ "Where our agents work": "Dove lavorano i nostri agenti"
 }
