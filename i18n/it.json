@@ -1111,5 +1111,8 @@
  "A person from our team gets back to you.": "Una persona del nostro team ti ricontatta.",
  "Stop offers and reminders. Send START to turn them back on.": "Ferma offerte e promemoria. Invia START per riattivarli.",
  "You can also write a full question, like \"when does my internet end?\"": "Puoi anche scrivere una domanda intera, come \"quando scade il mio internet?\"",
- "For your safety, we send expiry dates and payment details only to the phone number registered on your line.": "Per la tua sicurezza, inviamo scadenze e dettagli dei pagamenti solo al numero registrato sulla tua linea."
+ "For your safety, we send expiry dates and payment details only to the phone number registered on your line.": "Per la tua sicurezza, inviamo scadenze e dettagli dei pagamenti solo al numero registrato sulla tua linea.",
+ "NEW": "NEW",
+ "<b translate=\"no\">NEW</b>": "<b translate=\"no\">NEW</b>",
+ "How to get Airtel 5G at home: apply online, then Airtel sends the code, payment link and installer. Or send MPYA.": "Come avere Airtel 5G a casa: fai domanda online, poi Airtel ti invia il codice, il link di pagamento e il tecnico. Oppure invia MPYA."
 }

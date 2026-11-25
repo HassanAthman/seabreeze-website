@@ -1109,5 +1109,8 @@
  "A person from our team gets back to you.": "Mtu wa timu yetu atakurudia.",
  "Stop offers and reminders. Send START to turn them back on.": "Simamisha ofa na vikumbusho. Tuma START kuviwasha tena.",
  "You can also write a full question, like \"when does my internet end?\"": "Unaweza pia kuandika swali zima, kama \"intaneti yangu inaisha lini?\"",
- "For your safety, we send expiry dates and payment details only to the phone number registered on your line.": "Kwa usalama wako, tunatuma tarehe ya mwisho na taarifa za malipo kwa namba ya simu iliyosajiliwa kwenye laini yako pekee."
+ "For your safety, we send expiry dates and payment details only to the phone number registered on your line.": "Kwa usalama wako, tunatuma tarehe ya mwisho na taarifa za malipo kwa namba ya simu iliyosajiliwa kwenye laini yako pekee.",
+ "NEW": "NEW",
+ "<b translate=\"no\">NEW</b>": "<b translate=\"no\">NEW</b>",
+ "How to get Airtel 5G at home: apply online, then Airtel sends the code, payment link and installer. Or send MPYA.": "Jinsi ya kupata Airtel 5G nyumbani: omba mtandaoni, kisha Airtel wanakutumia code, link ya malipo na fundi. Au tuma MPYA."
 }
