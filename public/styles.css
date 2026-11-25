@@ -646,3 +646,20 @@ footer .f-name,footer nav.fcol b{color:#fff}
 footer nav.fcol a:hover{color:#fff}
 footer a.sms-foot{color:var(--sun)}
 footer .wrap{padding-block:36px 96px}
+
+/* Instant answers by SMS */
+.hc-smssec{padding-bottom:0}
+.sms-band{display:grid;grid-template-columns:auto 1fr auto;gap:18px 20px;align-items:center;background:var(--sun-soft);border:1px solid var(--sun);border-radius:18px;padding:22px 24px}
+@media (max-width:720px){.sms-band{grid-template-columns:auto 1fr}.sms-band .btn{grid-column:1/-1;justify-self:start}}
+.sb-ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--sun);color:var(--sun-ink);align-self:start}
+.sb-ic .ic{width:24px;height:24px}
+.sms-band h2{font-size:clamp(1.25rem,3.4vw,1.5rem)}
+.sms-band p{color:var(--ink);margin-top:4px}
+.sb-words{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.sb-words span{font:700 .8rem var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:3px 8px;color:var(--ink)}
+.kwtable td:first-child{white-space:nowrap;font-family:var(--mono)}
+.mk-sms .mk-wa{background:#2b3a42}
+.mk-sms .mk-msgs{background:#f1f4f5}
+.mk-sms .b-me{background:#0b6e78;color:#fff}
+.kwtable td{font-family:var(--body);color:var(--muted)}.kwtable td:first-child{font-family:var(--mono);color:var(--ink)}
+.sms-band p b{white-space:nowrap}

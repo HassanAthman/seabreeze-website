@@ -70,6 +70,37 @@ def chat(msgs):
     rows = "".join(f'<p class="b-{side}">{t}</p>' for side, t in msgs)
     return f'<div class="mk mk-smart mk-chat" aria-hidden="true"><div class="mk-scr"><div class="mk-wa"><b>Seabreeze 5G</b></div><div class="mk-msgs">{rows}</div></div></div>'
 
+def sms(msgs, who="CBriz Data"):
+    """A phone's Messages app. Messages are translated."""
+    rows = "".join(f'<p class="b-{side}">{t}</p>' for side, t in msgs)
+    return f'<div class="mk mk-smart mk-chat mk-sms" aria-hidden="true"><div class="mk-scr"><div class="mk-wa"><b>{who}</b></div><div class="mk-msgs">{rows}</div></div></div>'
+
+SMS_NO = "0734 782 203"
+# (word, what you get) for the SMS auto-answer on 0734 782 203
+SMS_WORDS = [
+    ("EXPIRY", "When your Airtel 5G ends. Sent only to the phone registered on the line."),
+    ("PAID", "Whether we got your payment. You can also send the M-Pesa code."),
+    ("RENEW", "How to pay on Paybill 4129691."),
+    ("PRICE", "All packages and prices."),
+    ("MDOGO", "How Lipa Mdogo Mdogo works."),
+    ("WIFI", "A link to change your WiFi name and password."),
+    ("AGENT", "A person from our team gets back to you."),
+    ("STOP", "Stop offers and reminders. Send START to turn them back on."),
+]
+
+def sms_band():
+    """'Instant answers by SMS' card: help centre home and Contact page."""
+    chips = "".join(f'<span translate="no">{w}</span>' for w, _ in SMS_WORDS[:6])
+    return f'''<div class="sms-band">
+      <div class="sb-ic">{icon("msg")}</div>
+      <div class="sb-txt">
+        <h2>Instant answers by SMS</h2>
+        <p>Text one word to <b>{SMS_NO}</b> and get a reply in seconds, day or night. Works on any phone.</p>
+        <div class="sb-words">{chips}</div>
+      </div>
+      <a class="btn btn-sun" href="/support/sms-answers/">See all SMS words</a>
+    </div>'''
+
 def ico(name):
     return f'<div class="st-ico">{icon(name)}</div>'
 
@@ -103,6 +134,7 @@ G["paid-no-internet"] = dict(
     summary="Most payments reflect within minutes. If yours has not, follow these steps.",
     steps=[
         ("Check the M-Pesa message", "Make sure you paid to 4129691 with the right Airtel 5G number.", ico("msg")),
+        ("SMS PAID to 0734 782 203", "We reply in seconds and tell you if your payment has arrived.", ico("chat")),
         ("Wait 30 minutes", "Most renewals show within a few minutes.", ico("clock")),
         ("Restart the router", 'Unplug it, wait 30 seconds, then plug it back in. <a href="../restart-router/">See how</a>', ico("power")),
         ("Still off? Send us the M-Pesa message", "WhatsApp it to 0734 782 203 with your Airtel 5G number.", ico("chat")),
@@ -142,7 +174,7 @@ G["check-expiry"] = dict(
          chat([("me", "0101234567"), ("them", "Your plan ends on 12 December. Renew with KES 1,999 on Paybill 4129691.")])),
     ],
     cta=("Ask on WhatsApp", "Hi Seabreeze, when does my plan end? My Airtel 5G number is:"),
-    tip='Want a reminder before it ends? <a href="/sms/">Join SMS reminders</a>.',
+    tip='Faster: SMS <b>EXPIRY</b> to 0734 782 203 for an instant answer. <a href="../sms-answers/">How it works</a>',
 )
 
 G["slow-internet"] = dict(
@@ -236,7 +268,7 @@ G["sms-reminders"] = dict(
     summary="Get a reminder before your plan ends, or stop messages any time.",
     steps=[
         ("Open the SMS form", '<a href="/sms/">SMS preferences form</a>', ico("bell")),
-        ("Or text STOP", "Send STOP to 0782 998 842 to stop offers and reminders.", ico("msg")),
+        ("Or text STOP", "Send STOP to 0734 782 203 to stop offers and reminders.", ico("msg")),
     ],
     tip="Payment receipts are always sent.",
 )
@@ -252,11 +284,24 @@ G["stay-safe"] = dict(
     ],
 )
 
+G["sms-answers"] = dict(
+    title="Get instant answers by SMS", icon="msg", topic="account", minutes=1,
+    summary="Text one word to 0734 782 203 and get an answer in seconds, day or night.",
+    steps=[
+        ("Open Messages on any phone", "No smartphone, app or internet needed.", ico("msg")),
+        ("Send one word to 0734 782 203", "For example EXPIRY. Small letters are fine, in English or Kiswahili.", sms([("me", "expiry")], who="0734 782 203")),
+        ("Get the answer in seconds", "The reply comes from CBriz Data.",
+         sms([("me", "expiry"), ("them", "Your Airtel 5G 0101234567 ends on 12 December. Renew with KES 1,999 on Paybill 4129691.")])),
+    ],
+    words=True,
+    tip="For your safety, we send expiry dates and payment details only to the phone number registered on your line.",
+)
+
 TOPICS = [
     ("pay", "Pay and renew", "wallet", ["renew-paybill", "lipa-mdogo-mdogo", "payment-questions"]),
     ("fix", "No internet or slow", "nowifi", ["paid-no-internet", "no-internet", "slow-internet", "restart-router"]),
     ("wifi", "WiFi and router", "wifi", ["change-wifi-password", "forgot-wifi-password", "router-placement", "router-guide"]),
-    ("account", "Account and safety", "shield", ["check-expiry", "sms-reminders", "stay-safe", ("/update-details/", "Update your details")]),
+    ("account", "Account and safety", "shield", ["sms-answers", "check-expiry", "sms-reminders", "stay-safe", ("/update-details/", "Update your details")]),
 ]
 TOPIC_NAME = {t[0]: t[1] for t in TOPICS}
 POPULAR = ["renew-paybill", "paid-no-internet", "change-wifi-password", "check-expiry", "slow-internet", "restart-router"]
@@ -266,7 +311,7 @@ OLD = {"change-wifi-password": "change-wifi-password", "renew-paybill": "renew-p
        "router-placement": "router-placement", "lipa-mdogo": "lipa-mdogo-mdogo", "renew-early": "payment-questions",
        "pay-for-someone": "payment-questions", "wrong-account": "payment-questions", "prices": "payment-questions",
        "no-internet": "no-internet", "lights-off": "no-internet", "slow-internet": "slow-internet",
-       "sms-reminders": "sms-reminders", "stay-safe": "stay-safe", "router-3d": "router-guide"}
+       "sms-reminders": "sms-reminders", "stay-safe": "stay-safe", "router-3d": "router-guide", "sms": "sms-answers"}
 
 PAGES = ["support/index.html"] + [f"support/{s}/index.html" for s in G]
 
@@ -318,6 +363,12 @@ def hub():
     </form>
     <p class="hc-none" id="hcnone" hidden>No guide found. WhatsApp us on 0734 782 203 and we will help.</p>
     <div class="hc-chips"><span>Popular:</span>{chips}</div>
+  </div>
+</section>
+
+<section class="hc-sec hc-smssec">
+  <div class="wrap">
+    {sms_band()}
   </div>
 </section>
 
@@ -405,6 +456,10 @@ def guide(slug):
             d = f'<p>{det}</p>' if det else ""
             lis.append(f'<li class="gs"><div class="gs-txt"><span class="gs-n">{i}</span><div><h3>{act}</h3>{d}</div></div><div class="gs-vis">{vis}</div></li>')
         parts.append(f'<ol class="gsteps{" gsteps-ico" if all(s[2].startswith("<div class=\"st-ico") for s in g["steps"]) else ""}">{"".join(lis)}</ol>')
+    if g.get("words"):
+        rows = "".join(f'<tr><td><b translate="no">{w}</b></td><td>{d}</td></tr>' for w, d in SMS_WORDS)
+        parts.append(f'<div class="qa"><h3>Words you can send</h3><table class="ptable kwtable"><tr><th>Send</th><th>You get</th></tr>{rows}</table>'
+                     '<p class="qa-note">You can also write a full question, like "when does my internet end?"</p></div>')
     if g.get("qa"):
         qa = "".join(f'<div class="qa"><h3>{q}</h3>{prices_table() if a == "PRICES" else f"<p>{a}</p>"}</div>' for q, a in g["qa"])
         parts.append(f'<div class="qas">{qa}</div>')
@@ -460,7 +515,9 @@ def shell(path, title, desc, main, scripts, ld):
         head = re.sub(rf'(<meta {k} content=")[^"]*"', lambda m: m.group(1) + desc + '"', head)
     head = re.sub(r'(<meta property="og:title" content=")[^"]*"', lambda m: m.group(1) + title + '"', head)
     head = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: '<script type="application/ld+json">' + json.dumps(ld) + "</script>", head, flags=re.S)
-    foot = foot.replace('<script src="/app.js" defer></script>', '<script src="/app.js" defer></script>' + scripts)
+    foot, n = re.subn(r'(<script src="/app\.js(?:\?v=\w+)?" defer></script>)', lambda m: m.group(1) + scripts, foot, count=1)
+    assert n == 1, "app.js script tag not found in the page shell"
+    foot = re.sub(r'\n?<script src="/(?:support|guide3d)\.js" defer></script>', "", foot) if False else foot
     return head + main + foot
 
 def main():
