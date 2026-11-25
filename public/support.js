@@ -25,7 +25,8 @@
       'lipa-mdogo-mdogo': 'small amounts installments mdogo kidogo kidogo rate a rate',
       'payment-questions': 'prices price cost package wrong account someone else early bei kifurushi prezzi prezzo costo',
       'sms-reminders': 'sms reminder stop messages ujumbe kumbusho promemoria',
-      'stay-safe': 'fraud scam safe pin cash wizi ulaghai truffa sicurezza'
+      'stay-safe': 'fraud scam safe pin cash wizi ulaghai truffa sicurezza',
+      'sms-answers': 'sms text message instant answer expiry paid price agent ujumbe jibu messaggio risposta'
     };
     var items = [], seen = {};
     [].forEach.call(document.querySelectorAll('.topics2 a, .pops a'), function(a){
