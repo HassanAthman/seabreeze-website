@@ -6,7 +6,7 @@ Town pages marked keep=True (Malindi, Mpeketoni, Voi) are hand written and
 only get the shared parts refreshed. Run `python3 tools/art.py` afterwards
 to draw the maps.
 """
-import json, pathlib, re, sys
+import hashlib, json, pathlib, re, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from coverage import AREAS, GROUPS, chip_label
 from support import G as _SG, contact_block
@@ -83,6 +83,10 @@ def shared(html, path="/"):
         html = re.sub(r'<!--foot-->.*?<!--/foot-->', lambda m: footer_html(), html, flags=re.S)
     else:
         html = re.sub(r'<div>Head office: Malindi.*?</nav></div>', lambda m: footer_html(), html, flags=re.S)
+    # bust browser caches when the stylesheet or script changes, so new pages never show with old styles
+    for asset in ("styles.css", "app.js"):
+        v = hashlib.md5((PUB / asset).read_bytes()).hexdigest()[:8]
+        html = re.sub(rf'(["\'])/{re.escape(asset)}(\?v=\w+)?\1', lambda m: f'{m.group(1)}/{asset}?v={v}{m.group(1)}', html)
     # "Still need help?" band above the footer, the same on every page
     html = re.sub(r'<!--help-->.*?<!--/help-->\n?', "", html, flags=re.S)
     html = html.replace("<footer>", "<!--help-->" + contact_block() + "<!--/help-->\n<footer>", 1)
