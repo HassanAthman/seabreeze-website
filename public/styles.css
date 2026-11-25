@@ -532,9 +532,9 @@ footer nav.fcol a{text-decoration:none}footer nav.fcol a:hover{text-decoration:u
 .hc-ch{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
 @media (max-width:860px){.hc-ch{grid-template-columns:1fr 1fr}}
 @media (max-width:420px){.hc-ch{grid-template-columns:1fr}}
-.ch{position:relative;display:grid;gap:2px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px;color:#e6f2f3;text-decoration:none;min-width:0}
+.ch{position:relative;display:grid;gap:2px;justify-items:start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px;color:#e6f2f3;text-decoration:none;min-width:0}
 .ch:hover{border-color:var(--sun)}
-.ch .ic{width:26px;height:26px;color:var(--sun);margin-bottom:6px}
+.ch .ic{width:20px;height:20px;color:var(--sun);margin-bottom:4px}
 .ch b{font-family:var(--display);font-size:1.05rem}
 .ch span{color:#a9c9cd;font-size:.9rem;overflow-wrap:anywhere}
 .ch i{position:absolute;top:12px;right:12px;font-style:normal;font-size:.72rem;font-weight:700;background:var(--sun);color:var(--sun-ink);padding:2px 8px;border-radius:999px}

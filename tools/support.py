@@ -48,7 +48,7 @@ P = {
 }
 
 def icon(name, cls="ic"):
-    return (f'<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
+    return (f'<svg class="{cls}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
             f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{P[name]}</svg>')
 
 # ---------- step visuals ----------
