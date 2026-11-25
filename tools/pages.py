@@ -21,12 +21,39 @@ def join(items):
 def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace('"', "&quot;")
 
+NAV = [("/#renew", "Renew"), ("/get-airtel-5g/", "Get 5G"), ("/lipa-mdogo-mdogo/", "Lipa Mdogo Mdogo"),
+       ("/support/", "Support"), ("/sms/", "SMS alerts"), ("/about/", "About us"), ("/contact/", "Contact")]
+MENU_BTN = ('<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainnav">'
+            '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" '
+            'stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>')
+FOOT_COLS = [
+    ("Pay and renew", [("/renew-airtel-5g/", "Renew on Paybill 4129691"), ("/lipa-mdogo-mdogo/", "Lipa Mdogo Mdogo"),
+                       ("/get-airtel-5g/", "Get Airtel 5G at home"), ("/#get5g", "Packages and prices")]),
+    ("Help", [("/support/", "Help centre"), ("/support/#change-wifi-password", "Change your WiFi name and password"),
+              ("/support/#paid-no-internet", "Paid but no internet"), ("/support/#check-expiry", "Check your expiry date"),
+              ("/sms/", "SMS reminders: join or stop"), ("/#faq", "Common questions")]),
+    ("Company", [("/about/", "About us"), ("/about/#services", "Our services"), ("/#coverage", "Where we work"),
+                 ("/contact/", "Contact us"), ("/contact/#float", "Airtel Money float"), ("/we-are-hiring/", "We are hiring")]),
+]
+
+def nav_html(path):
+    """Main menu, the same on every page; the current page is marked."""
+    items = []
+    for href, label in NAV:
+        cls = ' class="nav-sms"' if href == "/sms/" else ""
+        cur = ' aria-current="page"' if href == path else ""
+        items.append(f'<a{cls} href="{href}"{cur}>{label}</a>')
+    return '<nav class="links" id="mainnav" aria-label="Main">\n      ' + "".join(items) + "\n    </nav>"
+
 def footer_html():
+    cols = "".join(f'<nav class="fcol" aria-label="{h}"><b>{h}</b>' + "".join(f'<a href="{u}">{t}</a>' for u, t in links) + "</nav>"
+                   for h, links in FOOT_COLS)
     links = "".join(f'<a href="/airtel-5g/{s}/">Airtel 5G {chip_label(s).replace(" (head office)", "")}</a>'
                     for _g, slugs in GROUPS for s in slugs)
-    return ('<div>Head office: Malindi, Kilifi County. Agents across the Coast, Nairobi, the Rift Valley and western Kenya.</div>\n'
+    return ('<!--foot--><div>Head office: Malindi, Kilifi County. Agents across the Coast, Nairobi, the Rift Valley and western Kenya.</div>\n'
+            f'    <div class="fcols">{cols}</div>\n'
             f'    <div style="flex-basis:100%"><nav aria-label="Areas">{links}<a href="/renew-airtel-5g/">How to renew Airtel 5G</a>'
-            '<a href="/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a><a href="/contact/">Contact us</a><a href="/we-are-hiring/">We are hiring</a></nav></div>')
+            '<a href="/support/">Help centre</a><a href="/about/">About us</a><a href="/contact/">Contact us</a></nav></div><!--/foot-->')
 
 def coverage_html():
     rows = []
@@ -43,9 +70,15 @@ def area_served():
             names.append(a["name"] + " County" if a["kind"] == "county" else a["name"])
     return names + ["Kenya"]
 
-def shared(html):
-    """Footer, coverage list and areaServed, on every page."""
-    html = re.sub(r'<div>Head office: Malindi.*?</nav></div>', lambda m: footer_html(), html, flags=re.S)
+def shared(html, path="/"):
+    """Menu, footer, coverage list and areaServed, on every page."""
+    if "<!--foot-->" in html:
+        html = re.sub(r'<!--foot-->.*?<!--/foot-->', lambda m: footer_html(), html, flags=re.S)
+    else:
+        html = re.sub(r'<div>Head office: Malindi.*?</nav></div>', lambda m: footer_html(), html, flags=re.S)
+    html = re.sub(r'<nav class="links"[^>]*>.*?</nav>', lambda m: nav_html(path), html, flags=re.S)
+    if 'class="menu-btn"' not in html:
+        html = re.sub(r'(<a class="btn btn-sun btn-sm"[^>]*>[^<]*</a>)', lambda m: m.group(1) + "\n    " + MENU_BTN, html, count=1)
     html = re.sub(r'<!--cov-->.*?<!--/cov-->', lambda m: f"<!--cov-->{coverage_html()}<!--/cov-->", html, flags=re.S)
     html = re.sub(r'"areaServed": \[[^\]]*\]', lambda m: '"areaServed": ' + json.dumps(area_served()), html)
     return html
@@ -135,7 +168,7 @@ def county_page(slug, tpl):
     return head + body + foot
 
 def sitemap():
-    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
+    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/support/", "/about/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
     langs = [p.name for p in PUB.iterdir() if p.is_dir() and p.name in ("sw", "it")]
     translated = []
     for lang in langs:
@@ -144,7 +177,7 @@ def sitemap():
                 translated.append(f"/{lang}{u}")
     lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls + translated:
-        lines.append(f"  <url><loc>{SITE}{u}</loc><lastmod>2026-11-23</lastmod></url>")
+        lines.append(f"  <url><loc>{SITE}{u}</loc><lastmod>2026-11-25</lastmod></url>")
     lines.append("</urlset>")
     (PUB / "sitemap.xml").write_text("\n".join(lines) + "\n")
 
@@ -163,7 +196,8 @@ def main():
         if f.parts[len(PUB.parts)] in ("sw", "it"):
             continue
         h = f.read_text()
-        n = shared(h)
+        rel = f.relative_to(PUB).as_posix()
+        n = shared(h, "/" + rel[: -len("index.html")] if rel.endswith("index.html") else "")
         if n != h:
             f.write_text(n)
     sitemap()

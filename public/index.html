@@ -34,11 +34,12 @@
   <div class="wrap">
     <a class="brand" href="/" aria-label="Seabreeze 5G home"><!--art:brand--><svg viewBox="0 0 64 64" width="32" height="32" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="var(--sea)"/><path d="M20 35a12 12 0 0 1 24 0z" fill="var(--sun)"/><path d="M14 24a22 22 0 0 1 36 0" stroke="var(--bg)" stroke-width="4" fill="none" stroke-linecap="round" opacity=".9"/><path d="M6 42c6.5-5 13-5 19.5 0s13 5 19.5 0 13-5 13-5" stroke="var(--bg)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M10 51c5.5-4 11-4 16.5 0s11 4 16.5 0 11-4 11-4" stroke="var(--bg)" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/></svg>
       <span>Seabreeze <b class="g5">5G</b></span><!--/art:brand--></a>
-    <nav class="links" aria-label="Main">
-      <a href="/#renew">Renew</a><a href="/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a><a href="/get-airtel-5g/">Get 5G</a><a href="/#services">Services</a><a href="/#coverage">Coverage</a><a class="nav-sms" href="/sms/">SMS alerts</a><a href="/we-are-hiring/">We're hiring</a><a href="/contact/">Contact</a><a href="/#faq">FAQ</a>
+    <nav class="links" id="mainnav" aria-label="Main">
+      <a href="/#renew">Renew</a><a href="/get-airtel-5g/">Get 5G</a><a href="/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a><a href="/support/">Support</a><a class="nav-sms" href="/sms/">SMS alerts</a><a href="/about/">About us</a><a href="/contact/">Contact</a>
     </nav>
     <nav class="lang" aria-label="Language"><a href="/" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="/sw/" hreflang="sw" lang="sw" title="Kiswahili">SW</a><a href="/it/" hreflang="it" lang="it" title="Italiano">IT</a></nav>
     <a class="btn btn-sun btn-sm" href="/#renew">Renew now</a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainnav"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
   </div>
 </header>
 <main id="top">
@@ -57,6 +58,20 @@
     <div class="scene">
       <canvas id="scene3d" aria-hidden="true"></canvas>
       <p class="scene-cap">One outdoor 5G unit. Fast WiFi for the whole home.</p>
+    </div>
+  </div>
+</section>
+
+<section class="qhelp" id="help" aria-labelledby="qhelp-h">
+  <div class="wrap">
+    <h2 id="qhelp-h">I want to…</h2>
+    <div class="qh">
+      <a href="/#renew"><b>Renew my 5G</b><span>Paybill 4129691</span></a>
+      <a href="/support/#change-wifi-password"><b>Change WiFi password</b><span>Step-by-step guide</span></a>
+      <a href="/support/#paid-no-internet"><b>Fix: paid but no internet</b><span>What to do</span></a>
+      <a href="/support/#check-expiry"><b>Check my expiry date</b><span>We reply on WhatsApp</span></a>
+      <a href="/lipa-mdogo-mdogo/"><b>Pay in small amounts</b><span>Lipa Mdogo Mdogo</span></a>
+      <a class="qh-all" href="/support/"><b>All help topics</b><span>Help centre and 3D router guide</span></a>
     </div>
   </div>
 </section>
@@ -227,7 +242,7 @@
     <h2 style="margin-top:8px">Everything for a connected home or office</h2>
     <div class="svc">
       <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="16" y="8" width="16" height="30" rx="5" fill="var(--sea)"/><rect x="20" y="14" width="8" height="2.5" rx="1" fill="var(--bg)"/><rect x="22" y="38" width="4" height="6" fill="var(--muted)"/><path d="M8 14a14 14 0 0 1 0 18M40 14a14 14 0 0 0 0 18" stroke="var(--sun)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>Airtel 5G Smart Connect</h3><p>Unlimited home and office WiFi at 15 or 30 Mbps. Works in 5G and 4G areas.</p></div>
-      <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="13" y="5" width="22" height="38" rx="4" fill="var(--sea)"/><rect x="17" y="10" width="14" height="14" rx="2" fill="var(--screen)"/><path d="M20 17l3 3 6-6" stroke="var(--screen-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g fill="var(--bg)"><circle cx="19" cy="30" r="1.8"/><circle cx="24" cy="30" r="1.8"/><circle cx="29" cy="30" r="1.8"/><circle cx="19" cy="36" r="1.8"/><circle cx="24" cy="36" r="1.8"/><circle cx="29" cy="36" r="1.8"/></g></svg><h3>Renewals and support</h3><p>Renew on Paybill 4129691 and get help when a payment does not reflect.</p></div>
+      <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="13" y="5" width="22" height="38" rx="4" fill="var(--sea)"/><rect x="17" y="10" width="14" height="14" rx="2" fill="var(--screen)"/><path d="M20 17l3 3 6-6" stroke="var(--screen-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g fill="var(--bg)"><circle cx="19" cy="30" r="1.8"/><circle cx="24" cy="30" r="1.8"/><circle cx="29" cy="30" r="1.8"/><circle cx="19" cy="36" r="1.8"/><circle cx="24" cy="36" r="1.8"/><circle cx="29" cy="36" r="1.8"/></g></svg><h3>Renewals and support</h3><p>Renew on Paybill 4129691 and get help when a payment does not reflect. <a href="/support/">Help centre</a></p></div>
       <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 24L24 9l18 15v17H6z" fill="var(--sea)"/><path d="M16 31a11 11 0 0 1 16 0M19.5 35a6 6 0 0 1 9 0" stroke="var(--sun)" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="24" cy="38.5" r="2" fill="var(--sun)"/></svg><h3>WiFi installation</h3><p>Router placement and set-up so the whole house gets a strong signal.</p></div>
       <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 6h18l8 8v28H12z" fill="var(--sea)"/><rect x="17" y="20" width="16" height="14" rx="2" fill="var(--sun)"/><path d="M17 27h16M25 20v14" stroke="var(--sea)" stroke-width="1.6"/></svg><h3>Airtel SIM and Airtel Money</h3><p>New lines, SIM replacement and Airtel Money registration.</p></div>
       <div class="reveal"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="18" width="20" height="22" rx="4" fill="var(--sea)"/><rect x="28" y="25" width="4" height="8" rx="1.5" fill="var(--sea)"/><rect x="12" y="23" width="8" height="12" rx="2" fill="var(--sun)"/><path d="M34 12a8 8 0 0 1 8 8M34 6a14 14 0 0 1 14 14" stroke="var(--sun)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>WiFi accessories</h3><p>Extenders, cables and power backup for your router.</p></div>
@@ -278,14 +293,16 @@
       <details><summary>Is the data really unlimited?</summary><p>Yes, with a fair use limit of 1,000 GB per plan. After that you keep browsing at 2 Mbps until you renew, or you can buy a 500 GB booster for KES 1,000.</p></details>
       <details><summary>How do I stop promotional SMS?</summary><p>Use our <a href="/sms/">SMS preferences form</a> to stop offers, renewal reminders or both, or text STOP to 0782 998 842. Payment receipts are always sent.</p></details>
     </div>
+    <p class="faq-more"><a class="btn btn-ghost" href="/support/">More answers in the help centre</a></p>
   </div>
 </section>
 </main>
 <footer>
   <div class="wrap">
     <div><b style="color:var(--ink)">Seabreeze Data Ventures Ltd</b> (Sea Breeze)<br>Authorised Airtel Kenya Enterprise Solution Partner (ESP)<br>Paybill 4129691 · Call 0782 998 842 · Call or WhatsApp 0734 782 203<br>Email <a href="mailto:info@seabreezedata.co.ke">info@seabreezedata.co.ke</a> · Help <a href="mailto:support@seabreezedata.co.ke">support@seabreezedata.co.ke</a> · Payments <a href="mailto:accounts@seabreezedata.co.ke">accounts@seabreezedata.co.ke</a><br><a class="sms-foot" href="/sms/">SMS reminders and offers: join or stop</a></div>
-    <div>Head office: Malindi, Kilifi County. Agents across the Coast, Nairobi, the Rift Valley and western Kenya.</div>
-    <div style="flex-basis:100%"><nav aria-label="Areas"><a href="/airtel-5g/malindi/">Airtel 5G Malindi</a><a href="/airtel-5g/kilifi/">Airtel 5G Kilifi County</a><a href="/airtel-5g/mombasa/">Airtel 5G Mombasa County</a><a href="/airtel-5g/kwale/">Airtel 5G Kwale County</a><a href="/airtel-5g/lamu/">Airtel 5G Lamu County</a><a href="/airtel-5g/mpeketoni/">Airtel 5G Mpeketoni</a><a href="/airtel-5g/tana-river/">Airtel 5G Tana River County</a><a href="/airtel-5g/voi/">Airtel 5G Voi</a><a href="/airtel-5g/nairobi/">Airtel 5G Nairobi County</a><a href="/airtel-5g/turkana/">Airtel 5G Turkana County</a><a href="/airtel-5g/kapenguria/">Airtel 5G West Pokot County</a><a href="/airtel-5g/samburu/">Airtel 5G Samburu County</a><a href="/airtel-5g/trans-nzoia/">Airtel 5G Trans Nzoia County</a><a href="/airtel-5g/uasin-gishu/">Airtel 5G Uasin Gishu County</a><a href="/airtel-5g/elgeyo-marakwet/">Airtel 5G Elgeyo-Marakwet County</a><a href="/airtel-5g/kapsabet/">Airtel 5G Nandi County</a><a href="/airtel-5g/baringo/">Airtel 5G Baringo County</a><a href="/airtel-5g/laikipia/">Airtel 5G Laikipia County</a><a href="/airtel-5g/nakuru/">Airtel 5G Nakuru County</a><a href="/airtel-5g/narok/">Airtel 5G Narok County</a><a href="/airtel-5g/kajiado/">Airtel 5G Kajiado County</a><a href="/airtel-5g/kericho/">Airtel 5G Kericho County</a><a href="/airtel-5g/bomet/">Airtel 5G Bomet County</a><a href="/airtel-5g/kisumu/">Airtel 5G Kisumu County</a><a href="/airtel-5g/kakamega/">Airtel 5G Kakamega County</a><a href="/airtel-5g/bungoma/">Airtel 5G Bungoma County</a><a href="/renew-airtel-5g/">How to renew Airtel 5G</a><a href="/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a><a href="/contact/">Contact us</a><a href="/we-are-hiring/">We are hiring</a></nav></div>
+    <!--foot--><div>Head office: Malindi, Kilifi County. Agents across the Coast, Nairobi, the Rift Valley and western Kenya.</div>
+    <div class="fcols"><nav class="fcol" aria-label="Pay and renew"><b>Pay and renew</b><a href="/renew-airtel-5g/">Renew on Paybill 4129691</a><a href="/lipa-mdogo-mdogo/">Lipa Mdogo Mdogo</a><a href="/get-airtel-5g/">Get Airtel 5G at home</a><a href="/#get5g">Packages and prices</a></nav><nav class="fcol" aria-label="Help"><b>Help</b><a href="/support/">Help centre</a><a href="/support/#change-wifi-password">Change your WiFi name and password</a><a href="/support/#paid-no-internet">Paid but no internet</a><a href="/support/#check-expiry">Check your expiry date</a><a href="/sms/">SMS reminders: join or stop</a><a href="/#faq">Common questions</a></nav><nav class="fcol" aria-label="Company"><b>Company</b><a href="/about/">About us</a><a href="/about/#services">Our services</a><a href="/#coverage">Where we work</a><a href="/contact/">Contact us</a><a href="/contact/#float">Airtel Money float</a><a href="/we-are-hiring/">We are hiring</a></nav></div>
+    <div style="flex-basis:100%"><nav aria-label="Areas"><a href="/airtel-5g/malindi/">Airtel 5G Malindi</a><a href="/airtel-5g/kilifi/">Airtel 5G Kilifi County</a><a href="/airtel-5g/mombasa/">Airtel 5G Mombasa County</a><a href="/airtel-5g/kwale/">Airtel 5G Kwale County</a><a href="/airtel-5g/lamu/">Airtel 5G Lamu County</a><a href="/airtel-5g/mpeketoni/">Airtel 5G Mpeketoni</a><a href="/airtel-5g/tana-river/">Airtel 5G Tana River County</a><a href="/airtel-5g/voi/">Airtel 5G Voi</a><a href="/airtel-5g/nairobi/">Airtel 5G Nairobi County</a><a href="/airtel-5g/turkana/">Airtel 5G Turkana County</a><a href="/airtel-5g/kapenguria/">Airtel 5G West Pokot County</a><a href="/airtel-5g/samburu/">Airtel 5G Samburu County</a><a href="/airtel-5g/trans-nzoia/">Airtel 5G Trans Nzoia County</a><a href="/airtel-5g/uasin-gishu/">Airtel 5G Uasin Gishu County</a><a href="/airtel-5g/elgeyo-marakwet/">Airtel 5G Elgeyo-Marakwet County</a><a href="/airtel-5g/kapsabet/">Airtel 5G Nandi County</a><a href="/airtel-5g/baringo/">Airtel 5G Baringo County</a><a href="/airtel-5g/laikipia/">Airtel 5G Laikipia County</a><a href="/airtel-5g/nakuru/">Airtel 5G Nakuru County</a><a href="/airtel-5g/narok/">Airtel 5G Narok County</a><a href="/airtel-5g/kajiado/">Airtel 5G Kajiado County</a><a href="/airtel-5g/kericho/">Airtel 5G Kericho County</a><a href="/airtel-5g/bomet/">Airtel 5G Bomet County</a><a href="/airtel-5g/kisumu/">Airtel 5G Kisumu County</a><a href="/airtel-5g/kakamega/">Airtel 5G Kakamega County</a><a href="/airtel-5g/bungoma/">Airtel 5G Bungoma County</a><a href="/renew-airtel-5g/">How to renew Airtel 5G</a><a href="/support/">Help centre</a><a href="/about/">About us</a><a href="/contact/">Contact us</a></nav></div><!--/foot-->
   </div>
 </footer>
 

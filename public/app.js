@@ -204,3 +204,67 @@
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target);} }); },{rootMargin:'0px 0px -40px 0px'});
   els.forEach(function(el){ io.observe(el); });
 })();
+
+/* ---- menu button on phones and tablets ---- */
+(function(){
+  var btn=document.querySelector('.menu-btn'), hd=document.querySelector('header.top');
+  if(!btn||!hd) return;
+  var ln=hd.querySelector('nav.lang'), mn=document.getElementById('mainnav');
+  if(ln && mn){ var cp=document.createElement('div'); cp.className='lang-in-menu'; cp.innerHTML=ln.innerHTML; mn.appendChild(cp); }
+  function set(open){ hd.classList.toggle('open',open); btn.setAttribute('aria-expanded',open); }
+  btn.addEventListener('click',function(){ set(!hd.classList.contains('open')); });
+  document.querySelectorAll('#mainnav a').forEach(function(a){ a.addEventListener('click',function(){ set(false); }); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+  document.addEventListener('click',function(e){ if(hd.classList.contains('open') && !hd.contains(e.target)) set(false); });
+})();
+
+/* ---- help centre: open the guide named in the link, search ---- */
+(function(){
+  var guides=[].slice.call(document.querySelectorAll('details.guide'));
+  if(!guides.length) return;
+  function openHash(){
+    var id=location.hash.slice(1); if(!id) return;
+    var el=document.getElementById(id);
+    if(el && el.tagName==='DETAILS'){ el.open=true; setTimeout(function(){ el.scrollIntoView({block:'start'}); },30); }
+  }
+  openHash(); window.addEventListener('hashchange',openHash);
+  var q=document.getElementById('helpSearch'), none=document.getElementById('helpNone');
+  if(q) q.addEventListener('input',function(){
+    var words=q.value.toLowerCase().split(/\s+/).filter(Boolean), shown=0;
+    guides.forEach(function(g){
+      var txt=g.textContent.toLowerCase(), hit=words.every(function(w){ return txt.indexOf(w)>=0; });
+      g.hidden=!hit; if(hit) shown++;
+      if(words.length) g.open=hit && shown<=3;
+    });
+    document.querySelectorAll('.gsec').forEach(function(s){ s.hidden=!s.querySelector('details.guide:not([hidden])'); });
+    if(none) none.hidden=shown>0;
+  });
+  if(q) q.addEventListener('keydown',function(e){ if(e.key==='Enter'){ var g=document.querySelector('details.guide:not([hidden])'); if(g){ g.open=true; g.scrollIntoView({block:'start'}); } } });
+})();
+
+/* ---- WiFi name and password: phone walkthrough ---- */
+(function(){
+  var sim=document.getElementById('wifiSim'); if(!sim) return;
+  var views=[].slice.call(sim.querySelectorAll('.ws')), items=[].slice.call(sim.querySelectorAll('#wsimSteps li'));
+  var url=document.getElementById('wsimUrl'), typed=url.querySelector('.wsim-typed');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, cur=-1, auto=!reduce, timer=null, typer=null;
+  function show(i){
+    cur=(i+views.length)%views.length;
+    views.forEach(function(v,k){ v.classList.toggle('on',k===cur); });
+    items.forEach(function(li,k){ li.classList.toggle('cur',k===cur); });
+    clearInterval(typer);
+    url.classList.toggle('empty',cur<2);
+    if(cur===2 && !reduce){ var full=typed.getAttribute('data-url'), n=0; typed.textContent=''; typer=setInterval(function(){ n++; typed.textContent=full.slice(0,n); if(n>=full.length) clearInterval(typer); },120); }
+    else typed.textContent=typed.getAttribute('data-url');
+  }
+  function stop(){ auto=false; clearTimeout(timer); }
+  function tick(){ if(!auto) return; timer=setTimeout(function(){ show(cur+1); tick(); }, cur===2?3200:2600); }
+  items.forEach(function(li,k){ li.addEventListener('click',function(){ stop(); show(k); }); });
+  document.getElementById('wsimNext').addEventListener('click',function(){ stop(); show(cur+1); });
+  document.getElementById('wsimPrev').addEventListener('click',function(){ stop(); show(cur-1); });
+  show(0);
+  if(auto && 'IntersectionObserver' in window){
+    var started=false;
+    new IntersectionObserver(function(es){ if(es[0].isIntersecting && !started && auto){ started=true; tick(); } }).observe(sim);
+  }
+})();
