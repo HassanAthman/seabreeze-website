@@ -268,7 +268,7 @@ G["sms-reminders"] = dict(
     summary="Get a reminder before your plan ends, or stop messages any time.",
     steps=[
         ("Open the SMS form", '<a href="/sms/">SMS preferences form</a>', ico("bell")),
-        ("Or text STOP", "Send STOP to 0782 998 842 to stop offers and reminders.", ico("msg")),
+        ("Or text STOP", "Send STOP to 0734 782 203 to stop offers and reminders.", ico("msg")),
     ],
     tip="Payment receipts are always sent.",
 )
