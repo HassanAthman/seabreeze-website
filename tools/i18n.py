@@ -23,7 +23,7 @@ SITE = "https://seabreezedata.co.ke"
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from coverage import AREAS
 PAGES = ["index.html", "renew-airtel-5g/index.html", "lipa-mdogo-mdogo/index.html",
-         "sms/index.html", "get-airtel-5g/index.html", "contact/index.html", "we-are-hiring/index.html",
+         "sms/index.html", "get-airtel-5g/index.html", "contact/index.html", "we-are-hiring/index.html", "update-details/index.html",
          "support/index.html", "about/index.html"] + [f"airtel-5g/{s}/index.html" for s in AREAS]
 LANGS = {"sw": ("Kiswahili", "sw_KE", "sw-KE"), "it": ("Italiano", "it_IT", "it")}
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}

@@ -31,7 +31,7 @@ FOOT_COLS = [
                        ("/get-airtel-5g/", "Get Airtel 5G at home"), ("/#get5g", "Packages and prices")]),
     ("Help", [("/support/", "Help centre"), ("/support/#change-wifi-password", "Change your WiFi name and password"),
               ("/support/#paid-no-internet", "Paid but no internet"), ("/support/#check-expiry", "Check your expiry date"),
-              ("/sms/", "SMS reminders: join or stop"), ("/#faq", "Common questions")]),
+              ("/update-details/", "Update your details"), ("/sms/", "SMS reminders: join or stop"), ("/#faq", "Common questions")]),
     ("Company", [("/about/", "About us"), ("/about/#services", "Our services"), ("/#coverage", "Where we work"),
                  ("/contact/", "Contact us"), ("/contact/#float", "Airtel Money float"), ("/we-are-hiring/", "We are hiring")]),
 ]
@@ -168,7 +168,7 @@ def county_page(slug, tpl):
     return head + body + foot
 
 def sitemap():
-    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/support/", "/about/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
+    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/update-details/", "/support/", "/about/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
     langs = [p.name for p in PUB.iterdir() if p.is_dir() and p.name in ("sw", "it")]
     translated = []
     for lang in langs:

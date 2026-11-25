@@ -11,6 +11,7 @@ Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised A
 | `/support/` | Help centre: searchable step-by-step guides (WiFi name and password, renewals, no internet, expiry date, safety), interactive 3D router (`guide3d.js`) and a WiFi settings phone walkthrough. Each guide has its own link, e.g. `/support/#change-wifi-password`, which opens that guide |
 | `/about/` | About Seabreeze Data Ventures Ltd: who we are, services, promise, agents |
 | `/airtel-5g/<town>/` | One page per town where Seabreeze has agents |
+| `/update-details/` | Clients send their 5G line, name and SMS phone; staff verify and approve in CBriz > Website Approvals |
 | `404.html` | Not-found page |
 
 Shared files: `styles.css`, `app.js`, `favicon.svg`, `og.png` (link preview image), `sitemap.xml`, `robots.txt`, `_headers` (Cloudflare security and caching headers).
@@ -26,6 +27,10 @@ If Cloudflare shows "This project is disconnected from your Git account", reinst
 ## SMS preferences form
 
 `/sms/` lets clients join or stop renewal reminders and offers. It posts to `functions/api/sms-preferences.js` (a Pages Function), which writes to the shared CBriz D1 database through the `DB` binding in `wrangler.jsonc`. The tables come from cbriz-dashboard `migrations/007_sms_preferences.sql`, which must be run in the D1 console before this goes live. The cbriz-sms-sender worker checks `sms_preferences` before every reminder or marketing SMS. Payment receipts are always sent.
+
+## Update details form
+
+`/update-details/` (also `/sw/` and `/it/`) posts to `functions/api/update-details.js`, which saves the client's line, name and SMS phone in `website_client_updates` (cbriz-dashboard `migrations/012_website_client_updates.sql`, run it in the D1 console first) and queues an SMS alert to the management phone (0782 998 842) through `sms_outbox`. Nothing in the client database changes until staff approve it in CBriz > Website Approvals. A link `?line=0712345678` pre-fills the line.
 
 ## Domain
 
