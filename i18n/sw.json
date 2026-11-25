@@ -122,8 +122,6 @@
  "Get 5G at home": "Pata 5G nyumbani",
  "We will never ask for your M-Pesa PIN.": "Hatutawahi kukuuliza PIN yako ya M-Pesa.",
  "One outdoor 5G unit. Fast WiFi for the whole home.": "Kifaa kimoja cha 5G nje. WiFi ya kasi kwa nyumba nzima.",
- "Missed a renewal? Come back and pay KES 100 less.": "Ulikosa kulipia? Rudi na ulipe KES 100 pungufu.",
- "From 24 November to 31 December, renew through Paybill 4129691 and pay KES 100 less than your usual package price. For clients whose 5G has been off for 30+ days, or who are paying through our paybill for the first time.": "Kuanzia 24 Novemba hadi 31 Desemba, lipia kupitia Paybill 4129691 na ulipe KES 100 pungufu ya bei ya kawaida ya kifurushi chako. Ni kwa wateja ambao 5G yao imezimwa kwa siku 30 au zaidi, au wanaolipa kupitia paybill yetu kwa mara ya kwanza.",
  "Renew and claim": "Lipia upate punguzo",
  "How it works": "Jinsi inavyofanya kazi",
  "Connected in three steps": "Unganishwa kwa hatua tatu",
@@ -318,7 +316,6 @@
  "Check coverage on WhatsApp": "Angalia mtandao kwa WhatsApp",
  "How to renew": "Jinsi ya kulipia",
  "Same Airtel prices, local help": "Bei zile zile za Airtel, msaada wa karibu",
- "KES 1,000 connection fee on 30-day plans only. Pay KES 100 less on your comeback renewal until 31 December (for lapsed and first-time paybill clients).": "Ada ya kuunganishwa KES 1,000 kwa vifurushi vya siku 30 pekee. Lipa KES 100 pungufu unaporudi kulipia hadi 31 Desemba (kwa wateja waliozimwa na wanaolipa kupitia paybill kwa mara ya kwanza).",
  "Our agents connect homes and offices in Malindi town, Casuarina, Shella, Gede and Watamu. Send your estate and nearest landmark on WhatsApp and we confirm coverage before you pay anything. The router also works in 4G areas.": "Mawakala wetu wanaunganisha nyumba na ofisi Malindi mjini, Casuarina, Shella, Gede na Watamu. Tutumie mtaa wako na alama iliyo karibu kwa WhatsApp, nasi tunathibitisha mtandao kabla hujalipa chochote. Router pia inafanya kazi maeneo ya 4G.",
  "KES 1,999 for 15 Mbps or KES 2,999 for 30 Mbps every 30 days, with unlimited data (1,000 GB fair use). 90 and 180-day plans are cheaper per month and have no connection fee.": "KES 1,999 kwa Mbps 15 au KES 2,999 kwa Mbps 30 kila siku 30, na data bila kikomo (matumizi ya haki GB 1,000). Vifurushi vya siku 90 na 180 ni nafuu kwa mwezi na havina ada ya kuunganishwa.",
  "M-Pesa, Lipa na M-Pesa, Pay Bill, business number 4129691, account number = your Airtel 5G line number, then your package amount. Any phone works.": "M-Pesa, Lipa na M-Pesa, Pay Bill, nambari ya biashara 4129691, nambari ya akaunti = nambari yako ya laini ya Airtel 5G, kisha kiasi cha kifurushi chako. Simu yoyote inafaa.",
@@ -749,5 +746,8 @@
  "Local agents, WhatsApp support from 8am to 8pm, and reminders before your plan ends.": "Mawakala wa karibu, msaada wa WhatsApp kuanzia saa 2 asubuhi hadi saa 2 usiku, na vikumbusho kabla kifurushi hakijaisha.",
  "Work with us": "Fanya kazi nasi",
  "Become a Seabreeze agent": "Kuwa wakala wa Seabreeze",
- "We are always looking for Airtel 5G and SIM sales agents in our coverage counties.": "Tunatafuta mawakala wa mauzo ya Airtel 5G na laini katika kaunti tunazohudumia."
+ "We are always looking for Airtel 5G and SIM sales agents in our coverage counties.": "Tunatafuta mawakala wa mauzo ya Airtel 5G na laini katika kaunti tunazohudumia.",
+ "Missed a renewal? Come back with 99/- off.": "Ulikosa kulipia? Rudi upate punguzo la 99/-.",
+ "From 24 November to 31 December, renew through Paybill 4129691 with 99/- off: pay 1,900/- for 15 Mbps or 2,900/- for 30 Mbps. For clients whose 5G has been off for 30+ days, or who are paying through our paybill for the first time.": "Kuanzia 24 Novemba hadi 31 Desemba, lipia kupitia Paybill 4129691 upate punguzo la 99/-: lipa 1,900/- kwa Mbps 15 au 2,900/- kwa Mbps 30. Ni kwa wateja ambao 5G yao imezimwa kwa siku 30 au zaidi, au wanaolipa kupitia paybill yetu kwa mara ya kwanza.",
+ "KES 1,000 connection fee on 30-day plans only. 99/- off your comeback renewal until 31 December: 1,900/- (15 Mbps) or 2,900/- (30 Mbps), for lapsed and first-time paybill clients.": "Ada ya kuunganishwa KES 1,000 kwa vifurushi vya siku 30 pekee. Punguzo la 99/- unaporudi kulipia hadi 31 Desemba: 1,900/- (Mbps 15) au 2,900/- (Mbps 30), kwa wateja waliozimwa na wanaolipa kupitia paybill kwa mara ya kwanza."
 }
