@@ -135,7 +135,7 @@ def county_page(slug, tpl):
     return head + body + foot
 
 def sitemap():
-    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
+    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/update-details/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
     langs = [p.name for p in PUB.iterdir() if p.is_dir() and p.name in ("sw", "it")]
     translated = []
     for lang in langs:
