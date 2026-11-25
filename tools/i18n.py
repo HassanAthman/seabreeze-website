@@ -22,9 +22,11 @@ PUB = ROOT / "public"
 SITE = "https://seabreezedata.co.ke"
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from coverage import AREAS
+from support import PAGES as _SP
+SUPPORT_PAGES = [p for p in _SP if p != "support/index.html"]
 PAGES = ["index.html", "renew-airtel-5g/index.html", "lipa-mdogo-mdogo/index.html",
          "sms/index.html", "get-airtel-5g/index.html", "contact/index.html", "we-are-hiring/index.html", "update-details/index.html",
-         "support/index.html", "about/index.html", "coverage/index.html", "internet-tv/index.html"] + [f"airtel-5g/{s}/index.html" for s in AREAS]
+         "support/index.html", "about/index.html", "coverage/index.html", "internet-tv/index.html"] + [f"airtel-5g/{s}/index.html" for s in AREAS] + SUPPORT_PAGES
 LANGS = {"sw": ("Kiswahili", "sw_KE", "sw-KE"), "it": ("Italiano", "it_IT", "it")}
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 INLINE = {"a", "b", "strong", "em", "i", "br", "code", "span", "small", "abbr", "kbd", "s", "u", "mark"}
@@ -97,6 +99,8 @@ def segments(src):
         if n.tag in SKIP:
             return
         d = dict(n.attrs)
+        if d.get("translate") == "no":   # phone-screen mock-ups stay as the phone shows them
+            return
         for a in ATTRS:
             v = d.get(a)
             if v and re.search(r"[A-Za-z]{2}", v) and not in_skip(n):

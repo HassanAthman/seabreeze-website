@@ -203,7 +203,11 @@
     draw();
     if(visible && (moving || drag)) raf=requestAnimationFrame(loop);
   }
-  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible) kick(); }).observe(cv);
+  // restart guide pages play the restart once, the first time the router is on screen
+  var autoplay = cv.closest('[data-start="restart"]') && !reduce;
+  function seen(){ if(autoplay){ autoplay=false; setTimeout(startRestart,600); } }
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible){ seen(); kick(); } }).observe(cv);
+  else seen();
   document.addEventListener('visibilitychange',function(){ visible=!document.hidden; if(visible) kick(); });
   if(dark.addEventListener) dark.addEventListener('change',draw);
   window.addEventListener('resize',size);

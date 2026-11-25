@@ -9,6 +9,8 @@ to draw the maps.
 import json, pathlib, re, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from coverage import AREAS, GROUPS, chip_label
+from support import G as _SG, contact_block
+SUPPORT_SLUGS = list(_SG)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
@@ -29,8 +31,8 @@ MENU_BTN = ('<button class="menu-btn" type="button" aria-label="Menu" aria-expan
 FOOT_COLS = [
     ("Pay and renew", [("/renew-airtel-5g/", "Renew on Paybill 4129691"), ("/lipa-mdogo-mdogo/", "Lipa Mdogo Mdogo"),
                        ("/get-airtel-5g/", "Get Airtel 5G at home"), ("/#get5g", "Packages and prices")]),
-    ("Help", [("/support/", "Help centre"), ("/support/#change-wifi-password", "Change your WiFi name and password"),
-              ("/support/#paid-no-internet", "Paid but no internet"), ("/support/#check-expiry", "Check your expiry date"),
+    ("Help", [("/support/", "Help centre"), ("/support/change-wifi-password/", "Change your WiFi name and password"),
+              ("/support/paid-no-internet/", "Paid but no internet"), ("/support/check-expiry/", "Check your expiry date"),
               ("/update-details/", "Update your details"), ("/sms/", "SMS reminders: join or stop"), ("/#faq", "Common questions")]),
     ("Company", [("/about/", "About us"), ("/about/#services", "Our services"), ("/internet-tv/", "Internet TV"), ("/coverage/", "Coverage areas"),
                  ("/contact/", "Contact us"), ("/contact/#float", "Airtel Money float"), ("/we-are-hiring/", "We are hiring")]),
@@ -81,6 +83,10 @@ def shared(html, path="/"):
         html = re.sub(r'<!--foot-->.*?<!--/foot-->', lambda m: footer_html(), html, flags=re.S)
     else:
         html = re.sub(r'<div>Head office: Malindi.*?</nav></div>', lambda m: footer_html(), html, flags=re.S)
+    # "Still need help?" band above the footer, the same on every page
+    html = re.sub(r'<!--help-->.*?<!--/help-->\n?', "", html, flags=re.S)
+    html = html.replace("<footer>", "<!--help-->" + contact_block() + "<!--/help-->\n<footer>", 1)
+    html = html.replace('<b style="color:var(--ink)">Seabreeze Data Ventures Ltd</b>', '<b class="f-name">Seabreeze Data Ventures Ltd</b>')
     html = re.sub(r'<nav class="links"[^>]*>.*?</nav>', lambda m: nav_html(path), html, flags=re.S)
     if 'class="menu-btn"' not in html:
         html = re.sub(r'(<a class="btn btn-sun btn-sm"[^>]*>[^<]*</a>)', lambda m: m.group(1) + "\n    " + MENU_BTN, html, count=1)
@@ -175,7 +181,7 @@ def county_page(slug, tpl):
     return head + body + foot
 
 def sitemap():
-    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/update-details/", "/support/", "/about/", "/coverage/", "/privacy/", "/internet-tv/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
+    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/update-details/", "/support/", "/about/", "/coverage/", "/privacy/", "/internet-tv/"] + [f"/support/{s}/" for s in SUPPORT_SLUGS] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
     langs = [p.name for p in PUB.iterdir() if p.is_dir() and p.name in ("sw", "it")]
     translated = []
     for lang in langs:
