@@ -10,6 +10,7 @@ Public website for Seabreeze Data Ventures Ltd (Malindi, Kenya), an authorised A
 | `/renew-airtel-5g/` | "How to pay Airtel 5G with M-Pesa" page for search traffic |
 | `/support/` | Help centre: searchable step-by-step guides (WiFi name and password, renewals, no internet, expiry date, safety), interactive 3D router (`guide3d.js`) and a WiFi settings phone walkthrough. Each guide has its own link, e.g. `/support/#change-wifi-password`, which opens that guide |
 | `/coverage/` | All coverage areas grouped by region (Coast, Nairobi, Rift Valley, Western), area picker and maps. The homepage shows a compact picker instead of the full list, and the footer links here instead of listing every town |
+| `/internet-tv/` | Internet TV (IPTV) annual plan, sold through WhatsApp. Kept deliberately generic until the provider's licensing is confirmed: no channel, broadcaster or league names, no logos, no prices, and a terms section (`#terms`). The hero animation is `tv3d.js`, a 15-second canvas loop with a pause button that stops off screen and for reduced motion |
 | `/about/` | About Seabreeze Data Ventures Ltd: who we are, services, promise, agents |
 | `/airtel-5g/<town>/` | One page per town where Seabreeze has agents |
 | `/update-details/` | Clients send their 5G line, name and SMS phone; staff verify and approve in CBriz > Website Approvals |

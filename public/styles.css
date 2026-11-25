@@ -279,7 +279,7 @@ header.top .btn-sm{white-space:nowrap}
 nav.links a.nav-sms{color:var(--sea);font-weight:600}
 footer a.sms-foot{display:inline-block;margin-top:6px;font-weight:700}
 nav.links{gap:14px;font-size:.9rem}
-@media (max-width:1200px){nav.links{display:none}}
+@media (max-width:1240px){nav.links{display:none}}
 header.top .wrap{max-width:1300px}
 /* language selector: separate pills */
 nav.lang{gap:4px;align-items:center;background:none;border:0;padding:0}
@@ -302,7 +302,7 @@ nav.lang a[aria-current]{border-color:var(--sea)}
 /* ---- menu on phones and tablets ---- */
 .menu-btn{display:none;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;padding:0;flex:none}
 nav.links a[aria-current="page"]{color:var(--ink);font-weight:600}
-@media (max-width:1200px){
+@media (max-width:1240px){
   .menu-btn{display:inline-flex}
   header.top.open nav.links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--surface);border-bottom:1px solid var(--line);box-shadow:0 14px 30px rgba(0,0,0,.18);padding:6px max(16px,env(safe-area-inset-left,0px)) 14px;font-size:1.02rem;max-height:calc(100vh - 70px);overflow:auto}
   header.top.open nav.links a{padding:13px 4px;border-bottom:1px solid var(--line);color:var(--ink)}
@@ -467,3 +467,13 @@ nav.links .lang-in-menu{display:none}
 .rlinks a.hq{color:var(--sea);font-weight:600}
 @media (max-width:400px){.rlinks{grid-template-columns:1fr}}
 footer nav.fcol a{text-decoration:none}footer nav.fcol a:hover{text-decoration:underline;color:var(--ink)}
+
+/* ---- internet TV page ---- */
+#tv3d{display:block;width:100%;aspect-ratio:5/4;max-height:420px;background:transparent}
+@media (max-width:820px){#tv3d{aspect-ratio:4/3;max-height:320px}}
+.tv-stage .scene-cap{min-height:2.8em}
+.tv-pause{display:block;margin:6px auto 0;font:600 .8rem var(--body);color:#c3dcdf;background:transparent;border:1px solid #2f6670;border-radius:999px;padding:5px 12px;cursor:pointer}
+.tv-pause:hover{border-color:#ffd7a8;color:#eef7f7}
+.terms{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.terms h2{font-size:1.25rem}
+.terms ul{margin:12px 0 0;padding-left:20px;display:grid;gap:8px;color:var(--muted);font-size:.93rem}
