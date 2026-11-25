@@ -663,3 +663,4 @@ footer .wrap{padding-block:36px 96px}
 .mk-sms .b-me{background:#0b6e78;color:#fff}
 .kwtable td{font-family:var(--body);color:var(--muted)}.kwtable td:first-child{font-family:var(--mono);color:var(--ink)}
 .sms-band p b{white-space:nowrap}
+@media (min-width:821px){.why-6{grid-template-columns:repeat(3,1fr)}}.why-6>div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
