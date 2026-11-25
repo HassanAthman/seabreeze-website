@@ -22,7 +22,7 @@ def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace('"', "&quot;")
 
 NAV = [("/#renew", "Renew"), ("/get-airtel-5g/", "Get 5G"), ("/lipa-mdogo-mdogo/", "Lipa Mdogo Mdogo"),
-       ("/support/", "Support"), ("/sms/", "SMS alerts"), ("/about/", "About us"), ("/contact/", "Contact")]
+       ("/internet-tv/", "Internet TV"), ("/support/", "Support"), ("/sms/", "SMS alerts"), ("/about/", "About us"), ("/contact/", "Contact")]
 MENU_BTN = ('<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainnav">'
             '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" '
             'stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>')
@@ -32,7 +32,7 @@ FOOT_COLS = [
     ("Help", [("/support/", "Help centre"), ("/support/#change-wifi-password", "Change your WiFi name and password"),
               ("/support/#paid-no-internet", "Paid but no internet"), ("/support/#check-expiry", "Check your expiry date"),
               ("/update-details/", "Update your details"), ("/sms/", "SMS reminders: join or stop"), ("/#faq", "Common questions")]),
-    ("Company", [("/about/", "About us"), ("/about/#services", "Our services"), ("/coverage/", "Coverage areas"),
+    ("Company", [("/about/", "About us"), ("/about/#services", "Our services"), ("/internet-tv/", "Internet TV"), ("/coverage/", "Coverage areas"),
                  ("/contact/", "Contact us"), ("/contact/#float", "Airtel Money float"), ("/we-are-hiring/", "We are hiring")]),
 ]
 
@@ -175,7 +175,7 @@ def county_page(slug, tpl):
     return head + body + foot
 
 def sitemap():
-    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/update-details/", "/support/", "/about/", "/coverage/", "/privacy/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
+    urls = ["/", "/get-airtel-5g/", "/renew-airtel-5g/", "/lipa-mdogo-mdogo/", "/sms/", "/contact/", "/we-are-hiring/", "/update-details/", "/support/", "/about/", "/coverage/", "/privacy/", "/internet-tv/"] + [f"/airtel-5g/{s}/" for _g, ss in GROUPS for s in ss]
     langs = [p.name for p in PUB.iterdir() if p.is_dir() and p.name in ("sw", "it")]
     translated = []
     for lang in langs:

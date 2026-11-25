@@ -150,6 +150,30 @@ def onboard(lang, w, h):
             f'<span class="foot" style="font-size:{30 if big else 22}px">{d["note"]}</span></div></div>')
     return page(w, h, body)
 
+def tv_card():
+    """Internet TV: a TV and phone with a generic home screen (no real channels or logos)."""
+    tiles = "".join(f'<rect x="{38+i*72}" y="196" width="64" height="44" rx="6" fill="{c}"/>'
+                    for i, c in enumerate(["#f08a24", "#0b6e78", "#5a4bb0", "#2f7a5c", "#3fb3bd"]))
+    return ('<svg viewBox="0 0 430 420" width="430" height="420" aria-hidden="true">'
+            '<defs><linearGradient id="tvh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e3263"/>'
+            '<stop offset=".5" stop-color="#c9667a"/><stop offset=".72" stop-color="#ffc07a"/><stop offset=".73" stop-color="#3c6f82"/>'
+            '<stop offset="1" stop-color="#0e4d5a"/></linearGradient></defs>'
+            '<rect x="16" y="40" width="398" height="230" rx="14" fill="#0d1518"/>'
+            '<rect x="28" y="52" width="374" height="206" rx="6" fill="#061a20"/>'
+            '<rect x="38" y="62" width="354" height="124" rx="6" fill="url(#tvh)"/>'
+            '<circle cx="300" cy="126" r="16" fill="#ffe3a6"/>'
+            '<circle cx="352" cy="160" r="17" fill="rgba(255,255,255,.9)"/><path d="M346 150l15 10-15 10z" fill="#0b2f3a"/>'
+            '<rect x="52" y="74" width="34" height="16" rx="8" fill="#f08a24"/><text x="69" y="86" text-anchor="middle" font="700 11px monospace" font-family="monospace" font-weight="700" font-size="11" fill="#2a1500">IT</text>'
+            '<rect x="92" y="74" width="34" height="16" rx="8" fill="rgba(255,255,255,.2)"/><text x="109" y="86" text-anchor="middle" font-family="monospace" font-weight="700" font-size="11" fill="#eef7f7">EN</text>'
+            + tiles +
+            '<rect x="35" y="193" width="70" height="50" rx="8" fill="none" stroke="#f08a24" stroke-width="3"/>'
+            '<rect x="190" y="270" width="50" height="34" fill="#1d2a2f"/><rect x="130" y="302" width="170" height="10" rx="5" fill="#1d2a2f"/>'
+            '<rect x="328" y="238" width="86" height="160" rx="14" fill="#0d1518" stroke="#26343a" stroke-width="3"/>'
+            '<rect x="338" y="252" width="66" height="70" rx="5" fill="url(#tvh)"/>'
+            '<rect x="338" y="330" width="30" height="22" rx="4" fill="#f08a24"/><rect x="374" y="330" width="30" height="22" rx="4" fill="#0b6e78"/>'
+            '<g fill="none" stroke="#f08a24" stroke-width="5" stroke-linecap="round"><path d="M40 22a30 30 0 0 1 40 0" opacity=".9"/><path d="M28 10a48 48 0 0 1 64 0" opacity=".5"/></g>'
+            '</svg>')
+
 # ----------------------------------------------------------------- main
 def build(out):
     out = pathlib.Path(out); out.mkdir(parents=True, exist_ok=True)
@@ -162,6 +186,9 @@ def build(out):
                                     "Works on any phone. No app, no data bundle, no *400#.", paybill_card(.95))
     files["og/lipa-mdogo-mdogo_1200x630"] = og("Lipa <em>Mdogo Mdogo</em> for Airtel 5G",
                                                "Pay from KES 500 at a time. We renew your line when it adds up.", mdogo_card())
+    files["og/internet-tv_1200x630"] = og("<em>Internet TV</em> over your home internet",
+                                          "Live TV, films and series on smart TV, TV box or phone. Italian and international options. One annual plan.",
+                                          tv_card(), tag="Ask on WhatsApp")
     files["og/sms_1200x630"] = og("Choose the <em>SMS</em> you get from us",
                                   "Join or stop renewal reminders and offers. Payment receipts always sent.", sms_card(), tag="seabreezedata.co.ke/sms")
     for slug, a in art.AREAS.items():
