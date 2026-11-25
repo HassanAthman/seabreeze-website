@@ -790,5 +790,9 @@
  "Your area not listed?": "La tua zona non è nell'elenco?",
  "It may still be covered. Send us your estate and nearest landmark on WhatsApp and we check the signal before you pay anything.": "Potrebbe essere comunque coperta. Mandaci su WhatsApp il tuo quartiere e un punto di riferimento vicino: verifichiamo il segnale prima che tu paghi qualcosa.",
  "Maps": "Mappe",
- "Where our agents work": "Dove lavorano i nostri agenti"
+ "Where our agents work": "Dove lavorano i nostri agenti",
+ "Run out of float? We top you up fast.": "Float esaurito? Te lo ricarichiamo subito.",
+ "Seabreeze is an Airtel Money super agent. Any Airtel Money agent can get float from us through Paybill <b>4129691</b> or our DSR line, so you never turn a customer away.": "Seabreeze è super agente Airtel Money. Ogni agente Airtel Money può ricevere float da noi tramite il Paybill <b>4129691</b> o la nostra linea DSR, così non mandi mai via un cliente.",
+ "Referral code <span class=\"hint\">From a friend or an agent, if you have one</span>": "Codice invito <span class=\"hint\">Da un amico o da un agente, se ne hai uno</span>",
+ "e.g. SB1234": "es. SB1234"
 }

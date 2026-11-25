@@ -100,6 +100,7 @@
       </div>
       <p class="g5-total" id="g-total" aria-live="polite"></p>
       <label for="g-heard">Ulitusikia wapi?<select id="g-heard" name="heard_from"><option>Facebook</option><option>TikTok</option><option>Instagram</option><option>WhatsApp</option><option>Google</option><option>Rafiki</option><option>Wakala au fundi</option><option>SMS</option><option>Kwingine</option></select></label>
+      <label for="g-ref">Nambari ya rufaa <span class="hint">Kutoka kwa rafiki au wakala, kama unayo</span><input id="g-ref" name="referral_code" maxlength="20" placeholder="mfano SB1234" autocapitalize="characters"></label>
       <label class="g5-check"><input type="checkbox" name="marketing"> Nitumie ofa za Seabreeze kwa SMS au WhatsApp. Naweza kuzisimamisha wakati wowote.</label>
       <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
       <button class="btn btn-sun" type="submit">Tuma maombi yangu</button>
@@ -148,6 +149,7 @@ form.lead label.g5-check{display:flex;gap:10px;align-items:flex-start;font-weigh
   var noEmail=document.getElementById('g-noemail');
   noEmail.onchange=function(){f.email.disabled=noEmail.checked;if(noEmail.checked)f.email.value='';};
   function say(t){msg.hidden=false;msg.textContent=t;}
+  try{var rc=(new URLSearchParams(location.search).get('ref')||'').replace(/[^A-Za-z0-9]/g,'').slice(0,20);if(rc&&f.referral_code)f.referral_code.value=rc.toUpperCase();}catch(e){}
   f.addEventListener('submit',function(ev){
     ev.preventDefault();
     var v=function(n){return (f[n].value||'').trim();};
@@ -157,7 +159,7 @@ form.lead label.g5-check{display:flex;gap:10px;align-items:flex-start;font-weigh
     if(!v('county')||!v('town')){say('Tafadhali andika kaunti yako na mji au mtaa.');return;}
     var body={first_name:v('first_name'),last_name:v('last_name'),phone:v('phone'),email:v('email'),no_email:noEmail.checked,
       county:v('county'),town:v('town'),landmark:v('landmark'),speed:Number(f.speed.value),plan_days:Number(f.plan_days.value),
-      heard_from:f.heard_from.value,marketing:f.marketing.checked,website:f.website.value};
+      heard_from:f.heard_from.value,referral_code:v('referral_code'),marketing:f.marketing.checked,website:f.website.value};
     var btn=f.querySelector('button');btn.disabled=true;say('Inatuma…');
     fetch('/api/get-5g',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
     .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})

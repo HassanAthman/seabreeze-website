@@ -7,7 +7,11 @@
 // cbriz-sms-sender between 08:00 and 20:00 Kenya time).
 //
 // Body: { first_name, last_name, phone, email, no_email, county, town,
-//         landmark, speed, plan_days, heard_from, marketing, website (honeypot) }
+//         landmark, speed, plan_days, heard_from, referral_code, marketing, website (honeypot) }
+//
+// referral_code (typed, or carried by a share link ?ref=...):
+//   SB<number>  a client's code: CBriz > Referrals picks it up as a referral
+//   A<number>   an agent's code (agent app share link): the lead is the agent's
 
 const MAX_PER_CLIENT_PER_DAY = 5;
 // Staff phone(s) that get the "new website lead" SMS. Override with the Pages
@@ -94,14 +98,35 @@ export async function onRequestPost({ request, env }) {
       return reply(429, { error: "We have received several requests from this connection today. Please WhatsApp 0734 782 203 instead." });
 
     const ref = leadRef();
-    const notes = `Website sign-up. Heard about us via: ${heard}.`;
-    const res = await env.DB.prepare(`
-      INSERT INTO new_5g_leads (lead_ref, first_name, last_name, contact_phone, email, email_is_seabreeze,
-        location_county, location_town, location_landmark, package_speed, plan_days, source,
-        marketing_consent, notes, client_hash)
-      VALUES (?1, ?2, ?3, ?4, ?5, 0, ?6, ?7, ?8, ?9, ?10, 'WEBSITE', ?11, ?12, ?13)
-    `).bind(ref, first, last, phone, email || null, county, town, landmark || null, speed, days,
-      b.marketing === true ? 1 : 0, notes, clientHash).run();
+    const code = String(b.referral_code || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 20);
+    const validCode = /^(SB\d{1,7}|A\d{1,5})$/.test(code) ? code : "";
+    let agentId = null;
+    if (/^A\d+$/.test(validCode)) {
+      const agent = await env.DB.prepare("SELECT id FROM sales_agents WHERE id = ?1 AND status = 'ACTIVE'")
+        .bind(Number(validCode.slice(1))).first();
+      agentId = agent ? agent.id : null;
+    }
+    const notes = `Website sign-up. Heard about us via: ${heard}.` + (code ? ` Referral code: ${code}${validCode ? "" : " (not recognised)"}.` : "");
+    const values = [ref, first, last, phone, email || null, county, town, landmark || null, speed, days,
+      b.marketing === true ? 1 : 0, notes, clientHash, agentId];
+    let res;
+    try {
+      res = await env.DB.prepare(`
+        INSERT INTO new_5g_leads (lead_ref, first_name, last_name, contact_phone, email, email_is_seabreeze,
+          location_county, location_town, location_landmark, package_speed, plan_days, source,
+          marketing_consent, notes, client_hash, agent_id, referral_code)
+        VALUES (?1, ?2, ?3, ?4, ?5, 0, ?6, ?7, ?8, ?9, ?10, 'WEBSITE', ?11, ?12, ?13, ?14, ?15)
+      `).bind(...values, validCode || null).run();
+    } catch (e) {
+      // Before cbriz-dashboard migration 013 adds referral_code: the code stays in notes.
+      if (!/referral_code/.test(String(e))) throw e;
+      res = await env.DB.prepare(`
+        INSERT INTO new_5g_leads (lead_ref, first_name, last_name, contact_phone, email, email_is_seabreeze,
+          location_county, location_town, location_landmark, package_speed, plan_days, source,
+          marketing_consent, notes, client_hash, agent_id)
+        VALUES (?1, ?2, ?3, ?4, ?5, 0, ?6, ?7, ?8, ?9, ?10, 'WEBSITE', ?11, ?12, ?13, ?14)
+      `).bind(...values).run();
+    }
     const leadId = res.meta.last_row_id;
 
     await env.DB.prepare(
