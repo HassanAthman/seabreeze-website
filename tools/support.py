@@ -82,6 +82,7 @@ SMS_WORDS = [
     ("PAID", "Whether we got your payment. You can also send the M-Pesa code."),
     ("RENEW", "How to pay on Paybill 4129691."),
     ("PRICE", "All packages and prices."),
+    ("NEW", "How to get Airtel 5G at home. You apply online and Airtel handles the rest."),
     ("MDOGO", "How Lipa Mdogo Mdogo works."),
     ("WIFI", "A link to change your WiFi name and password."),
     ("AGENT", "A person from our team gets back to you."),

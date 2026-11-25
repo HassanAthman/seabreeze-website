@@ -26,7 +26,7 @@
       'payment-questions': 'prices price cost package wrong account someone else early bei kifurushi prezzi prezzo costo',
       'sms-reminders': 'sms reminder stop messages ujumbe kumbusho promemoria',
       'stay-safe': 'fraud scam safe pin cash wizi ulaghai truffa sicurezza',
-      'sms-answers': 'sms text message instant answer expiry paid price agent ujumbe jibu messaggio risposta'
+      'sms-answers': 'sms text message instant answer expiry paid price agent new mpya ujumbe jibu messaggio risposta'
     };
     var items = [], seen = {};
     [].forEach.call(document.querySelectorAll('.topics2 a, .pops a'), function(a){
