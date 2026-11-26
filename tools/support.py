@@ -526,7 +526,7 @@ def main():
               "about": {"@id": f"{SITE}/#business"}}
     (PUB / "support").mkdir(exist_ok=True)
     (PUB / "support" / "index.html").write_text(shell(
-        "/support/", "Help centre: Airtel 5G support | Seabreeze 5G",
+        "/support/", "Help centre: Airtel 5G, WiFi and router support | Seabreeze 5G",
         "Seabreeze help centre for Airtel 5G home internet: renew on Paybill 4129691, fix no internet, change your WiFi password, check your expiry date.",
         hub(), '\n<script src="/support.js" defer></script>', hub_ld))
     for slug, g in G.items():
