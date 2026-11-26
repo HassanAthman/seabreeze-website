@@ -4,7 +4,7 @@
 // worker reads sms_preferences before every reminder or marketing SMS.
 //
 // Body: { phone, reminders: 0|1|null, marketing: 0|1|null, website: "" }
-// null means "leave as it is". Payment receipts are never affected.
+// null means "leave as it is". Payment confirmations are never affected.
 
 const MAX_PER_PHONE_PER_DAY = 5;
 const MAX_PER_CLIENT_PER_DAY = 20;
@@ -94,7 +94,7 @@ export async function onRequestPost({ request, env }) {
   const parts = [];
   if (reminders !== null) parts.push(reminders ? "you will get renewal reminders" : "renewal reminders are stopped");
   if (marketing !== null) parts.push(marketing ? "you will get offers" : "offers are stopped");
-  return reply(200, { message: `Saved for 0${phone.slice(3)}: ${parts.join(" and ")}. Payment receipts still come after every payment.` });
+  return reply(200, { message: `Saved for 0${phone.slice(3)}: ${parts.join(" and ")}. Payment confirmations still come after every payment.` });
 }
 
 export function onRequest() {

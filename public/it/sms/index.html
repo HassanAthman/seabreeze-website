@@ -46,7 +46,7 @@
     <div class="eyebrow">Preferenze SMS</div>
     <h1 style="margin-top:8px">Scegli gli SMS che ricevi da noi</h1>
     <p style="margin:12px 0 18px">Scegli cosa vuoi per il tuo numero di telefono. La scelta viene salvata subito e il nostro sistema la applica automaticamente.</p>
-    <div class="sms-art-wrap"><!--art:sms--><svg class="sms-art" viewBox="0 0 320 200" role="img" aria-labelledby="sm-t"><title id="sm-t">A phone with SMS switches for reminders and offers</title><rect width="320" height="200" rx="20" fill="var(--sea-deep)"/><rect x="34" y="22" width="96" height="170" rx="16" fill="#1d2326"/><rect x="42" y="36" width="80" height="128" rx="6" fill="#c9d8b4"/><rect x="50" y="46" width="56" height="20" rx="8" fill="#0b6e78"/><rect x="66" y="74" width="48" height="20" rx="8" fill="#f08a24"/><rect x="50" y="102" width="50" height="20" rx="8" fill="#0b6e78"/><g font-family="var(--body)" font-size="15" fill="#e6f2f3"><text x="146" y="70">Promemoria</text><text x="146" y="124">Offerte</text></g><rect x="262" y="52" width="46" height="26" rx="13" fill="#3fb3bd"/><circle cx="295" cy="65" r="10" fill="#fff"/><rect x="262" y="106" width="46" height="26" rx="13" fill="#2f6670"/><circle cx="275" cy="119" r="10" fill="#9fc3c8"/><text x="146" y="168" font-family="var(--body)" font-size="12" fill="#9fc3c8">Ricevute sempre inviate</text></svg><!--/art:sms--></div>
+    <div class="sms-art-wrap"><!--art:sms--><svg class="sms-art" viewBox="0 0 320 200" role="img" aria-labelledby="sm-t"><title id="sm-t">A phone with SMS switches for reminders and offers</title><rect width="320" height="200" rx="20" fill="var(--sea-deep)"/><rect x="34" y="22" width="96" height="170" rx="16" fill="#1d2326"/><rect x="42" y="36" width="80" height="128" rx="6" fill="#c9d8b4"/><rect x="50" y="46" width="56" height="20" rx="8" fill="#0b6e78"/><rect x="66" y="74" width="48" height="20" rx="8" fill="#f08a24"/><rect x="50" y="102" width="50" height="20" rx="8" fill="#0b6e78"/><g font-family="var(--body)" font-size="15" fill="#e6f2f3"><text x="146" y="70">Promemoria</text><text x="146" y="124">Offerte</text></g><rect x="262" y="52" width="46" height="26" rx="13" fill="#3fb3bd"/><circle cx="295" cy="65" r="10" fill="#fff"/><rect x="262" y="106" width="46" height="26" rx="13" fill="#2f6670"/><circle cx="275" cy="119" r="10" fill="#9fc3c8"/><text x="146" y="168" font-family="var(--body)" font-size="12" fill="#9fc3c8">Confirmations always sent</text></svg><!--/art:sms--></div>
     <form class="lead" id="smsForm" novalidate>
       <label for="s-phone">Numero di telefono che riceve i nostri SMS<input id="s-phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="e.g. 0712 345 678" required><span class="hint">Numero Safaricom o Airtel, 07…, 01… o 254…</span></label>
       <fieldset style="border:0;padding:0;margin:0;display:grid;gap:8px">
@@ -60,7 +60,7 @@
         <label style="display:flex;gap:10px;align-items:center;font-weight:400"><input type="radio" name="marketing" value="0" style="width:auto"> No, niente offerte</label>
       </fieldset>
       <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
-      <p class="hint" style="margin:0">Le ricevute di pagamento (l'SMS di ringraziamento dopo il pagamento) vengono sempre inviate, così sai che il denaro è arrivato.</p>
+      <p class="hint" style="margin:0">Le conferme di pagamento (l'SMS di ringraziamento dopo il pagamento) vengono sempre inviate, così sai che il denaro è arrivato.</p>
       <button class="btn btn-sun" type="submit">Salva la mia scelta</button>
       <p id="smsMsg" role="status" aria-live="polite" style="margin:0;font-weight:600"></p>
     </form>
@@ -84,7 +84,7 @@
     fetch('/api/sms-preferences',{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({phone:phone,reminders:r,marketing:m,website:f.website.value})})
     .then(function(res){return res.json().catch(function(){return {};}).then(function(j){return {ok:res.ok,j:j};});})
-    .then(function(x){msg.textContent=x.ok?((document.documentElement.lang.slice(0,2)==='en'&&x.j.message)||'Salvato. Grazie. Le ricevute di pagamento continueranno ad arrivare dopo ogni pagamento.'):(x.j.error||'Spiacenti, non è stato salvato. Riprova o scrivici su WhatsApp 0734 782 203.');})
+    .then(function(x){msg.textContent=x.ok?((document.documentElement.lang.slice(0,2)==='en'&&x.j.message)||'Salvato. Grazie. Le conferme di pagamento continueranno ad arrivare dopo ogni pagamento.'):(x.j.error||'Spiacenti, non è stato salvato. Riprova o scrivici su WhatsApp 0734 782 203.');})
     .catch(function(){msg.textContent='Nessuna connessione. Riprova o scrivici su WhatsApp 0734 782 203.';})
     .finally(function(){btn.disabled=false;});
   });

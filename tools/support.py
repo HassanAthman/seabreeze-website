@@ -271,7 +271,7 @@ G["sms-reminders"] = dict(
         ("Open the SMS form", '<a href="/sms/">SMS preferences form</a>', ico("bell")),
         ("Or text STOP", "Send STOP to 0734 782 203 to stop offers and reminders.", ico("msg")),
     ],
-    tip="Payment receipts are always sent.",
+    tip="Payment confirmations are always sent.",
 )
 
 G["stay-safe"] = dict(

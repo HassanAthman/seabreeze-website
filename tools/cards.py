@@ -190,7 +190,7 @@ def build(out):
                                           "Live TV, films and series on smart TV, TV box or phone. Italian and international options. One annual plan.",
                                           tv_card(), tag="Ask on WhatsApp")
     files["og/sms_1200x630"] = og("Choose the <em>SMS</em> you get from us",
-                                  "Join or stop renewal reminders and offers. Payment receipts always sent.", sms_card(), tag="seabreezedata.co.ke/sms")
+                                  "Join or stop renewal reminders and offers. Payment confirmations always sent.", sms_card(), tag="seabreezedata.co.ke/sms")
     for slug, a in art.AREAS.items():
         where = f"<em>{html.escape(a['name'])}</em>" + (" County" if a["kind"] == "county" else "")
         sub = ("Whole county covered by local Seabreeze agents." if a["kind"] == "county"
