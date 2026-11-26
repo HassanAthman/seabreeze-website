@@ -224,7 +224,7 @@ def sms_art():
             '<text x="146" y="70">Reminders</text><text x="146" y="124">Offers</text></g>'
             '<rect x="262" y="52" width="46" height="26" rx="13" fill="#3fb3bd"/><circle cx="295" cy="65" r="10" fill="#fff"/>'
             '<rect x="262" y="106" width="46" height="26" rx="13" fill="#2f6670"/><circle cx="275" cy="119" r="10" fill="#9fc3c8"/>'
-            '<text x="146" y="168" font-family="var(--body)" font-size="12" fill="#9fc3c8">Receipts always sent</text></svg>')
+            '<text x="146" y="168" font-family="var(--body)" font-size="12" fill="#9fc3c8">Payment SMS always sent</text></svg>')
 
 def area_map(slug, links=False):
     """Close-up map for an area page with that area's towns highlighted."""
