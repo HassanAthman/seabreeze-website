@@ -321,7 +321,7 @@ def contact_block():
     return f'''<section class="hc-contact" id="contact-us">
   <div class="wrap">
     <h2>Still need help?</h2>
-    <p class="hc-sub">Talk to a person. We answer from 8am to 8pm, every day.</p>
+    <p class="hc-sub">Talk to a person. We answer from 8am to 10pm, every day.</p>
     <div class="hc-ch">
       <a class="ch ch-wa" href="{WA}?text=Hi%20Seabreeze%2C%20I%20need%20help%20with%20my%20Airtel%205G." target="_blank" rel="noopener">{icon("chat")}<b>WhatsApp</b><span>0734 782 203</span><i>Fastest</i></a>
       <a class="ch" href="tel:+254782998842">{icon("phone")}<b>Call</b><span>0782 998 842</span></a>
