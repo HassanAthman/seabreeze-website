@@ -69,7 +69,7 @@
     <div class="eyebrow">Vizuri kujua</div>
     <h2 style="margin-top:8px">Wateja wapya hutuuliza nini</h2>
     <div class="why why-6">
-      <div><h3>KES 2,999 kuanza</h3><p>Kwa 15 Mbps: mwezi wako wa kwanza (KES 1,999) pamoja na ada ya kuunganisha KES 1,000: jumla KES 2,999. Kwa 30 Mbps ni KES 3,999. Lipa kwa Paybill 4129691 ukitumia jina lako kama akaunti.</p></div>
+      <div><h3>KES 2,999 kuanza</h3><p>Kwa 15 Mbps: mwezi wako wa kwanza (KES 1,999) pamoja na ada ya kuunganisha KES 1,000. Kwa 30 Mbps ni KES 3,999. Lipa kwa Paybill 4129691 ukitumia jina lako kama akaunti.</p></div>
       <div><h3>Router ya kubeba yenye power bank</h3><p>Router inatumia laini (SIM), kwa hivyo unaweza kuihamisha ndani ya nyumba. Inakuja na power bank stima ikipotea.</p></div>
       <div><h3>Kwa nini fundi anakuja</h3><p>Fundi anaangalia mtandao mahali utakapotumia router, ili upate huduma nzuri. Ndiyo sababu huchukui router kutoka ofisini kwetu.</p></div>
       <div><h3>Nitaunganishwa lini?</h3><p>Mara nyingi siku hiyo hiyo ukianza mapema, lakini hatuwezi kuahidi. Ofisi yetu na mafundi wa Airtel hufanya kazi hadi saa 11 jioni.</p></div>
@@ -119,7 +119,7 @@
       <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
       <button class="btn btn-sun" type="submit">Tuma maombi yangu</button>
       <p class="formmsg" id="g5Msg" role="status" aria-live="polite" hidden></p>
-      <p class="hint" style="font-size:.8rem">Tunahifadhi maelezo yako ili kukusajili na Airtel, kupanga kuwekewa na kukukumbusha kabla kifurushi hakijaisha. Hatumpi mtu mwingine.</p>
+      <p class="hint" style="font-size:.8rem">Tunahifadhi maelezo yako ili kukusajili na Airtel, kufuatilia muunganisho wako na kukukumbusha kabla kifurushi hakijaisha. Hatumpi mtu mwingine.</p>
       <p class="hint">Unapendelea barua pepe? Tuma jina lako, nambari ya simu na mahali ulipo kwa <a href="mailto:info@seabreezedata.co.ke">info@seabreezedata.co.ke</a>.</p>
     </form>
     <div class="lead g5-done" id="g5Done" hidden tabindex="-1">
@@ -156,7 +156,7 @@ form.lead label.g5-check{display:flex;gap:10px;align-items:flex-start;font-weigh
 <script>
 (function(){
   var f=document.getElementById('g5Form'), msg=document.getElementById('g5Msg');
-  var PRICES={15:{30:3000,90:5399,180:9999},30:{30:4000,90:8099,180:14999}};
+  var PRICES={15:{30:2999,90:5399,180:9999},30:{30:3999,90:8099,180:14999}};
   function total(){var s=f.speed.value,d=f.plan_days.value,p=PRICES[s][d];
     document.getElementById('g-total').textContent='Kulipa kwa Paybill 4129691: KES '+p.toLocaleString('en-KE')+'. '+(d==='30'?'Inajumuisha ada ya kuunganisha KES 1,000.':'Hakuna ada ya kuunganisha.');}
   f.speed.onchange=total;f.plan_days.onchange=total;total();

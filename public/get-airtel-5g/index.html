@@ -69,7 +69,7 @@
     <div class="eyebrow">Good to know</div>
     <h2 style="margin-top:8px">What new clients ask us</h2>
     <div class="why why-6">
-      <div><h3>KES 2,999 to start</h3><p>On 15 Mbps: your first month (KES 1,999) plus the KES 1,000 connection fee: KES 2,999 in total. On 30 Mbps it is KES 3,999. Pay on Paybill 4129691 with your name as the account.</p></div>
+      <div><h3>KES 2,999 to start</h3><p>On 15 Mbps: your first month (KES 1,999) plus the KES 1,000 connection fee. On 30 Mbps it is KES 3,999. Pay on Paybill 4129691 with your name as the account.</p></div>
       <div><h3>A portable router with a power bank</h3><p>The router works with a SIM card, so you can move it around your home. It comes with a power bank for when the power goes off.</p></div>
       <div><h3>Why an installer visits</h3><p>The installer checks the signal where you will use the router, so you get good service. That is why you do not take a router home from our office.</p></div>
       <div><h3>How soon can I connect?</h3><p>Often the same day if you start early, but we cannot promise it. Our office and Airtel installers work until 5pm.</p></div>
@@ -119,7 +119,7 @@
       <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
       <button class="btn btn-sun" type="submit">Send my application</button>
       <p class="formmsg" id="g5Msg" role="status" aria-live="polite" hidden></p>
-      <p class="hint" style="font-size:.8rem">We keep your details to register you with Airtel, arrange installation and remind you before your plan ends. We don't share them with anyone else.</p>
+      <p class="hint" style="font-size:.8rem">We keep your details to register you with Airtel, follow up your connection and remind you before your plan ends. We don't share them with anyone else.</p>
       <p class="hint">Prefer email? Send your name, phone number and location to <a href="mailto:info@seabreezedata.co.ke">info@seabreezedata.co.ke</a>.</p>
     </form>
     <div class="lead g5-done" id="g5Done" hidden tabindex="-1">
@@ -156,7 +156,7 @@ form.lead label.g5-check{display:flex;gap:10px;align-items:flex-start;font-weigh
 <script>
 (function(){
   var f=document.getElementById('g5Form'), msg=document.getElementById('g5Msg');
-  var PRICES={15:{30:3000,90:5399,180:9999},30:{30:4000,90:8099,180:14999}};
+  var PRICES={15:{30:2999,90:5399,180:9999},30:{30:3999,90:8099,180:14999}};
   function total(){var s=f.speed.value,d=f.plan_days.value,p=PRICES[s][d];
     document.getElementById('g-total').textContent='To pay on Paybill 4129691: KES '+p.toLocaleString('en-KE')+'. '+(d==='30'?'Includes the KES 1,000 connection fee.':'No connection fee.');}
   f.speed.onchange=total;f.plan_days.onchange=total;total();

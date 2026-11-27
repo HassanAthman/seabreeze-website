@@ -69,7 +69,7 @@
     <div class="eyebrow">Da sapere</div>
     <h2 style="margin-top:8px">Cosa ci chiedono i nuovi clienti</h2>
     <div class="why why-6">
-      <div><h3>KES 2,999 per iniziare</h3><p>Con 15 Mbps: il primo mese (KES 1,999) più la tariffa di attivazione di KES 1,000: in totale KES 2,999. Con 30 Mbps sono KES 3,999. Paga con Paybill 4129691 usando il tuo nome come conto.</p></div>
+      <div><h3>KES 2,999 per iniziare</h3><p>Con 15 Mbps: il primo mese (KES 1,999) più la tariffa di attivazione di KES 1,000. Con 30 Mbps sono KES 3,999. Paga con Paybill 4129691 usando il tuo nome come conto.</p></div>
       <div><h3>Un router portatile con power bank</h3><p>Il router funziona con una SIM, quindi puoi spostarlo in casa. Include un power bank per quando manca la corrente.</p></div>
       <div><h3>Perché viene un tecnico</h3><p>Il tecnico controlla il segnale dove userai il router, così hai un buon servizio. Per questo non porti a casa il router dal nostro ufficio.</p></div>
       <div><h3>Quanto presto posso connettermi?</h3><p>Spesso lo stesso giorno se inizi presto, ma non possiamo garantirlo. Il nostro ufficio e i tecnici Airtel lavorano fino alle 17.</p></div>
@@ -119,7 +119,7 @@
       <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
       <button class="btn btn-sun" type="submit">Invia la mia richiesta</button>
       <p class="formmsg" id="g5Msg" role="status" aria-live="polite" hidden></p>
-      <p class="hint" style="font-size:.8rem">Conserviamo i tuoi dati per registrarti presso Airtel, organizzare l'installazione e ricordarti la scadenza. Non li condividiamo con nessun altro.</p>
+      <p class="hint" style="font-size:.8rem">Conserviamo i tuoi dati per registrarti presso Airtel, seguire il tuo collegamento e ricordarti la scadenza. Non li condividiamo con nessun altro.</p>
       <p class="hint">Preferisci l'email? Invia nome, numero di telefono e posizione a <a href="mailto:info@seabreezedata.co.ke">info@seabreezedata.co.ke</a>.</p>
     </form>
     <div class="lead g5-done" id="g5Done" hidden tabindex="-1">
@@ -156,7 +156,7 @@ form.lead label.g5-check{display:flex;gap:10px;align-items:flex-start;font-weigh
 <script>
 (function(){
   var f=document.getElementById('g5Form'), msg=document.getElementById('g5Msg');
-  var PRICES={15:{30:3000,90:5399,180:9999},30:{30:4000,90:8099,180:14999}};
+  var PRICES={15:{30:2999,90:5399,180:9999},30:{30:3999,90:8099,180:14999}};
   function total(){var s=f.speed.value,d=f.plan_days.value,p=PRICES[s][d];
     document.getElementById('g-total').textContent='Da pagare con Paybill 4129691: KES '+p.toLocaleString('en-KE')+'. '+(d==='30'?'Include KES 1,000 di allacciamento.':'Nessun costo di allacciamento.');}
   f.speed.onchange=total;f.plan_days.onchange=total;total();

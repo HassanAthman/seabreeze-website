@@ -110,7 +110,7 @@ def county_page(slug, tpl):
     desc = (f"Airtel 5G Smart Connect home WiFi across {whole}: {', '.join(towns[:4])} and more. "
             "From KES 1,999 per month, unlimited data. Renew on M-Pesa Paybill 4129691.")
     lead = (f"Unlimited home and office WiFi across {whole}, including {join(towns)}. "
-            "Set up by a Seabreeze agent near you. Renew any time on M-Pesa Paybill 4129691.")
+            "Installed by Airtel-trained and approved installers. Renew any time on M-Pesa Paybill 4129691.")
     faq = [
         (f"Is Airtel 5G available in {name} County?",
          f"Yes. Our agents cover {whole}, including {join(towns[:5])}. Send your estate and nearest landmark on WhatsApp "
