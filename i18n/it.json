@@ -1222,5 +1222,13 @@
  "No. Internet TV works on any reliable home internet. If you need a connection, we can get you connected to Airtel 5G home internet.": "No. La TV via internet funziona con qualsiasi connessione di casa stabile. Se ti serve una connessione, possiamo collegarti a internet di casa Airtel 5G.",
  "We recommend at least 10 Mbps for smooth HD viewing on one screen. Streaming uses data, so an unlimited home plan is best. Airtel 5G home internet (15 or 30 Mbps, 1,000 GB fair use) works well, and we can get you connected.": "Consigliamo almeno 10 Mbps per una visione HD fluida su uno schermo. Lo streaming consuma dati, quindi è meglio un piano casa illimitato. Internet di casa Airtel 5G (15 o 30 Mbps, uso corretto 1.000 GB) va benissimo, e possiamo collegarti noi.",
  "No. An Airtel installer brings it and checks the signal where you will use it, so you get good service. It is often the same day if you start early, but we cannot promise it. Our office and Airtel installers work until 5pm.": "No. Un tecnico Airtel lo porta e controlla il segnale dove lo userai, così hai un buon servizio. Spesso è lo stesso giorno se inizi presto, ma non possiamo garantirlo. Il nostro ufficio e i tecnici Airtel lavorano fino alle 17.",
- "Often the same day if you start early, but we cannot promise it. Our office and Airtel installers work until 5pm.": "Spesso lo stesso giorno se inizi presto, ma non possiamo garantirlo. Il nostro ufficio e i tecnici Airtel lavorano fino alle 17."
+ "Often the same day if you start early, but we cannot promise it. Our office and Airtel installers work until 5pm.": "Spesso lo stesso giorno se inizi presto, ma non possiamo garantirlo. Il nostro ufficio e i tecnici Airtel lavorano fino alle 17.",
+ "Your Airtel 5G status and expiry date. Sent only to the phone registered on the line. EXPIRY works too.": "Lo stato del tuo Airtel 5G e la data di scadenza. Inviato solo al telefono registrato sulla linea. Funziona anche EXPIRY.",
+ "Every 5G account linked to your phone, with its status.": "Tutti i conti 5G collegati al tuo telefono, con il loro stato.",
+ "Our team calls you back.": "Il nostro team ti richiama.",
+ "STATUS": "STATUS",
+ "ACCOUNTS": "ACCOUNTS",
+ "<b translate=\"no\">STATUS</b>": "<b translate=\"no\">STATUS</b>",
+ "<b translate=\"no\">ACCOUNTS</b>": "<b translate=\"no\">ACCOUNTS</b>",
+ "<b translate=\"no\">CALL ME</b>": "<b translate=\"no\">CALL ME</b>"
 }

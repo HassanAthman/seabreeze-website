@@ -1220,5 +1220,13 @@
  "No. Internet TV works on any reliable home internet. If you need a connection, we can get you connected to Airtel 5G home internet.": "Hapana. TV ya intaneti inafanya kazi na intaneti yoyote ya nyumbani iliyo imara. Ukihitaji intaneti, tunaweza kukuunganisha na intaneti ya nyumbani ya Airtel 5G.",
  "We recommend at least 10 Mbps for smooth HD viewing on one screen. Streaming uses data, so an unlimited home plan is best. Airtel 5G home internet (15 or 30 Mbps, 1,000 GB fair use) works well, and we can get you connected.": "Tunapendekeza angalau 10 Mbps kwa picha safi ya HD kwenye skrini moja. Kutazama kunatumia data, kwa hivyo kifurushi cha nyumbani kisicho na kikomo ni bora. Intaneti ya nyumbani ya Airtel 5G (15 au 30 Mbps, matumizi ya haki 1,000 GB) inafaa, na tunaweza kukuunganisha.",
  "No. An Airtel installer brings it and checks the signal where you will use it, so you get good service. It is often the same day if you start early, but we cannot promise it. Our office and Airtel installers work until 5pm.": "Hapana. Fundi wa Airtel anaileta na kuangalia mtandao mahali utakapoitumia, ili upate huduma nzuri. Mara nyingi ni siku hiyo hiyo ukianza mapema, lakini hatuwezi kuahidi. Ofisi yetu na mafundi wa Airtel hufanya kazi hadi saa 11 jioni.",
- "Often the same day if you start early, but we cannot promise it. Our office and Airtel installers work until 5pm.": "Mara nyingi siku hiyo hiyo ukianza mapema, lakini hatuwezi kuahidi. Ofisi yetu na mafundi wa Airtel hufanya kazi hadi saa 11 jioni."
+ "Often the same day if you start early, but we cannot promise it. Our office and Airtel installers work until 5pm.": "Mara nyingi siku hiyo hiyo ukianza mapema, lakini hatuwezi kuahidi. Ofisi yetu na mafundi wa Airtel hufanya kazi hadi saa 11 jioni.",
+ "Your Airtel 5G status and expiry date. Sent only to the phone registered on the line. EXPIRY works too.": "Hali ya Airtel 5G yako na tarehe ya kuisha. Hutumwa tu kwa simu iliyosajiliwa kwenye line. EXPIRY pia inafanya kazi.",
+ "Every 5G account linked to your phone, with its status.": "Akaunti zote za 5G zilizounganishwa na simu yako, pamoja na hali yake.",
+ "Our team calls you back.": "Timu yetu inakupigia simu.",
+ "STATUS": "STATUS",
+ "ACCOUNTS": "ACCOUNTS",
+ "<b translate=\"no\">STATUS</b>": "<b translate=\"no\">STATUS</b>",
+ "<b translate=\"no\">ACCOUNTS</b>": "<b translate=\"no\">ACCOUNTS</b>",
+ "<b translate=\"no\">CALL ME</b>": "<b translate=\"no\">CALL ME</b>"
 }
