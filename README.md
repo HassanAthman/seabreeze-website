@@ -40,7 +40,7 @@ All page addresses (canonical links, sitemap, share links, Google data) use `htt
 
 ## Things to keep current
 
-- Offer text (Black November runs 24 November to 31 December 2026): home page and town pages.
+- Prices are official Airtel prices only (no discount offers). New connection: KES 2,999 (15 Mbps) or 3,999 (30 Mbps), on /get-airtel-5g/ (text and the PRICES line in its script), the home page FAQ and `tools/support.py`.
 - Package prices: home page, town pages and the Google data in each page's head.
 - Contact numbers: WhatsApp Business 0782 998 842, office 0782 998 842.
 

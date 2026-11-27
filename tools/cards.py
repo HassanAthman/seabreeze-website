@@ -194,7 +194,7 @@ def build(out):
     for slug, a in art.AREAS.items():
         where = f"<em>{html.escape(a['name'])}</em>" + (" County" if a["kind"] == "county" else "")
         sub = ("Whole county covered by local Seabreeze agents." if a["kind"] == "county"
-               else "Set up by a local Seabreeze agent.") + " Renew any time on M-Pesa."
+               else "Installed by Airtel-approved installers.") + " Renew any time on M-Pesa."
         files[f"og/town-{slug}_1200x630"] = og(f"Airtel 5G home internet in {where}", sub, map_card(slug))
     # WhatsApp status and post cards (for Hassan to share; not on the site)
     files["share/status-renew_1080x1920"] = status("Renew your Airtel 5G from <em>any phone</em>",
@@ -203,7 +203,7 @@ def build(out):
         "Pay from KES 500 at a time to Paybill 4129691. We renew your line when it adds up. No extra charge.",
         art.mdogo_art().replace('class="mdogo-art"', 'class="mdogo-art" width="860"'), "Paybill 4129691")
     files["share/status-get5g_1080x1920"] = status("Fast home WiFi, <em>no cables</em>",
-        "Airtel 5G Smart Connect, installed by a Seabreeze agent near you.", price_card(), "WhatsApp to get connected")
+        "Airtel 5G Smart Connect, installed by Airtel-trained and approved installers.", price_card(), "WhatsApp to get connected")
     files["share/status-agent_1080x1920"] = status("Become a <em>Shujaa</em> agent",
         "Earn for every client you connect, and again every time they renew through our paybill.", agents_card(860), "Join on WhatsApp")
     files["share/post-renew_1080x1080"] = square("Renew Airtel 5G from <em>any phone</em>",
