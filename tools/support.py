@@ -82,7 +82,7 @@ SMS_WORDS = [
     ("PAID", "Whether we got your payment. You can also send the M-Pesa code."),
     ("RENEW", "How to pay on Paybill 4129691."),
     ("PRICE", "All packages and prices."),
-    ("NEW", "How to get Airtel 5G at home: pay KES 3,000 (15 Mbps) or 4,000 (30 Mbps) on Paybill 4129691 with your name as the account, we pay Airtel and Airtel sends the installer. Or send MPYA."),
+    ("NEW", "How to get Airtel 5G at home: pay KES 2,999 (15 Mbps) or 3,999 (30 Mbps) on Paybill 4129691 with your name as the account, we pay Airtel and Airtel sends the installer. Or send MPYA."),
     ("MDOGO", "How Lipa Mdogo Mdogo works."),
     ("WIFI", "A link to change your WiFi name and password."),
     ("AGENT", "A person from our team gets back to you."),
